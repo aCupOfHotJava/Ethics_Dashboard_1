@@ -57,6 +57,7 @@ Project repository for the COSC 499 Ethics Dashboard Group 1
     Supported by numerous hosts.
 
 >Users of the application and stakeholders:
+
     The users of the app include professors, students, and TAs. 
     The stakeholders include: 
         Professors as they are the ones using the platform in their classes
@@ -66,6 +67,7 @@ Project repository for the COSC 499 Ethics Dashboard Group 1
         The capstone team developing the project as they want it to work in order to gain successful experience and receive a good grade in the class
 
 >What are we using for the backend:
+
     The backend will be built using python/Django as the framework since it is easy to use and learn which would allow our back end development to be simple, yet       effective and dynamic. 
     Django would also be best as it may allow us to implement some artificial intelligence or machine learning feature either for the current project or in the         future. 
     Using python will also make the project very easy to maintain for the future evolutions of the project.
