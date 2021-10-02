@@ -65,6 +65,7 @@ Project repository for the COSC 499 Ethics Dashboard Group 1
         TAs as they will be using the app to work (as in grading)
         The institutions that this will be implemented at
         The capstone team developing the project as they want it to work in order to gain successful experience and receive a good grade in the class
+        Any future software teams looking to add to this project and further develop it
 
 >What are we using for the backend:
 
