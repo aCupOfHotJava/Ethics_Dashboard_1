@@ -55,3 +55,17 @@ Project repository for the COSC 499 Ethics Dashboard Group 1
     Most popular DBMS.
     Massive support and documentation, backed by Oracle.
     Supported by numerous hosts.
+
+>Users of the application and stakeholders:
+    The users of the app include professors, students, and TAs. 
+    The stakeholders include: 
+        Professors as they are the ones using the platform in their classes
+        Students as they are the ones who will be learning and doing assignments on the app
+        TAs as they will be using the app to work (as in grading)
+        The institutions that this will be implemented at
+        The capstone team developing the project as they want it to work in order to gain successful experience and receive a good grade in the class
+
+>What are we using for the backend:
+    The backend will be built using python/Django as the framework since it is easy to use and learn which would allow our back end development to be simple, yet       effective and dynamic. 
+    Django would also be best as it may allow us to implement some artificial intelligence or machine learning feature either for the current project or in the         future. 
+    Using python will also make the project very easy to maintain for the future evolutions of the project.
