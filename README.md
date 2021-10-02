@@ -72,3 +72,41 @@ Project repository for the COSC 499 Ethics Dashboard Group 1
     The backend will be built using python/Django as the framework since it is easy to use and learn which would allow our back end development to be simple, yet       effective and dynamic. 
     Django would also be best as it may allow us to implement some artificial intelligence or machine learning feature either for the current project or in the         future. 
     Using python will also make the project very easy to maintain for the future evolutions of the project.
+    
+**Testing Strategies:**
+>Methods for testing the project which can be filtered down to Agile and Waterfall testing
+
+>Agile:
+
+    -We would allow for better team collaboration and is better for quicker projects where time is limited.
+    -Code is tested with each iteration in the development phase
+    -Allows us to have customer feedback with every design iteration
+    -Would allow us to use scrums and sprints throughout the development period
+    Therefore we can implement sprint periods where developers develop solely on code and QA testers can focus on debugging and fixing code. During the end of sprint cycles we can implement and acknowledge customer feedback
+
+>Waterfall:
+
+    -Detailing our project and code allows all team members to easily to understand the code and assist when needed
+    -Documentation of the project allows for clearer vision of scope and what the customer expects of the project
+    Therefore while the waterfall testing strategy may take longer it will benefit us in the long run by having clearer communications with the client and a steadier timeline with the project.
+
+**Main Features**
+>The end goal of the project is to allow students to use it for learning case studies and for the project to be easily maintainable for future developers.
+
+>Short Term development 
+
+    -The dashboard must be hosted on Canadian server
+    -We will be using MySQL to implement the database
+    -Easy to read documentation for maintenance
+    -Students should be able to work on multiple case studies at a time
+    -An AI to prevent plagiarism 
+    -Detail inputs to ensure students stay engaged during use
+    -An AI to insure students stay relevant to the course material and understand the learning goals
+    -Gut reactions, the app will require a systematic analysis of the ethics
+
+>Long Term development
+
+    -A mobile version of the app 
+    -The integration of more game-like inputs 
+    -An AI capable of providing immediate feedback to students as they work through a case 
+    -Eventually, the AI should be capable of taking on all evaluative tasks for case analysis 
