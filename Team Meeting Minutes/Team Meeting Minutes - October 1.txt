@@ -1,0 +1,13 @@
+Team Meeting Minutes - October 1
+
+- discussed and decided on issues for our project
+- issues chosen:
+	- choose DBMS
+	- choose backend
+	- pros / cons of technology selected
+	- testing stategies 
+	- creative exploration
+	- main features
+	- users of the application and stakeholders
+- Brandon added issues into the Github repository
+- all agreed to work on issues and finish by a certain time to have sufficient time to run gitstats and submit it
