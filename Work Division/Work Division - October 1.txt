@@ -1,0 +1,30 @@
+Brandon:
+-created Ethics Dashboard repository
+-added the issues
+-issues worked on:
+	- pros and cons of selected technologies
+	- choose DBMS
+-updated README.md
+
+Monica:
+-created folder for client meeting minutes
+-added notes from first client meeting
+-issues worked on:
+	- users of the application and stakeholders
+	- choose backend
+-updated README.md
+
+Sophia:
+-created folder for team meeting minutes
+-added notes from first team meeting
+-issues worked on:
+	- users of the application and stakeholders
+	- create exploration
+-updated README.md
+
+Alvin:
+-issues worked on:
+	- main features
+	- testing strategies
+-updated README.md
+	-
