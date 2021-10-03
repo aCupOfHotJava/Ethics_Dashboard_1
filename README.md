@@ -69,7 +69,7 @@ Project repository for the COSC 499 Ethics Dashboard Group 1
 
 >What are we using for the backend:
 
-    The backend will be built using python/Django as the framework since it is easy to use and learn which would allow our back end development to be simple, yet       effective and dynamic. 
+    The backend will be built using python/Django as the framework since it is flexible and easy to use and learn which would allow our back end development to be simple, yet       effective and dynamic. 
     Django would also be best as it may allow us to implement some artificial intelligence or machine learning feature either for the current project or in the         future. 
     Using python will also make the project very easy to maintain for the future evolutions of the project.
     
@@ -110,3 +110,6 @@ Project repository for the COSC 499 Ethics Dashboard Group 1
     -The integration of more game-like inputs 
     -An AI capable of providing immediate feedback to students as they work through a case 
     -Eventually, the AI should be capable of taking on all evaluative tasks for case analysis 
+    
+**Creative Exploration:**
+>We can explore many different aesthetics using CSS and play around with different looks and color combinations. We may also look into using bootstrap to aid in the look of the application. For better functionality, we can play around with things such as changing the button placement to make it more user friendly.
