@@ -112,4 +112,6 @@ Project repository for the COSC 499 Ethics Dashboard Group 1
     -Eventually, the AI should be capable of taking on all evaluative tasks for case analysis 
     
 **Creative Exploration:**
-We can explore many different aesthetics using CSS and play around with different looks and color combinations. We may also look into using bootstrap to aid in the look of the application. For better functionality, we can play around with things such as changing the button placement to make it more user friendly.
+>Some ideas on how we can change the aesthetics or functionality aside from the proposal:
+
+    We can explore many different aesthetics using CSS and play around with different looks and color combinations. We may also look into using bootstrap to aid in the look of       the application. For better functionality, we can play around with things such as changing the button placement to make it more user friendly.
