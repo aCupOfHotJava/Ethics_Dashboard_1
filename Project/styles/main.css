@@ -1,0 +1,10 @@
+/*
+*   This stylesheet holds all the global styles that will be applied
+*   to all - or near all pages. More specific styles will be applied
+*   in other files towards single or few pages.
+*/
+
+p {
+    color:aqua;
+    font-family:sans-serif;
+}
