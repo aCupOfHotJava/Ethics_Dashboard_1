@@ -1,6 +1,7 @@
 Brandon:
 -issues worked on:
 	- create a simple global stylesheet
+    - created the directories and added READMEs to them
 	- Requirements - part 6
 
 Monica:
