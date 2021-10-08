@@ -1,0 +1,22 @@
+Team Meeting Minutes - October 8
+
+-spoke and discussed about issues
+-created a pull request and merged the issue to the branch configDirectories
+-added issues:
+	- create index.html
+	- create a simple global stylesheet
+	- apply base stylesheet to index.html
+	- add client meeting minutes week 5
+	- add team meeting minutes week 5
+	- add work division week 5
+    - Requirements - part 1
+    - Requirements - part 2
+    - Requirements - part 3
+    - Requirements - part 4
+    - Requirements - part 5
+    - Requirements - part 6
+-added a basic html and css stylesheet
+-discussed the requirements video and assigned tasks to everyone
+-created document for requirements and design milestone
+-created milestone in Github
+-discussed further milestones

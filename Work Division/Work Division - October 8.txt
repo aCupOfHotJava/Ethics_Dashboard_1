@@ -1,0 +1,24 @@
+Brandon:
+-issues worked on:
+	- create a simple global stylesheet
+    - created the directories and added READMEs to them
+	- Requirements - part 6
+
+Monica:
+-issues worked on:
+	- add client meeting minutes week 5
+	- create index.html
+	- Requirements - part 2
+	- Requirements - part 3
+
+Sophia:
+-issues worked on:
+	- add work division week 5
+	- add team meeting minutes week 5
+	- Requirements - part 1
+
+Alvin:
+-issues worked on:
+	- apply base stylesheet to index.html
+	- Requirements - part 4
+	- Requirements - part 5
