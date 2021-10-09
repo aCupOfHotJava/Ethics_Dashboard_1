@@ -1,0 +1,12 @@
+/*
+*  --- main.css ---
+*
+*   For now just a placeholder to get started!   
+*
+*/
+
+p, div, h1, h2, h3, h4, h5, h6 {
+    color:#000000; /* default */
+    font:sans-serif; /* all devices will support this font. Change to a proper font family
+                      * later to support better fonts + fallback incase of device limitation */
+}
