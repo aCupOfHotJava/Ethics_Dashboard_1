@@ -10,3 +10,37 @@ p, div, h1, h2, h3, h4, h5, h6 {
     font:sans-serif; /* all devices will support this font. Change to a proper font family
                       * later to support better fonts + fallback incase of device limitation */
 }
+
+.ethicalIssue, .stakeholders, .utilitarianism, .virtueEthics, .careEthics, .deontology{
+    position: relative;
+    float:left;
+    padding: 0.5em;
+    border: black solid;
+    margin: 0.5em;
+}
+
+.ethicalIssue{
+    width:40%;
+    float: left;
+}
+
+.stakeholders{
+    width:40%;
+    float: right;
+}
+
+.ethicalIssue:hover{
+    background-color: lightgoldenrodyellow;
+}
+
+.stakeholders:hover{
+    background-color: lightgoldenrodyellow;
+}
+
+nav:hover{
+    background-color:lightgoldenrodyellow;
+}
+
+h1{
+    text-align: center;
+}
