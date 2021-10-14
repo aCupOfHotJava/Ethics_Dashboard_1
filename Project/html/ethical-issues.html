@@ -1,0 +1,111 @@
+<!-- See slide 5, 6 of proposal
+*
+*   Clicking on an ethical issue option on index.html will redirect the user
+*   to this page, where the user can add an ethical issue they wish to discuss.
+*   When scripting and database is set up, this page will be able to hold multiple
+*   issues that a given user has worked on
+*
+*-->
+
+<!DOCTYPE html>
+<hmtl>
+    <head>
+        <title>Ethical Issues</title>
+        <style>
+            body {
+                background-color:seashell;
+            }
+            .subHeader h3{
+                background-color: rgba(150, 150, 150, 0.75);
+                color:#FFFFFF;
+                width:23em;
+                font-size:1.5em;
+                float:left;
+            }
+            #navWrapper {
+                display:flex;
+                flex-direction:column;
+                float:right;
+                padding: 10px;
+            }
+            .navOptions {
+                background-color:rgba(150, 150, 150, 0.75);
+                border:solid 1px white;
+                width:18em;
+                height:2.5em;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                margin-top: 0.5em;
+                
+            }
+            #leftColumn {
+                float:left;
+                margin:0.5em;
+            }
+            #prompt {
+                background-color:white;
+                border:solid 1px black;
+                width: 17em;
+                margin-bottom:1em;
+            }
+            #studentIssue {
+                background-color:white;
+                border:solid 1px black;
+                width: 17em;
+            }
+            #centerColumn {
+                background-color:white;
+                border:solid 1px black;
+                float:left;
+                width: 17em;
+                margin:0.5em;
+            }
+            #optionsWrapper {
+                height:fit-content;
+            }
+            .option {
+                border:1pt solid black;
+                margin:5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class = "siteHeader">
+            <h1>Ethics Dashboard</h1>
+        </div>
+        <div class = "subHeader">
+            <h3>Decision / Action Under Consideration</h3>
+        </div>
+        <div id = "navWrapper">
+            <div class = "navOptions">DASHBOARD</div>
+            <div class = "navOptions">UTILITARIANISM</div>
+            <div class = "navOptions">DEONTOLOGY</div>
+            <div class = "navOptions">VIRTUE ETHICS</div>
+            <div class = "navOptions">CARE ETHICS</div>
+            <div class = "navOptions">MY PROGRESS</div>
+        </div>
+        <div id = "leftColumn">
+            <div id = prompt>
+                Describe the ethical issue or dilemma you would like to analyze.
+                Remember, ethical values are things that are important because they are right or wrong
+                - lying, courage, loyalty, theft, etc.
+            </div>
+            <div id = "studentIssue">
+                <p>ethical issue</p>
+            </div>
+        </div>
+        <div id = "centerColumn">
+            <div id = "optionsWrapper">
+                <h4>Option 1</h4>
+                <div class = "option">
+                    <p>I can put loyalty to</p>
+                </div>
+                <h4>Option 2</h4>
+                <div class = "option">
+                    <p>I can betray the</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</hmtl>
