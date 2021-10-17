@@ -11,119 +11,51 @@
 <hmtl>
     <head>
         <title>Ethical Issues</title>
-        <link rel = "stylesheet" href = "../styles/main.css">
-        <style>
-            /*
-            *   embedded styles for page-specific style rules (e.g., column layout)
-            */
-            #navWrapper {
-                display:flex;
-                flex-direction:column;
-                float:right;
-                padding: 1%;
-                width:20%;
-                height:25em;
-            }
-            .navOptions {
-                background-color:rgba(150, 150, 150, 0.75);
-                border:solid 1px white;
-                width:100%;
-                height:100%;
-                display:flex;
-                justify-content:center;
-                align-items:center;
-                margin-top: 2%;
-                font-weight:bold;
-                
-            }
-            #leftColumn {
-                float:left;
-                margin:1%;
-                width:35%;
-            }
-            #prompt {
-                background-color:white;
-                border:solid 1px black;
-                margin-bottom:3%;
-            }
-            #issueArea {
-                width:auto;
-                overflow:auto;
-                border:solid 1pt black;
-            }
-            #ethicalIssue {
-                width:95%;
-                margin:1.5%;
-                height:20em;
-            }
-            #centerColumn {
-                float:left;
-                width: 35%;
-                margin:1%;
-            }
-            #optionsWrapper {
-                min-height: 10em;
-                width:auto;
-                overflow:auto;
-                border:1pt solid black;
-            }
-            .option {
-                width:inherit;
-                width:95%;
-                border: 1pt solid black;
-                margin:1.5%;
-                height:20em;
-            }
-            #newOption, #submitOption, #submitIssue {
-                margin:1%;
-            }
-        </style>
+        <link rel = "stylesheet" href = "../styles/bulma/css/bulma.css">
     </head>
-    <body onload = "main();">
-        <div class = "pageTitle">
-            <h1>Ethics Dashboard</h1>
+    <body>
+        <h1 class = "title">ETHICS DASHBOARD</h1>
+        <h2 class = "subtitle">DECISION / ACTION UNDER CONSIDERATION</h2>
+        <div class = "columns">
+            <div class = "column is-two-fifths">
+                <div class = "box has-background-primary">
+                    <p>Describe the ethical issue or dilemma you would like to analyze. Remember, ethical values are
+                    things that are important because they are right or wrong - lying, courage, loyalty, theft, etc.</p>
+                </div>
+                <div class = "box" id = "dilemma-box">
+                    <textarea class = "textarea" id = "dilemma-text" placeholder = "Enter your text here."></textarea>
+                </div>
+                <button class = "button" id = "add-dilemma">Submit</button>
+            </div>
+            <div class = "column is-two-fifths">
+                <div class = "box" id = "ethics-options-wrapper">
+                    <p class = "heading" id = "empty">There's nothing here. Add an option that you could solve your dilemma with:</p>
+                </div>
+                <button class = "button" id = "add-option">Add Option</button>
+            </div>
+            <div class = "column">
+                <div class = "box has-background-grey has-text-white" id = "dashboard">
+                    DASHBOARD
+                </div>
+                <div class = "box has-background-grey has-text-white">
+                    UTILITARIANISM
+                </div>
+                <div class = "box has-background-grey has-text-white">
+                    DEONTOLOGY
+                </div>
+                <div class = "box has-background-grey has-text-white">
+                    VIRTUE ETHICS
+                </div>
+                <div class = "box has-background-grey has-text-white">
+                    CARE ETHICS
+                </div>
+                <div class = "box has-background-grey has-text-white">
+                    MY PROGRESS
+                </div>
+            </div>
         </div>
-        <div class = "pageSubtitle">
-            <h3>Decision / Action Under Consideration</h3>
-        </div>
-        <div id = "navWrapper">
-            <div class = "navOptions">
-                <p id = "dashboard">DASHBOARD</p>
-            </div>
-            <div class = "navOptions">
-                <p id = "utilitarianism">UTILITARIANISM</p>
-            </div>
-            <div class = "navOptions">
-                <p id = "deontology">DEONTOLOGY</p>
-            </div>
-            <div class = "navOptions">
-                <p id = "virtueEthics">VIRTUE ETHICS</p>
-            </div>
-            <div class = "navOptions">
-                <p id = "careEthics">CARE ETHICS</p>
-            </div>
-            <div class = "navOptions">
-                <p id = "myProgress">MY PROGRESS</p>
-            </div>
-        </div>
-        <div id = "leftColumn">
-            <div id = prompt>
-                <p>Describe the ethical issue or dilemma you would like to analyze.
-                Remember, ethical values are things that are important because they are right or wrong
-                - lying, courage, loyalty, theft, etc.</p>
-            </div>
-            <div id = "issueArea">
-                <textarea id = "ethicalIssue"></textarea>
-            </div>
-            <button id = "submitIssue">Submit</button>
-        </div>
-        <div id = "centerColumn">
-            <div id = "optionsWrapper">
-                <!-- options added here from button -->
-            </div>
-            <button id = "newOption">Add an Option</button>
-            <button id = "submitOption">Submit</button>
-        </div>
-        <script src = "../scripts/make-user-textbox.js" type = "text/javascript"></script>
+
+        <script src = "../scripts/jquery-3.6.0.js"></script>
+        <script src = "../scripts/user-event.js"></script>
     </body>
 </hmtl>
