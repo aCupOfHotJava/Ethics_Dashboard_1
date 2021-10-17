@@ -5,12 +5,12 @@
 *
 */
 
-p, div, h1, h2, h3, h4, h5, h6 {
-    color:#000000; /* default */
-    font:sans-serif; /* all devices will support this font. Change to a proper font family
-                      * later to support better fonts + fallback incase of device limitation */
+/*
+*   What font is to be used for user inputs and descriptions, etc.
+*/
+p, textarea {
+    font-family:Arial;
 }
-
 .ethicalIssue, .stakeholders, .utilitarianism, .virtueEthics, .careEthics, .deontology{
     position: relative;
     float:left;
@@ -43,4 +43,19 @@ nav:hover{
 
 h1{
     text-align: center;
+}
+
+/* style rules for page titles and subtitles*/
+.pageTitle {
+    font-family:Helvetica;
+    font-size: 150%;
+}
+.pageSubtitle {
+    font-family:Helvetica;
+    background-color: rgba(150, 150, 150, 0.75);
+    color:#FFFFFF;
+    width:23em;
+    font-size:1.5em;
+    text-align:center;
+    width:auto;
 }
