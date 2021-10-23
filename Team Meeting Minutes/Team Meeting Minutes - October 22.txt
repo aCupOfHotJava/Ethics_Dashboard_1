@@ -1,0 +1,7 @@
+Team Meeting Minutes - October 22
+
+-discussed what to talk about with client for next week 
+    - want to start hosting and database connection
+    - going to get in contract with technical person given by client for our questions
+-finalized decision to use PHP instead of Django (decision agreed upon by everyone)
+-going to begin coding pages next week for the website 
