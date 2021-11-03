@@ -1,0 +1,33 @@
+<!-- 
+*       This is the login page that any user must complete before accessing
+*       anything other than the login page or the index page that holds
+*       all other groups projects
+*
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <link rel = "stylesheet" href = "../styles/bulma/css/bulma.css">
+    </head>
+    <body>
+        <h1 class = "title has-background-grey-lighter">
+            USER LOGIN PAGE
+        </h1>
+        <div class = "columns is-centered">
+            <div class = "column is-half">
+                <div class = "box">
+                    <!-- Change from GET to POST later, just for testing now -->
+                    <form action = "../server/processLogin.php" method = "GET">
+                        Username: <input type = "text" name = "uid"/>
+                        <br/>
+                        <br/>
+                        Password: <input type = "text" name = "pid"/>
+                        <input type = "submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
