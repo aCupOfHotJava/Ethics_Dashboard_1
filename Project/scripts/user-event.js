@@ -23,3 +23,7 @@ $('#add-dilemma').click(function() {
     $('#dilemma-text').remove();
     $('#add-dilemma').remove();
 })
+function updateTextInput(val) {
+    document.getElementById('textInput').value=val; 
+  }
+  
