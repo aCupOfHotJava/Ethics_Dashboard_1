@@ -1,0 +1,6 @@
+Team Meeting Minutes - November 5
+
+-discussed gitstats report for the end of the day
+-talked about styles for pages and which pages need to be worked on and what has already been covered
+-discussed how to work with the current database and how to get it onto our local machine
+-will work on implementing pages and navigation from page to page
