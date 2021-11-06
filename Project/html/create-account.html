@@ -11,23 +11,39 @@
         <div class = "columns is-centered">
             <div class = "column is-half">
                 <div class = "box">
-                    <form action = "../server/createAccount.php" method = "GET" id = "log-form">
-                        Student ID: <input type = "text" name = "sid" class = "required"/>
+                    <form action = "../server/createAccount.php" method = "POST"
+                            id = "create-form">
+                        Student ID:
                         <br/>
+                        <input type = "text" name = "sid" class = "required"/>
                         <br/>
-                        Password: <input type = "text" name = "pid" class = "required"/>
+                        <p class = "error-message">
+                            Must be an 8-digit number
+                        </p>
                         <br/>
+                        Password:
                         <br/>
-                        Password Again: <input type = "text" name = "assertPid" class = 
+                        <input type = "text" name = "pid" class = "required"/>
+                        <br/>
+                        <p class = "error-message">
+                            Must be 1-16 characters
+                        </p>
+                        <br/>
+                        Password Again:
+                        <br/>
+                        <input type = "text" name = "assertPid" class = 
                                 "required"/>
                         <br/>
+                        <p class = "error-message">
+                            Passwords must match!
+                        </p>
                         <br/>
-                        <input type = "submit">
+                        <input type = "submit" value = "Create Account">
                     </form>
                 </div>
             </div>
         </div>
         <script src = "../scripts/jquery-3.6.0.js"></script>
-        <script src = "../scripts/validate-login.js"></script>
+        <script src = "../scripts/validate-acc-create.js"></script>
     </body>
 </html>

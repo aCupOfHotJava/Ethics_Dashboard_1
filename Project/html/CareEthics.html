@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Care Ethics</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel = "stylesheet" href = "../styles/bulma/css/bulma.css">
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+
+<body>
+    <h1 class = "title has-background-grey-lighter">Care Ethics</h1>
+    <h2 class = "subtitle has-background-danger-light">DECISION / ACTION UNDER CONSIDERATION</h2>
+    <div class = "columns">
+        <div class = "column is-two-fifths">
+            <div class = "box has-background-primary">
+                <p>Care ethics we come to understand the right thing to do by considering how we can care for others.  
+                    There are three main features of care. Attentiveness: Being aware of needs in others.  
+                    Competence: The ability to deliver what is needed Responsiveness: Empathy for the position of others in need of care.</p>
+            </div>
+
+            <div class="CERange">
+            <h1> Stakeholder 1</h1>
+            <p>Attentiveness</p>
+            <nav>
+            <label id="Low">Low</label>
+            <label id=High>High</label>
+            </nav>
+            <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-1"  step="1"  onchange="updateTextInput(this.value);">
+   
+            <input type="text" id="textInput" value="">
+
+            <p>Competence</p>
+                <nav>
+                <label id="Low">Low</label>
+                <label id=High>High</label>
+                </nav>
+            <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-2"  step="1"  onchange="updateTextInput1(this.value);">
+            <input type="text" id="textInput1" value="">
+           
+            <p>Responsiveness</p>
+            <nav>
+                <label id="Low">Low</label>
+                <label id=High>High</label>
+                </nav>
+            <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-3" step="1"  onchange="updateTextInput2(this.value);">
+            <input type="text" id="textInput" value="">
+
+            <h1> Stakeholder 2</h1>
+            <p>Attentiveness</p>
+            <nav>
+                <label id="Low">Low</label>
+                <label id=High>High</label>
+                </nav>
+            <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-1" step="1"  onchange="updateTextInput(this.value);">
+            <input type="text" id="textInput" value="">
+
+            <p>Competence</p>
+            <nav>
+                <label id="Low">Low</label>
+                <label id=High>High</label>
+                </nav>
+            <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-2" step="1"  onchange="updateTextInput(this.value);">
+            <input type="text" id="textInput" value="">
+
+            <p>Responsiveness</p>
+            <nav>
+                <label id="Low">Low</label>
+                <label id=High>High</label>
+                </nav>
+            <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-3" step="1"  onchange="updateTextInput(this.value);">
+            <input type="text" id="textInput" value="">
+        </div>
+
+            <div class = "box" id = "dilemma-box">
+                <textarea class = "textarea" id = "dilemma-text" placeholder = "Enter your dilemma here."></textarea>
+            </div>
+
+            <button class = "button" id = "add-dilemma">Submit</button>
+        </div>
+        <div class = "column is-two-fifths">
+            <div class = "box" id = "ethics-options-wrapper">
+                <p class = "heading" id = "empty">There's nothing here. Add an option that you could solve your dilemma with:</p>
+            </div>
+            <button class = "button" id = "add-option">Add Option</button>
+        </div>
+        <div class = "column ">
+            <a class = "box has-background-grey has-text-white" id = "dashboard" href = "index.html">
+                DASHBOARD
+            </a>
+            <a class = "box has-background-grey has-text-white" id = "utilitarianism" href = "utilitarianism.html">
+                UTILITARIANISM
+            </a>
+            <a class = "box has-background-grey has-text-white" id = "deontology" href = "deontology.html">
+                DEONTOLOGY
+            </a>
+            <a class = "box has-background-grey has-text-white" id = "virtue-ethics" href = "virtueEthics.html">
+                VIRTUE ETHICS
+            </a>
+            <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "CareEthics.html">
+                CARE ETHICS
+            </a>
+            <a class = "box has-background-grey has-text-white" id = "my-progress" href = "MyProgress.html">
+                MY PROGRESS
+            </a>
+        </div>
+    </div>
+
+    <script src = "../scripts/jquery-3.6.0.js"></script>
+    <script src = "../scripts/user-event.js"></script>
+
+</body>
+
+</html>

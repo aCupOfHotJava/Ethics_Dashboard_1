@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+
         <title>Login</title>
         <link rel = "stylesheet" href = "../styles/bulma/css/bulma.css">
     </head>
@@ -18,15 +19,28 @@
         <div class = "columns is-centered">
             <div class = "column is-half">
                 <div class = "box">
-                    <!-- Change from GET to POST later, just for testing now -->
-                    <form action = "../server/processLogin.php" method = "GET" id = "log-form">
-                        Student ID: <input type = "text" name = "sid" class = "required"/>
+                    <form action = "../server/processLogin.php" method = "POST"
+                            id = "login-form">
+                        Student ID:
                         <br/>
+                        <input type = "text" name = "sid" class = "required" id = "sid"/>
                         <br/>
-                        Password: <input type = "text" name = "pid" class = "required"/>
-                        <input type = "submit">
+                        <p id = "error0">
+                            Must be an 8-digit number
+                        </p>
+                        <br/>
+                        Password:
+                        <br/>
+                        <input type = "text" name = "pid" class = "required" id = "pid"/>
+                        <br/>
+                        <p id = "error1">
+                            Must be 1-16 characters
+                        </p>
+                        <br/>
+                        <input type = "submit" value = "Login">
                     </form>
                 </div>
+                <a href = "create-account.html">Create Account</a>
             </div>
         </div>
         <script src = "../scripts/jquery-3.6.0.js"></script>
