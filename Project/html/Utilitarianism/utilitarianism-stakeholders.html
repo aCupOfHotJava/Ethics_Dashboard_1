@@ -1,5 +1,5 @@
-<!--NEEDDS TO STILL BE CONNECTED TO THE UTILITARIANISM HOME PAGE THROUGH SCRIPTING-->
-<!--NEEDS SCRIPTING TO CONNECT TO THE NEXT PAGE AND ADD NEW STAKEHOLDERS TO THE LIST WHEN THE BUTTON IS CLICKED-->
+<!--NEEDS A WAY OF SUBMITTING USER ANSWERS
+    NEED TO BE ABLE TO MOVE THE STAKEHOLDERS UP AND DOWN IN ORDER TO RANK THEM-->
 
 <!DOCTYPE html>
 <html>
@@ -33,14 +33,14 @@
                     <p>Consumers –vehicle buyers...</p>
                     <textarea class = "textarea" id = "dilemma-text" placeholder = "Defend the inclusion of Stakeholder 3 –Rank by degree of impact"></textarea>
                 </div>
-                <button class = "button" id = "add-dilemma">Submit & Proceed to Analysis</button>
+                <button class = "button">Submit</button>
             </div>
 
             <div class = "column is-two-fifths">
                 <div class = "box" id = "ethics-options-wrapper">
-                    <textarea class = "heading" id = "empty">Add stakeholder...</textarea>
+                    <p class = "heading" id = "empty">Add Stakeholder</p>
                 </div>
-                <button class = "button" id = "add-option">Add Stakeholder</button>
+                <button class = "button" id = "add-option">Add</button>
             </div>
 
             <div class = "column ">
@@ -56,13 +56,18 @@
                 <a class = "box has-background-grey has-text-white" id = "virtue-ethics" href = "#">
                     VIRTUE ETHICS
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "#">
+                <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "../CareEthics.html">
                     CARE ETHICS
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "my-progress" href = "#">
+                <a class = "box has-background-grey has-text-white" id = "my-progress" href = "../MyProgress.html">
                     MY PROGRESS
                 </a>
+
+                <a class="button" href="utilitrianism-pleasure-analysis.html">Proceed to Analysis ></a>
             </div>
         </div>
+
+        <script src = "../../scripts/jquery-3.6.0.js"></script>
+        <script src = "../../scripts/user-event.js"></script>
     </body>
 </html>
