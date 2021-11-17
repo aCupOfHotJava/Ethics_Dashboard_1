@@ -23,6 +23,7 @@ $('#add-dilemma').click(function() {
     $('#dilemma-text').remove();
     $('#add-dilemma').remove();
 })
+
 $('.slider').on('input', function () {
     $(this).next('.range-value').html(this.value);
 });
