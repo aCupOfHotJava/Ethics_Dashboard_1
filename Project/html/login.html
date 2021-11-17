@@ -8,7 +8,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-
         <title>Login</title>
         <link rel = "stylesheet" href = "../styles/bulma/css/bulma.css">
     </head>
@@ -21,9 +20,9 @@
                 <div class = "box">
                     <form action = "../server/processLogin.php" method = "POST"
                             id = "login-form">
-                        Student ID:
+                        User ID:
                         <br/>
-                        <input type = "text" name = "sid" class = "required" id = "sid"/>
+                        <input type = "text" name = "form-uid" class = "required" id = "form-uid"/>
                         <br/>
                         <p id = "error0">
                             Must be an 8-digit number
@@ -31,7 +30,7 @@
                         <br/>
                         Password:
                         <br/>
-                        <input type = "text" name = "pid" class = "required" id = "pid"/>
+                        <input type = "text" name = "form-pid" class = "required" id = "form-pid"/>
                         <br/>
                         <p id = "error1">
                             Must be 1-16 characters
