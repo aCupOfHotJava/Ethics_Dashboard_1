@@ -37,9 +37,7 @@ p, textarea {
     background-color: lightgoldenrodyellow;
 }
 
-nav:hover{
-    background-color:lightgoldenrodyellow;
-}
+
 
 h1{
     text-align: center;
@@ -89,21 +87,12 @@ h1{
     background: #04AA6D;
     cursor: pointer;
   }
-  nav{
-    display: flex;
-    margin-right: -4px;
-    font-weight: bold;
-    text-decoration: none;
 
   
-  }
+  
   #High {
-    text-decoration: none;
     width:100%;
-    text-align:right;
   }
   #Low{
-    text-decoration: none;
     width:100%;
-    text-align:left;
   }
