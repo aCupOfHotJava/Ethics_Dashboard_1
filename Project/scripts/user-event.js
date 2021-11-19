@@ -35,3 +35,11 @@ $('.savepopup').on('click',function(){
 $('.submitpopup').on('click',function(){
     alert("Your work has been submitted.");
 });
+
+function redirect()
+{
+   if(document.getElementById("op9").checked == true)
+        window.location.href = "Project/html/Deontology/Deontology2.html";
+   else if(document.getElementById("op1").checked == true)
+        window.location.href = 'http://www.google.com';        
+}
