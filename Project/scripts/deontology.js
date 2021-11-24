@@ -4,9 +4,10 @@ $(document).ready(function(){
             console.log("Checkbox is tested.");
             $("form").submit(function(){
                 alert("Submitted");
-                window.location.href = "http://www.google.com";
-             })
+                document.location.href = "";
+            })
         }
 
     });
 });
+
