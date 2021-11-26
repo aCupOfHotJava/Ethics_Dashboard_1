@@ -33,12 +33,12 @@
             else {
                 // Insert
                 $sql = "INSERT INTO user VALUES (" .$uid .", '" .$pid ."', 0.00, 0);";
-                // debug purposes
-                echo $sql;
                 $result = $pdo -> query($sql);
-                echo "Your account has been successfully created and stored in the database.";
-                // successful account creation should lead user to the home page with a persistent
-                // session state keeping them logged in until logout or application exit
+                
+                header("location: ../html/index.html");
+                // successful account creation leads user to the home page. A persistent
+                // session state keeping them logged in until logout or application exit needs
+                // to be added. 
 
             }
 
