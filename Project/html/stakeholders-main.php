@@ -2,7 +2,10 @@
 * Introducing the stakeholders options onto the dashboard,
 * highlighting the Dashboard tab on the side
 -->
-
+<?php
+    session_start();
+    print_r($_SESSION);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -68,26 +71,26 @@
                         Option ? responds to the needs identified
                     </p>
                 </div>
-                <a class="button" href="stakeholder-analysis.html">Proceed to Analysis ></a>
+                <a class="button" href="stakeholder-analysis.php">Proceed to Analysis ></a>
             </div>
             <div>
             <div class = "column has-fixed-size is-20">
-                <a class = "box has-background-grey has-text-white" id = "dashboard" href = "index.html">
+                <a class = "box has-background-grey has-text-white" id = "dashboard" href = "index.php">
                     DASHBOARD
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "utilitarianism" href = "../html/Utilitarianism/utilitarianism.html">
+                <a class = "box has-background-grey has-text-white" id = "utilitarianism" href = "../html/Utilitarianism/utilitarianism.php">
                     UTILITARIANISM
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "deontology" href = "Deontology/Deontology1.html">
+                <a class = "box has-background-grey has-text-white" id = "deontology" href = "Deontology/Deontology1.php">
                     DEONTOLOGY
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "virtue-ethics" href = "VirtueEthics/VirtueEthics1.html">
+                <a class = "box has-background-grey has-text-white" id = "virtue-ethics" href = "VirtueEthics/VirtueEthics1.php">
                     VIRTUE ETHICS
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "CareEthics.html">
+                <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "CareEthics.php">
                     CARE ETHICS
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "my-progress" href = "MyProgress.html">
+                <a class = "box has-background-grey has-text-white" id = "my-progress" href = "MyProgress.php">
                     MY PROGRESS
                 </a>
 

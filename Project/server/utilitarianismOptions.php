@@ -1,5 +1,5 @@
 <!--THIS PAGE IS NOT DONE YET - IT WILL STORE THE USER'S ANSWERS IN THE APPROPRIATE DATABASE AND 
-                    REDIRECT THEY BACK TO THE UTILITRIANISM.HTML PAGE-->
+                    REDIRECT THEY BACK TO THE UTILITRIANISM.php PAGE-->
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,7 @@
             if($_SERVER["REQUEST_METHOD"] == "POST"){                
                 echo "
                     <h3>Submission Successful!</h3>
-                    <a class=\"button\" href ='../html/Utilitarianism/utilitarianism-stakeholders.html'>Proceed to Stakeholders</a>
+                    <a class=\"button\" href ='../html/Utilitarianism/utilitarianism-stakeholders.php'>Proceed to Stakeholders</a>
                     ";
             }
         

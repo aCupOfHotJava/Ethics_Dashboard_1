@@ -29,13 +29,17 @@
             }
             if($count > 0) {
                 echo "Account under that username already exists.";
+                echo "<br>You will be redirected to the account creation page in 3 seconds...";
+                header("Refresh: 3; URL = ../html/create-account.php");
+                session_destroy();
             }
             else {
                 // Insert
                 $sql = "INSERT INTO user VALUES (" .$uid .", '" .$pid ."', 0.00, 0);";
                 $result = $pdo -> query($sql);
-                
-                header("location: ../html/index.html");
+                $SESSION["uid"] = $uid;
+                echo "<br>You will be redirected to home in 3 seconds...";
+                header("Refresh: 3; URL = ../html/index.php");
                 // successful account creation leads user to the home page. A persistent
                 // session state keeping them logged in until logout or application exit needs
                 // to be added. 

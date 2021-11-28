@@ -31,16 +31,17 @@
                 $count ++;
                 // Successful login should then lead the user to the homepage WITH A SESSION STATE
                 // that persists until logout or exit!
-                $_SESSION['userid'] = $uid;
+                $_SESSION['uid'] = $uid;
                 echo "<br>You will be redirected to home in 3 seconds...";
-                header("Refresh: 3; URL = ../html/index.html");
+                header("Refresh: 3; URL = ../html/index.php");
             }
             if($count == 0) {
                 // We should be redirected to the login page again with some error info
                 // instead of being stuck on this empty php.
+                session_destroy();
                 echo "Invalid login information or account does not exist.<br>You will be redirected in 3 seconds...";
                 //sleep(3);
-                header("Refresh: 3; URL = ../html/login.html");
+                header("Refresh: 3; URL = ../html/login.php");
             }
         }
         catch(PDOException $e) {

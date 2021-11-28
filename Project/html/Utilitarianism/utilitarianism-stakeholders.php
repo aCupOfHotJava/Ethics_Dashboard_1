@@ -1,6 +1,9 @@
 <!--NEEDS A WAY OF SUBMITTING USER ANSWERS
     NEED TO BE ABLE TO MOVE THE STAKEHOLDERS UP AND DOWN IN ORDER TO RANK THEM-->
-
+<?php
+    session_start();
+    print_r($_SESSION);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -44,28 +47,28 @@
             </div>
             <div>
             <div class = "column has-fixed-size is-20">
-                <a class = "box has-background-grey has-text-white" id = "dashboard" href = "../index.html">
+                <a class = "box has-background-grey has-text-white" id = "dashboard" href = "../index.php">
                     DASHBOARD
                 </a>
-                <a class = "box has-background-white has-text-black" id = "utilitarianism" href = "Utilitarianism/utilitarianism.html">
+                <a class = "box has-background-white has-text-black" id = "utilitarianism" href = "Utilitarianism/utilitarianism.php">
                     UTILITARIANISM
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "deontology" href = "../Deontology/Deontology1.html">
+                <a class = "box has-background-grey has-text-white" id = "deontology" href = "../Deontology/Deontology1.php">
                     DEONTOLOGY
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "virtue-ethics" href = "../VirtueEthics/VirtueEthics1.html">
+                <a class = "box has-background-grey has-text-white" id = "virtue-ethics" href = "../VirtueEthics/VirtueEthics1.php">
                     VIRTUE ETHICS
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "../CareEthics.html">
+                <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "../CareEthics.php">
                     CARE ETHICS
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "my-progress" href = "../MyProgress.html">
+                <a class = "box has-background-grey has-text-white" id = "my-progress" href = "../MyProgress.php">
                     MY PROGRESS
                 </a>
                 </div>
                 </div>
                 </div>
-                <a class="button" href="utilitarianism-analysis/utilitarianism-analysis1.html">Proceed to Analysis ></a>
+                <a class="button" href="utilitarianism-analysis/utilitarianism-analysis1.php">Proceed to Analysis ></a>
             </div>
         </div>
 

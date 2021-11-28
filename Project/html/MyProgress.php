@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    print_r($_SESSION);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -51,19 +55,19 @@
         </div>
         <div>
             <div class = "column has-fixed-size is-20">
-                <a class = "box has-background-grey has-text-white" id = "dashboard" href = "index.html">
+                <a class = "box has-background-grey has-text-white" id = "dashboard" href = "index.php">
                     DASHBOARD
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "utilitarianism" href = "../html/Utilitarianism/utilitarianism.html">
+                <a class = "box has-background-grey has-text-white" id = "utilitarianism" href = "../html/Utilitarianism/utilitarianism.php">
                     UTILITARIANISM
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "deontology" href = "Deontology/Deontology1.html">
+                <a class = "box has-background-grey has-text-white" id = "deontology" href = "Deontology/Deontology1.php">
                     DEONTOLOGY
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "virtue-ethics" href = "VirtueEthics/VirtueEthics1.html">
+                <a class = "box has-background-grey has-text-white" id = "virtue-ethics" href = "VirtueEthics/VirtueEthics1.php">
                     VIRTUE ETHICS
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "../html/CareEthics/CareEthics.html">
+                <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "../html/CareEthics/CareEthics.php">
                     CARE ETHICS
                 </a>
                 <a class = "box has-background-white has-text-black" id = "my-progress" href = "#">
@@ -85,7 +89,7 @@
               
                 </a>
             </div>
-            <a href="Project/html/MyProgress.html" download>
+            <a href="Project/html/MyProgress.php" download>
             <h3>Download Report</h3>
           </a>
         </div>

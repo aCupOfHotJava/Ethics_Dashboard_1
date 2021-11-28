@@ -1,7 +1,10 @@
 <!--FORM NEEDS TO BE SEND TO CLIENT VALIDATION AS WELL AS SERVER SIDE SCRIPTING TO SAVE ANSWERS
     STILL NEEDS TO HAVE A TOTAL BOARD ADDED UNDER THE SITE MENU - SEE SLIDE 12 OF PROPOSAL
     ADD OPTION 2 PROPERLY-->
-
+<?php
+    session_start();
+    print_r($_SESSION);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -105,32 +108,32 @@
                         <input type = "submit" class="button" value = "Submit">
                     </form>
 
-                    <a href= "utilitarianism-analysis1.html"><button class = "button is-primary" id = "option2" >Option 1 - Short-term</button>  </a>
-                    <a href= "utilitarianism-analysis2.html"><button class = "button" id = "option2" >Option 1 - Long-term</button>  </a>
-                    <a href= "utilitarianism-analysis3.html"><button class = "button" id = "option3" >Option 2 - Short-term</button>  </a>
-                    <a href= "utilitarianism-analysis4.html"><button class = "button" id = "option4" >Option 2 - Long-term</button>  </a>
+                    <a href= "utilitarianism-analysis1.php"><button class = "button is-primary" id = "option2" >Option 1 - Short-term</button>  </a>
+                    <a href= "utilitarianism-analysis2.php"><button class = "button" id = "option2" >Option 1 - Long-term</button>  </a>
+                    <a href= "utilitarianism-analysis3.php"><button class = "button" id = "option3" >Option 2 - Short-term</button>  </a>
+                    <a href= "utilitarianism-analysis4.php"><button class = "button" id = "option4" >Option 2 - Long-term</button>  </a>
                 </div>
 
                 
             </div>
             <div>
             <div class="column has-fixed-size is-20">
-                <a class = "box has-background-grey has-text-white" id = "dashboard" href = "../../index.html">
+                <a class = "box has-background-grey has-text-white" id = "dashboard" href = "../../index.php">
                     DASHBOARD
                 </a>
-                <a class = "box has-background-white has-text-black" id = "utilitarianism" href = "../utilitarianism.html">
+                <a class = "box has-background-white has-text-black" id = "utilitarianism" href = "../utilitarianism.php">
                     UTILITARIANISM
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "deontology" href = "../../Deontology/Deontology1.html">
+                <a class = "box has-background-grey has-text-white" id = "deontology" href = "../../Deontology/Deontology1.php">
                     DEONTOLOGY
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "virtue-ethics" href = "../../VirtueEthics/VirtueEthics1.html">
+                <a class = "box has-background-grey has-text-white" id = "virtue-ethics" href = "../../VirtueEthics/VirtueEthics1.php">
                     VIRTUE ETHICS
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "../../CareEthics/CareEthics.html">
+                <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "../../CareEthics/CareEthics.php">
                     CARE ETHICS
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "my-progress" href = "../../MyProgress.html">
+                <a class = "box has-background-grey has-text-white" id = "my-progress" href = "../../MyProgress.php">
                     MY PROGRESS
                 </a>
                 </div>
@@ -138,7 +141,7 @@
                 </div>
 
                 <!--    Just moving this button to the bottom for better flow
-                     <a class="button" href="../utilitarianism-summary.html">Proceed to Summary ></a> -->
+                     <a class="button" href="../utilitarianism-summary.php">Proceed to Summary ></a> -->
 
                 <h1>Option 1</h1>
                 <h2>Aggregate of short-term outcomes:</h2>
@@ -182,7 +185,7 @@
                     <span class="range-value">5</span>
                 </div>
 
-                <a class="button" href="../utilitarianism-summary.html">Proceed to Summary ></a>
+                <a class="button" href="../utilitarianism-summary.php">Proceed to Summary ></a>
 
             </div>
         </div>
