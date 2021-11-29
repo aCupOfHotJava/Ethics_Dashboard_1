@@ -1,3 +1,8 @@
+<!--NEEDS SOME ADDED STYLING-->
+<?php
+    session_start();
+    print_r($_SESSION);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,27 +21,26 @@
                 <form method = "POST" action = "" id = "">
                     <div class = "options">
                         <div class = "box" id = "dilemma-box">
-                            <h3>Moral Law 3:  Honesty is Right</h3><br>
+                            <h3>Moral Law 2:  Revealing the Truth is Right</h3><br>
                                 <p>TEST IT’S UNIVERSALIZABILITY:  Can you restate the law 
-                                    as a universal law of moral action?  </p>
+                                    as a universal law of moral action? </p>
                                     <input type="radio" id="yes1" name="choice1" value="yes">
                                     <label for="yes1">Yes</label>
                                     <input type="radio" id="no1" name="choice1" value="yes">
                                     <label for="no1">No</label><br> 
-                            <textarea class = "textarea required" name="option1-2" id = "option1-2" placeholder = "Honesty is right in all circumstances, times and all places."></textarea>
+                            <textarea class = "textarea required" name="option1-2" id = "option1-2" placeholder = "Revealing the truth is right in all circumstances, times and all places."></textarea>
                             <p>*if the moral law cannot be expressed as a universal law of 
                                 moral action is fails the universalizability test.</p>
                         </div>
 
 
                         <div class = "box" id = "dilemma-box">
-                                <p>TEST ITS CONSISTENCY:  Could you live in a world where 
-                                    everyone followed this law?</p>
+                                <p>TEST IT’S CONSISTENCY:  Could you live in a world where everyone followed this law?</p>
                                     <input type="radio" id="yes2" name="choice2" value="yes">
                                     <label for="yes2">Yes</label>
                                     <input type="radio" id="no2" name="choice2" value="yes">
                                     <label for="no2">No</label><br> 
-                            <textarea class = "textarea required" name="option1-2" id = "option1-2" placeholder = "There might be circumstances where being honest would do more harm than good."></textarea>
+                            <textarea class = "textarea required" name="option1-2" id = "option1-2" placeholder = "A world governed by this moral law would be untenable. Concealment is necessary to form relationships, engage in contracts and protect valuable things."></textarea>
                             <p>*If you could not live in a world where everyone (including 
                                 you) followed this law, it fails the consistency test.</p>
                         </div>
@@ -45,30 +49,31 @@
                     </div>
                 </form>
             </div>
+            
             <div>
             <div class = "column has-fixed-size is-20">
-                <a class = "box has-background-grey has-text-white" id = "dashboard" href = "../index.html">
+                <a class = "box has-background-grey has-text-white" id = "dashboard" href = "../index.php">
                     DASHBOARD
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "utilitarianism" href = "../Utilitarianism/utilitarianism.html">
+                <a class = "box has-background-grey has-text-white" id = "utilitarianism" href = "../Utilitarianism/utilitarianism.php">
                     UTILITARIANISM
                 </a>
-                <a class = "box has-background-white has-text-black" id = "deontology" href = "../Deontology/Deontology1.html">
+                <a class = "box has-background-white has-text-black" id = "deontology" href = "../Deontology/Deontology1.php">
                     DEONTOLOGY
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "virtue-ethics" href = "../VirtueEthics/VirtueEthics1.html">
+                <a class = "box has-background-grey has-text-white" id = "virtue-ethics" href = "../VirtueEthics/VirtueEthics1.php">
                     VIRTUE ETHICS
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "CareEthics.html">
+                <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "CareEthics.php">
                     CARE ETHICS
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "my-progress" href = "../MyProgress.html">
+                <a class = "box has-background-grey has-text-white" id = "my-progress" href = "../MyProgress.php">
                     MY PROGRESS
                 </a>
                 </div>
                 </div>
                 </div>
-                <div class= "box"> <!-- has-background-grey-lighter"> -->
+                <div class= "box"> <!--has-background-grey-lighter"> -->
                     <h1>OPTION 2</h1>
                     <div class='box has-background-grey-lighter'>
             <h2>Moral Law 1: Cheating is Wrong</h2>
@@ -89,6 +94,7 @@
             <p>Consistent - Yes / No</p>
         </div>   
         </div>
+                <a class="button" href="../Deontology/Deontology8.php">Next</a>
             </div>
         </div>
         <script src = ""></script>

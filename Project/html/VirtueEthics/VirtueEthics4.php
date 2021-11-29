@@ -1,6 +1,9 @@
 <!--slide 31 of proposal
 functionality not added yet-->
-
+<?php
+    session_start();
+    print_r($_SESSION);
+?>
     <!DOCTYPE html>
     <html>
         <head>
@@ -80,22 +83,22 @@ functionality not added yet-->
                 </div>
                 <div>
                 <div class = "column has-fixed-size is-20">
-                    <a class = "box has-background-grey has-text-white" id = "dashboard" href = "../index.html">
+                    <a class = "box has-background-grey has-text-white" id = "dashboard" href = "../index.php">
                         DASHBOARD
                     </a>
-                    <a class = "box has-background-grey has-text-white" id = "utilitarianism" href = "Utilitarianism/utilitarianism.html">
+                    <a class = "box has-background-grey has-text-white" id = "utilitarianism" href = "Utilitarianism/utilitarianism.php">
                         UTILITARIANISM
                     </a>
-                    <a class = "box has-background-grey has-text-white" id = "deontology" href = "../Deontology/Deontology1.html">
+                    <a class = "box has-background-grey has-text-white" id = "deontology" href = "../Deontology/Deontology1.php">
                         DEONTOLOGY
                     </a>
-                    <a class = "box has-background-white has-text-black" id = "virtue-ethics" href = "../VirtueEthics/VirtueEthics1.html">
+                    <a class = "box has-background-white has-text-black" id = "virtue-ethics" href = "../VirtueEthics/VirtueEthics1.php">
                         VIRTUE ETHICS
                     </a>
-                    <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "../CareEthics/CareEthics.html">
+                    <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "../CareEthics/CareEthics.php">
                         CARE ETHICS
                     </a>
-                    <a class = "box has-background-grey has-text-white" id = "my-progress" href = "../MyProgress.html">
+                    <a class = "box has-background-grey has-text-white" id = "my-progress" href = "../MyProgress.php">
                         MY PROGRESS
                     </a>
                     </div>

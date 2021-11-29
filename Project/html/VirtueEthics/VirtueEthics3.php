@@ -1,27 +1,29 @@
-<!--slide 29 of proposal
-no functionality added yet-->
-
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Virtue Ethics - Options</title>
-        <link rel = "stylesheet" href = "../../styles/bulma/css/bulma.css">
-    </head>
+<!--slide 30 of proposal
+functionality needs to be added-->
+<?php
+    session_start();
+    print_r($_SESSION);
+?>
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Virtue Ethics</title>
+            <link rel = "stylesheet" href = "../../styles/bulma/css/bulma.css">
+        </head>
         <body>
             <h1 class = "title has-background-grey-lighter">VIRTUE ETHICS</h1>
     
-            <div class="columns">
-                <div class="column is-two-thirds">
+            <div class = "columns">
+                <div class = "column is-two-fifths">
                     <div class = "box has-background-primary">
-                        <p>Virtue ethics is a theory that focuses on the character of the decision maker. Building a virtuous character requires
-                            practicing the virtues until the moral agent knows the right thing to do in the right time in the right place in the
-                            right way. To begin, identify the relevant virtues and vices and indicate where each action falls on the virtue continuum.
+                        <p>Consider the context. The virtues are practiced (and understood) in the context of 
+                            a community. Identify the relevant virtues and vices relevant to the stakeholder
+                            interests you've listed.
                         </p>
                     </div>
-    
-                    <div class = "box has-background-grey-lighter">
-                        <h2>OPTION 1 - I can put loyalty to the company...</h2>
-                        <br>
+                
+                    <div class = "box" id = "dilemma-box">
+                        <h3>STAKEHOLDER INTEREST #1 </h3><textarea class = "textarea" id = "dilemma-text" placeholder = "WEALTH (10)"></textarea>
                         <form method="POST" action="../../server/virtueEthics-options.php">
                             <div>
                                 <div class="box">
@@ -33,87 +35,80 @@ no functionality added yet-->
                             <input type = "submit" class="button" value = "Submit">
                         </form>
                     </div>
-                    <br>
-                    <div class = "box has-background-grey-lighter">
-                        <h2>OPTION 2 - I can betray the company, go to the press ...</h2>
-                        <br>
-    
+
+                    <div class = "box" id = "dilemma-box">
+                        <h3>STAKEHOLDER INTEREST #2 </h3><textarea class = "textarea" id = "dilemma-text" placeholder = "Prestige (7)"></textarea>
                         <form method="POST" action="../../server/virtueEthics-options.php">
                             <div>
                                 <div class="box">
                                     <h2> VICE (EXCESS) - VIRTUE (MEAN) - VICE (DEFICIENCY) </h2>
-                                    <label>Over-Sharing</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Honesty</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Dishonesty</label>
+                                    <label>Vanity</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Self Confidence</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Modesty</label>
                                 </div>
-    
                             </div>
                             <br>
                             <input type = "submit" class="button" value = "Submit">
                         </form>
                     </div>
-                
-                    <br>
-                    <div class = "box has-background-grey-lighter">
-                        <h2>OPTION 3 - I can stand up to my superiors, say no and organize ...</h2>
-                        <br>
-
+                    
+                    <div class = "box" id = "dilemma-box">
+                        <h3>STAKEHOLDER INTEREST #3</h3><textarea class = "textarea" id = "dilemma-text" placeholder = "Integrity (3)"></textarea>
                         <form method="POST" action="../../server/virtueEthics-options.php">
                             <div>
                                 <div class="box">
                                     <h2> VICE (EXCESS) - VIRTUE (MEAN) - VICE (DEFICIENCY) </h2>
-                                    <label>Rashness</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Courage</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Cowardice</label>
+                                    <label>Vanity</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Self Confidence</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Modesty</label>
                                 </div>
-
+                            </div>
                             <br>
                             <input type = "submit" class="button" value = "Submit">
                         </form>
                     </div>
+    
                 </div>
-            </div>
                 <div>
-                <div class="column has-fixed-size is-20">
-                    <a class = "box has-background-grey has-text-white" id = "dashboard" href = "../index.html">
+                <div class = "column has-fixed-size is-20">
+                    <a class = "box has-background-grey has-text-white" id = "dashboard" href = "../index.php">
                         DASHBOARD
                     </a>
-                    <a class = "box has-background-grey has-text-white" id = "utilitarianism" href = "Utilitarianism/utilitarianism.html">
+                    <a class = "box has-background-grey has-text-white" id = "utilitarianism" href = "Utilitarianism/utilitarianism.php">
                         UTILITARIANISM
                     </a>
-                    <a class = "box has-background-grey has-text-white" id = "deontology" href = "../Deontology/Deontology1.html">
+                    <a class = "box has-background-grey has-text-white" id = "deontology" href = "../Deontology/Deontology1.php">
                         DEONTOLOGY
                     </a>
-                    <a class = "box has-background-white has-text-black" id = "virtue-ethics" href = "../VirtueEthics/VirtueEthics1.html">
+                    <a class = "box has-background-white has-text-black" id = "virtue-ethics" href = "../VirtueEthics/VirtueEthics1.php">
                         VIRTUE ETHICS
                     </a>
-                    <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "../CareEthics/CareEthics.html">
+                    <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "../CareEthics/CareEthics.php">
                         CARE ETHICS
                     </a>
-                    <a class = "box has-background-grey has-text-white" id = "my-progress" href = "../MyProgress.html">
+                    <a class = "box has-background-grey has-text-white" id = "my-progress" href = "../MyProgress.php">
                         MY PROGRESS
                     </a>
                     </div>
                     </div>
                     </div>
-    
                     <div class = "box has-background-grey-lighter">
-                        <h1> OPTIONS RANKED BY MOST VIRTUOUS </h1>
+                        <h1> INTERESTS RANKED BY MOST VIRTUOUS </h1>
                         <br>
                         <form method="POST" action="../../server/virtueEthics-options.php">
                             <div>
                                 <div class="box">
-                                    <h2> O 3: COURAGE </h2>
+                                    <h2> SI 2: INTEGRITY </h2>
                                     <label>Virtue</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Vice</label>
                                 </div>
                             </div>
                             <br>
                             <div>
                                 <div class="box">
-                                    <h2> O 2: OVER-SHARING </h2>
+                                    <h2> SI 2: PRESTIGE </h2>
                                     <label>Virtue</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Vice</label>
                                 </div>
                             </div>
                             <br>
                             <div>
                                 <div class="box">
-                                    <h2> O 1: BLIND DEVOTION </h2>
+                                    <h2> SI 1: GREED </h2>
                                     <label>Virtue</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Vice</label>
                                 </div>
                             </div>
@@ -121,10 +116,9 @@ no functionality added yet-->
                             <input type = "submit" class="button" value = "Submit">
                         </form>
                     </div>
-                    <a class="button" href="VirtueEthics3.html">Proceed></a>
+                    <a class="button" href="VirtueEthics4.php">Proceed></a>
                 </div>
             </div>
-            
             <script src = "../../scripts/jquery-3.6.0.js"></script>
             <script src = "../../scripts/user-event.js"></script>
         </body>

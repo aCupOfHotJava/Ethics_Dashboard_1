@@ -1,11 +1,14 @@
 <!--FORM NEEDS TO BE SEND TO CLIENT VALIDATION AS WELL AS SERVER SIDE SCRIPTING TO SAVE ANSWERS
     STILL NEEDS TO HAVE A TOTAL BOARD ADDED UNDER THE SITE MENU - SEE SLIDE 12 OF PROPOSAL
     ADD OPTION 2 PROPERLY-->
-
+<?php
+    session_start();
+    print_r($_SESSION);
+?>
     <!DOCTYPE html>
     <html>
         <head>
-            <title>Utilitarianism - Analyses - Option 2</title>
+            <title>Utilitarianism - Analyses - Option 1</title>
             <link rel = "stylesheet" href = "../../../styles/bulma/css/bulma.css">
             <link rel="stylesheet" href="../../../styles/main.css">
         </head>
@@ -22,10 +25,10 @@
                     </div>
     
                     <div>
-                        <h1 class="title is-3 has-text-centered">OPTION 2</h1>
+                        <h1 class="title is-3 has-text-centered">OPTION 1</h1>
                         <p class="subtitle is-5 has-text-centered">I can put loyalty to the company first ...</p>
                         <h2 class="title is-5"> Stakeholder 1- The engineer asked to design the VW defeat... </h2>
-                        <h3 class="title is-6">Short-term Concequences</h3>
+                        <h3 class="title is-6">Long-term Concequences</h3>
     
                         <form method="POST" action="../../../server/utilitarianismAnalysis.php">
                             <div>
@@ -37,7 +40,7 @@
                                         <label id=High class="has-text-right">High</label>
                                     </nav>
     
-                                    <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer3-1">
+                                    <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer2-1">
                                     <span class="range-value">5</span>   
     
                                     <input type="text" class="textarea" name="s1-2" id="s1-2" placeholder="Guilt" rows="1">
@@ -55,7 +58,7 @@
                                         <label id=High class="has-text-right">High</label>
                                     </nav>
                                     
-                                    <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer3-2">
+                                    <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer2-2">
                                     <span class="range-value">5</span>  
     
                                     <input type="text" class="textarea" name="s2" id="s2-2" placeholder="Explanation" rows="1">
@@ -73,7 +76,7 @@
                                         <label id=High class="has-text-right">High</label>
                                     </nav>
                                     
-                                    <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer3-3">
+                                    <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer2-3">
                                     <span class="range-value">5</span>  
     
                                     <input type="text" class="textarea" name="s3" id="s3-2" placeholder="Explanation" rows="1">
@@ -91,7 +94,7 @@
                                         <label id=High class="has-text-right">High</label>
                                     </nav>
                                     
-                                    <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer3-4">
+                                    <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer2-4">
                                     <span class="range-value">5</span> 
             
                                     <input type="text" class="textarea" name="s4" id="s4-2" placeholder="Explanation" rows="1">
@@ -105,37 +108,37 @@
                             <input type = "submit" class="button" value = "Submit">
                         </form>
     
-                        <a href= "utilitarianism-analysis1.html"><button class = "button" id = "option2" >Option 1 - Short-term</button>  </a>
-                        <a href= "utilitarianism-analysis2.html"><button class = "button" id = "option2" >Option 1 - Long-term</button>  </a>
-                        <a href= "utilitarianism-analysis3.html"><button class = "button is-primary" id = "option3" >Option 2 - Short-term</button>  </a>
-                        <a href= "utilitarianism-analysis4.html"><button class = "button" id = "option4" >Option 2 - Long-term</button>  </a>
+                        <a href= "utilitarianism-analysis1.php"><button class = "button" id = "option2" >Option 1 - Short-term</button>  </a>
+                        <a href= "utilitarianism-analysis2.php"><button class = "button is-primary" id = "option2" >Option 1 - Long-term</button>  </a>
+                        <a href= "utilitarianism-analysis3.php"><button class = "button" id = "option3" >Option 2 - Short-term</button>  </a>
+                        <a href= "utilitarianism-analysis4.php"><button class = "button" id = "option4" >Option 2 - Long-term</button>  </a>
                     </div>
     
                     
                 </div>
                 <div>
                 <div class="column has-fixed-size is-20">
-                    <a class = "box has-background-grey has-text-white" id = "dashboard" href = "../../index.html">
+                    <a class = "box has-background-grey has-text-white" id = "dashboard" href = "../../index.php">
                         DASHBOARD
                     </a>
-                    <a class = "box has-background-white has-text-black" id = "utilitarianism" href = "../utilitarianism.html">
+                    <a class = "box has-background-white has-text-black" id = "utilitarianism" href = "../utilitarianism.php">
                         UTILITARIANISM
                     </a>
-                    <a class = "box has-background-grey has-text-white" id = "deontology" href = "../../Deontology/Deontology1.html">
+                    <a class = "box has-background-grey has-text-white" id = "deontology" href = "../../Deontology/Deontology1.php">
                         DEONTOLOGY
                     </a>
-                    <a class = "box has-background-grey has-text-white" id = "virtue-ethics" href = "../../VirtueEthics/VirtueEthics1.html">
+                    <a class = "box has-background-grey has-text-white" id = "virtue-ethics" href = "../../VirtueEthics/VirtueEthics1.php">
                         VIRTUE ETHICS
                     </a>
-                    <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "../../CareEthics/CareEthics.html">
+                    <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "../../CareEthics/CareEthics.php">
                         CARE ETHICS
                     </a>
-                    <a class = "box has-background-grey has-text-white" id = "my-progress" href = "../../MyProgress.html">
+                    <a class = "box has-background-grey has-text-white" id = "my-progress" href = "../../MyProgress.php">
                         MY PROGRESS
                     </a>
-                    </div>
-                    </div>
-                    </div>
+                </div>
+                </div>
+                </div>
     
                     <h1>Option 1</h1>
                     <h2>Aggregate of short-term outcomes:</h2>
@@ -178,7 +181,9 @@
                         <input type="range" min="1" max="10" value="5" class="slider">
                         <span class="range-value">5</span>
                     </div>
-                <a class="button" href="../utilitarianism-summary.html">Proceed to Summary ></a>
+                
+                <a class="button" href="../utilitarianism-summary.php">Proceed to Summary ></a>
+
                 </div>
             </div>
         

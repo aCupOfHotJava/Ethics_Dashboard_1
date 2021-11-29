@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    print_r($_SESSION);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,12 +18,12 @@
     <body>
         <div class = "title has-background-grey-lighter">
             <h1>ETHICS DASHBOARD</h1>
-            <a href = "login.html" class = "is-size-6">Login</a>
+            <a href = "logout.php" class = "is-size-6">Logout</a>
         </div>
 
         <div class="columns">
         <div class="column is-two-fifths">
-            <div class="box has-background-primary " onclick = "window.location = 'ethical-issues.html';" id = "clickable0">
+            <div class="box has-background-primary " onclick = "window.location = 'ethical-issues.php';" id = "clickable0">
                 <h3>ETHICAL ISSUE</h3>
                 <p>OPTION 1</p>
                 <p>OPTION 2</p>
@@ -43,7 +47,7 @@
         </div>
 
         <div class = "column is-two-fifths">
-            <div class="box link has-background-primary" onclick = "window.location = 'stakeholders-main.html';" id = "clickable1">
+            <div class="box link has-background-primary" onclick = "window.location = 'stakeholders-main.php';" id = "clickable1">
                 <h3>STAKEHOLDERS</h3>
                 <br>
                 <p>STAKEHOLDER 1</p>
@@ -69,22 +73,22 @@
              for the fixed sizing to work! -->
         <div>
             <div class = "column has-fixed-size is-20">
-                <a class = "box has-background-white has-text-black" id = "dashboard" href = "index.html">
+                <a class = "box has-background-white has-text-black" id = "dashboard" href = "index.php">
                     DASHBOARD
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "utilitarianism" href = "../html/Utilitarianism/utilitarianism.html">
+                <a class = "box has-background-grey has-text-white" id = "utilitarianism" href = "../html/Utilitarianism/utilitarianism.php">
                     UTILITARIANISM
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "deontology" href = "../html/Deontology/Deontology1.html">
+                <a class = "box has-background-grey has-text-white" id = "deontology" href = "../html/Deontology/Deontology1.php">
                     DEONTOLOGY
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "virtue-ethics" href = "../html/VirtueEthics/VirtueEthics1.html">
+                <a class = "box has-background-grey has-text-white" id = "virtue-ethics" href = "../html/VirtueEthics/VirtueEthics1.php">
                     VIRTUE ETHICS
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "../html/CareEthics/CareEthics.html">
+                <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "../html/CareEthics/CareEthics.php">
                     CARE ETHICS
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "my-progress" href = "MyProgress.html">
+                <a class = "box has-background-grey has-text-white" id = "my-progress" href = "MyProgress.php">
                     MY PROGRESS
                 </a>
             </div>

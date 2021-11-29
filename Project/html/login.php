@@ -3,6 +3,8 @@
 *       anything other than the login page or the index page that holds
 *       all other groups projects
 *
+*       DO NOT start session on this page
+*
 -->
 
 <!DOCTYPE html>
@@ -39,7 +41,7 @@
                         <input type = "submit" value = "Login">
                     </form>
                 </div>
-                <a href = "create-account.html">Create Account</a>
+                <a href = "create-account.php">Create Account</a>
             </div>
         </div>
         <script src = "../scripts/jquery-3.6.0.js"></script>
