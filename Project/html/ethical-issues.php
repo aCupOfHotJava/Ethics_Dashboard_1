@@ -8,7 +8,50 @@
 *-->
 <?php
     session_start();
-    print_r($_SESSION);
+    // prevent non-logged in people from accessing pages like this
+    if($_SESSION == NULL) {
+        session_destroy();
+        header("Location: login.php");
+    }
+    function determineState() {
+        $uid = $_SESSION["uid"];
+        $dilemma = 0;
+        $isEmpty = true;
+        try {
+            $connString = "mysql:host=localhost;dbname=ethics_db";
+            $user = "root";
+            $pass = "";
+            $pdo = new PDO($connString, $user, $pass);
+            $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // check if there's already a dilemma for this user
+            $sql = "SELECT dilemma FROM ethical_issues WHERE uid = '" .$uid ."';";
+            $result = $pdo -> query($sql);
+            while($row = $result -> fetch()) {
+                $isEmpty = false;
+                $dilemma = $row[0];
+            }
+
+            // when the user tries to update the text, it should be put into the db
+            if(isset($_POST['update-dilemma'])) {
+                $dilemma = $_POST['dilemma-text'];
+                $sql = "UPDATE ethical_issues SET dilemma = '" .$dilemma ."' WHERE uid = " .$uid .";";
+                echo $sql;
+                $pdo -> query($sql);
+            }
+
+            if(!$isEmpty) {
+                echo "<textarea class = 'textarea' name = 'dilemma-text'>";
+                echo $dilemma;
+                echo "</textarea>";
+            }
+            if($isEmpty) {
+                echo "<textarea class = 'textarea' name = 'dilemma-text' placeholder = 'Enter your dilemma here.'></textarea>";
+            }
+        }
+        catch(PDOException $e) {
+            die($e -> getMessage());
+        }
+    }
 ?>
 <!DOCTYPE html>
 <hmtl>
@@ -25,10 +68,14 @@
                     <p>Describe the ethical issue or dilemma you would like to analyze. Remember, ethical values are
                     things that are important because they are right or wrong - lying, courage, loyalty, theft, etc.</p>
                 </div>
-                <div class = "box" id = "dilemma-box">
-                    <textarea class = "textarea" id = "dilemma-text" placeholder = "Enter your dilemma here."></textarea>
-                </div>
-                <button class = "button" id = "add-dilemma">Submit</button>
+                <form method = 'POST'>
+                    <div class = 'box' id = 'dilemma-box'>
+                        <?php
+                            determineState();
+                        ?>
+                    </div>
+                    <button class = 'button' name = 'update-dilemma'>Update</button>
+                </form>
             </div>
             <div class = "column is-two-fifths">
                 <div class = "box" id = "ethics-options-wrapper">
