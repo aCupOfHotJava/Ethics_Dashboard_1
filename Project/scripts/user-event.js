@@ -17,11 +17,11 @@ $("#add-option").click(function() {
 })
 
 // Ethical dilemma
-$('#add-dilemma').click(function() {
+$('#update-dilemma').click(function() {
     var text = $('#dilemma-text').val().replaceAll('\n', '<br>');
     $('#dilemma-box').append('<p>' + text + '</p>');
     $('#dilemma-text').remove();
-    $('#add-dilemma').remove();
+    $('#update-dilemma').remove();
 })
 
 $('.slider').on('input', function () {
