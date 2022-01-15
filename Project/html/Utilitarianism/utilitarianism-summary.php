@@ -90,7 +90,7 @@
                 <a class = "box has-background-grey has-text-white" id = "dashboard" href = "../index.php">
                     DASHBOARD
                 </a>
-                <a class = "box has-background-white has-text-black" id = "utilitarianism" href = "utilitarianism.php">
+                <a class = "box has-background-white has-text-black" id = "utilitarianism" href = "../Utilitarianism/utilitarianism.php">
                     UTILITARIANISM
                 </a>
                 <a class = "box has-background-grey has-text-white" id = "deontology" href = "../Deontology/Deontology1.php">
