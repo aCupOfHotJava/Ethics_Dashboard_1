@@ -1,7 +1,7 @@
-// Ethical solutions to a dilemma
+// Ethical solution to a dilemma.
 var numOptions = 0;
 $("#add-option").click(function() {
-    $("#ethics-options-wrapper").append('<textarea id = "option-text" class = "textarea" placeholder = "Enter your option here."></textarea>');
+    $("#ethics-options-wrapper").append('<textarea id = "option-text" class = "textarea" placeholder = "Enter you stakeholder"></textarea>');
     $("#empty").remove();
     $("#add-option").hide();
     $("#ethics-options-wrapper").append('<button class = "button" id = "submit-option">Submit</button>');
