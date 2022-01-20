@@ -18,21 +18,20 @@ functionality not added yet-->
                 display: flex;
                 flex-wrap: wrap;
                 align-content: center;
-                color: black;
+                color: white;
                 position: relative;
                 top: 300px;
                 left: 50px;
-                
             }
             .expectationsCircle {
                 height: 100px;
                 width: 100px;
-                background-color: rgb(240, 240, 54);
+                background-color: rgb(0, 100, 0);
                 border-radius: 50%;
                 display: flex;
                 flex-wrap: wrap;
                 align-content: center;
-                color: black;
+                color: white;
                 position: relative;
                 left: 350px;
                 top: -30px;
@@ -45,7 +44,7 @@ functionality not added yet-->
                 display: flex;
                 flex-wrap: wrap;
                 align-content: center;
-                color: black;
+                color: white;
                 position: relative;
                 left: 400px;
                 top: 300px;
@@ -58,7 +57,7 @@ functionality not added yet-->
                 display: flex;
                 flex-wrap: wrap;
                 align-content: center;
-                color: black;
+                color: white;
                 position: relative;
                 left: 100px;
                 top: -225px;
@@ -71,7 +70,7 @@ functionality not added yet-->
                 display: flex;
                 flex-wrap: wrap;
                 align-content: center;
-                color: black;
+                color: white;
                 position: relative;
                 top: 90px;
                 left: 150px;
@@ -84,23 +83,23 @@ functionality not added yet-->
                 display: flex;
                 flex-wrap: wrap;
                 align-content: center;
-                color: black;
+                color: white;
                 position: relative;
                 top: -190px;
                 left: 450px;
             }
-            .number {
-                height: 100px;
-                width: 100px;
-                background-color: rgb(218, 158, 47);
+            .yourSoulCircle {
+                height: 200px;
+                width: 200px;
+                background-color: rgb(255, 255, 0);
                 border-radius: 50%;
                 display: flex;
                 flex-wrap: wrap;
                 align-content: center;
-                color: black;
+                color: white;
                 position: relative;
-                top: -300px;
-                left: 250px;
+                top: -350px;
+                left: 200px;
             }
         </style>
     </head>
@@ -124,7 +123,7 @@ functionality not added yet-->
                 <div class = "conventionsCircle"> Conventions </div>
                 <div class = "attachmentsCircle"> Attachments </div>
                 <div class = "impulsesCircle"> Impulses </div>
-                <div class = "number"> 42 </div>
+                <div class = "yourSoulCircle"> Your Soul </div>
             </div> 
 
             </div>
