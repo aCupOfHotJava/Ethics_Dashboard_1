@@ -9,9 +9,9 @@
 
         try {
 
-            $connString = "mysql:host=localhost;dbname=ethics_db";
-            $user = "root";
-            $pass = "";
+            $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
+            $user = "rwalker_krieg";
+            $pass = "rB87mkNG";
             $pdo = new PDO($connString, $user, $pass);
             $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -35,8 +35,9 @@
             }
             else {
                 // Insert
-                $sql = "INSERT INTO user VALUES (" .$uid .", '" .$pid ."', 0.00, 0);";
+                $sql = "INSERT INTO user VALUES (" .$uid .", '" .$pid ."');";
                 $result = $pdo -> query($sql);
+
                 $SESSION["uid"] = $uid;
                 echo "<br>You will be redirected to home in 3 seconds...";
                 header("Refresh: 3; URL = ../html/index.php");

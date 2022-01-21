@@ -9,9 +9,9 @@
 
         try {
 
-            $connString = "mysql:host=localhost;dbname=ethics_db";
-            $user = "root";
-            $pass = "";
+            $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
+            $user = "rwalker_krieg";
+            $pass = "rB87mkNG";
             $pdo = new PDO($connString, $user, $pass);
             $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -20,14 +20,14 @@
             $pid = $_POST["form-pid"];
 
             // Query
-            $sql = "SELECT uid, pid, isAdmin FROM user WHERE uid = '". $uid.
+            $sql = "SELECT uid, pid FROM user WHERE uid = '". $uid.
                     "' AND pid = '". $pid. "'";
             
             $result = $pdo -> query($sql);
 
             $count = 0;
             while($row = $result -> fetch()) {
-                echo "Hello user ". $row["uid"] ."<br>"  ."Admin functionality: " .$row["isAdmin"];
+                echo "Hello user ". $row["uid"] ."<br>";
                 $count ++;
                 // Successful login should then lead the user to the homepage WITH A SESSION STATE
                 // that persists until logout or exit!
