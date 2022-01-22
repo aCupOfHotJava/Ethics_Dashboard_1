@@ -82,7 +82,7 @@
                 <a class = "box has-background-grey has-text-white" id = "virtue-ethics" href = "../VirtueEthics/VirtueEthics1.php">
                     VIRTUE ETHICS
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "CareEthics.php">
+                <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "../CareEthics/CareEthics.php">
                     CARE ETHICS
                 </a>
                 <a class = "box has-background-grey has-text-white" id = "my-progress" href = "../MyProgress.php">

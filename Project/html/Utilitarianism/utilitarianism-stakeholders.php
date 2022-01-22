@@ -50,7 +50,7 @@
                 <a class = "box has-background-grey has-text-white" id = "dashboard" href = "../index.php">
                     DASHBOARD
                 </a>
-                <a class = "box has-background-white has-text-black" id = "utilitarianism" href = "Utilitarianism/utilitarianism.php">
+                <a class = "box has-background-white has-text-black" id = "utilitarianism" href = "../Utilitarianism/utilitarianism.php">
                     UTILITARIANISM
                 </a>
                 <a class = "box has-background-grey has-text-white" id = "deontology" href = "../Deontology/Deontology1.php">
@@ -59,7 +59,7 @@
                 <a class = "box has-background-grey has-text-white" id = "virtue-ethics" href = "../VirtueEthics/VirtueEthics1.php">
                     VIRTUE ETHICS
                 </a>
-                <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "../CareEthics.php">
+                <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "../CareEthics/CareEthics.php">
                     CARE ETHICS
                 </a>
                 <a class = "box has-background-grey has-text-white" id = "my-progress" href = "../MyProgress.php">
@@ -73,6 +73,6 @@
         </div>
 
         <script src = "../../scripts/jquery-3.6.0.js"></script>
-        <script src = "../../scripts/user-event.js"></script>
+        <script src = "../../scripts/user-event.js?ver=0.1"></script>
     </body>
 </html>
