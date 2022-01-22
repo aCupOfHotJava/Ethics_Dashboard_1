@@ -18,7 +18,7 @@
     <body>
         <div class = "title has-background-grey-lighter">
             <h1>ETHICS DASHBOARD</h1>
-            <a href = "logout.php" class = "is-size-6">Logout</a>
+            <a href = "../server/logout.php" class = "is-size-6">Logout</a>
         </div>
 
         <div class="columns">

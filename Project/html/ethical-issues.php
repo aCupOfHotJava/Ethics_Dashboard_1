@@ -18,9 +18,9 @@
         $dilemma = 0;
         $isEmpty = true;
         try {
-            $connString = "mysql:host=localhost;dbname=ethics_db";
-            $user = "root";
-            $pass = "";
+            $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
+            $user = "rwalker_krieg";
+            $pass = "rB87mkNG";
             $pdo = new PDO($connString, $user, $pass);
             $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             // check if there's already a dilemma for this user
@@ -34,9 +34,18 @@
             // when the user tries to update the text, it should be put into the db
             if(isset($_POST['update-dilemma'])) {
                 $dilemma = $_POST['dilemma-text'];
-                $sql = "UPDATE ethical_issues SET dilemma = '" .$dilemma ."' WHERE uid = " .$uid .";";
-                echo $sql;
-                $pdo -> query($sql);
+                // If there is no record for the dilemma, insert a new record under that uid
+                if($isEmpty) {
+                    $sql = "INSERT INTO ethical_issues VALUES ('" .$uid ."', '" .$dilemma ."');";
+                    echo $sql;
+                    $pdo -> query($sql);
+                }
+                // If there is a record, find it and update it instead.
+                else {
+                    $sql = "UPDATE ethical_issues SET dilemma = '" .$dilemma ."' WHERE uid = " .$uid .";";
+                    echo $sql;
+                    $pdo -> query($sql);
+                }
             }
 
             if(!$isEmpty) {
