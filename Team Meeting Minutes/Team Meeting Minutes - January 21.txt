@@ -1,0 +1,21 @@
+                    TEAM MEETING 
+Date: January 21, 2022
+
+Attendees:
+Brandon Kreig
+Monica Rampaul
+Sophia Joseph
+Alvin Villafranca 
+
+Progress:
+-finished setting up the database 
+
+Tasks for the week:
+Brandon - continue working on database implementation
+Monica - continue working on database implementation (specifically utilitarianism pages)
+Sophia - continue working on database implementation (specifically virtue ethics pages)
+Alvin - continue working on database implementation (specifically deontology pages)
+
+Aside notes/ideas:
+-discussed security for the dashboard + ideas (encryption, prepared statements)
+-discussed presentation with TA for next week (Gantt chart)
