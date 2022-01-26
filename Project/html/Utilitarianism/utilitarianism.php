@@ -1,4 +1,4 @@
-<!--NEEDS SOME ADDED STYLING-->
+<!-- NEED TO CONNECT TO DATABASE HERE TO RETRIEVE ANSWERS AND DISPLAY THEM-->
 <?php
     session_start();
     print_r($_SESSION);

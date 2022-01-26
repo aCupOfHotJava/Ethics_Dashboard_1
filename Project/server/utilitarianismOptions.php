@@ -8,11 +8,46 @@
     </head>
     <body>
         <?php
-            if($_SERVER["REQUEST_METHOD"] == "POST"){                
-                echo "
-                    <h3>Submission Successful!</h3>
-                    <a class=\"button\" href ='../html/Utilitarianism/utilitarianism-stakeholders.php'>Proceed to Stakeholders</a>
-                    ";
+            session_start();
+
+            if (!isset($_SESSION["uid"])){
+                header("Location: ../html/login.php");
+            }
+
+            if($_SERVER["REQUEST_METHOD"] == "GET"){                
+                exit("Invalid request method");
+            }
+            try{
+                $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
+                $user = "rwalker_rampaul";
+                $pass = "1xlu7OMJ";
+                $pdo = new PDO($connString, $user, $pass);
+                $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                $option1_1 = $_POST["option1-1"];
+                $option1_2 = $_POST["option1-2"];
+                $option2_1 = $_POST["option2-1"];
+                $option2_2 = $_POST["option2-2"];
+                $uid = $_SESSION["uid"];
+
+                $sql1 =  "SELECT * FROM utilitarianism WHERE uid = '". $uid."'";
+                $result1 = $pdo -> query($sql1);
+
+                $isInTable = False;
+                while ($row = $result1 -> fetch()){
+                    $isInTable = True;
+                }
+
+                if ($isInTable){
+                    // update database
+                }
+                else{
+                    // insert into database
+                }
+
+            }
+            catch(PDOException $e){
+                die($e -> getMessage());
             }
         
         ?>
