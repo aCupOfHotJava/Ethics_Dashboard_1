@@ -9,9 +9,9 @@
 
         try {
 
-            $connString = "mysql:host=localhost;dbname=ethics_db";
-            $user = "root";
-            $pass = "";
+            $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
+            $user = "rwalker_krieg";
+            $pass = "rB87mkNG";
             $pdo = new PDO($connString, $user, $pass);
             $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -29,16 +29,21 @@
             }
             if($count > 0) {
                 echo "Account under that username already exists.";
+                echo "<br>You will be redirected to the account creation page in 3 seconds...";
+                header("Refresh: 3; URL = ../html/create-account.php");
+                session_destroy();
             }
             else {
                 // Insert
-                $sql = "INSERT INTO user VALUES (" .$uid .", '" .$pid ."', 0.00, 0);";
-                // debug purposes
-                echo $sql;
+                $sql = "INSERT INTO user VALUES (" .$uid .", '" .$pid ."');";
                 $result = $pdo -> query($sql);
-                echo "Your account has been successfully created and stored in the database.";
-                // successful account creation should lead user to the home page with a persistent
-                // session state keeping them logged in until logout or application exit
+
+                $SESSION["uid"] = $uid;
+                echo "<br>You will be redirected to home in 3 seconds...";
+                header("Refresh: 3; URL = ../html/index.php");
+                // successful account creation leads user to the home page. A persistent
+                // session state keeping them logged in until logout or application exit needs
+                // to be added. 
 
             }
 

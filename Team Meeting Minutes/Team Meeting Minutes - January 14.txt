@@ -1,0 +1,31 @@
+					TEAM MEETING
+Date: January 14, 2022
+
+Attendees:
+Brandon Kreig
+Monica Rampaul
+Sophia Joseph
+Alvin Villafranca
+
+Progress:
+-first week back (N/A)
+
+Blockers + Surprises:
+-trouble hosting the database (want to get out of just hosting it locally on our own devices)
+-going to reach out to Sharon to see if she can help
+
+Tasks for this week:
+Brandon: 
+-work on getting database working
+Monica: 
+-reach out to Sharon for help with database
+Sophia: 
+-work on updated virtue ethics page
+Alvin: 
+-implement changes from peer evaluations
+
+Aside notes/ideas:
+-have all students info on one table in same database
+	-foreign key with id 
+-table for deontology answers
+-table for vitue ethics etc... 

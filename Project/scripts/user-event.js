@@ -1,7 +1,7 @@
-// Ethical solutions to a dilemma
+// Ethical solution to a dilemma.
 var numOptions = 0;
 $("#add-option").click(function() {
-    $("#ethics-options-wrapper").append('<textarea id = "option-text" class = "textarea" placeholder = "Enter your option here."></textarea>');
+    $("#ethics-options-wrapper").append('<textarea id = "option-text" class = "textarea" placeholder = "Enter you stakeholder"></textarea>');
     $("#empty").remove();
     $("#add-option").hide();
     $("#ethics-options-wrapper").append('<button class = "button" id = "submit-option">Submit</button>');
@@ -17,11 +17,11 @@ $("#add-option").click(function() {
 })
 
 // Ethical dilemma
-$('#add-dilemma').click(function() {
+$('#update-dilemma').click(function() {
     var text = $('#dilemma-text').val().replaceAll('\n', '<br>');
     $('#dilemma-box').append('<p>' + text + '</p>');
     $('#dilemma-text').remove();
-    $('#add-dilemma').remove();
+    $('#update-dilemma').remove();
 })
 
 $('.slider').on('input', function () {
@@ -35,11 +35,3 @@ $('.savepopup').on('click',function(){
 $('.submitpopup').on('click',function(){
     alert("Your work has been submitted.");
 });
-
-function redirect()
-{
-   if(document.getElementById("op9").checked == true)
-        window.location.href = "Project/html/Deontology/Deontology2.html";
-   else if(document.getElementById("op1").checked == true)
-        window.location.href = 'http://www.google.com';        
-}
