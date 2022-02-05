@@ -2,6 +2,9 @@
 <?php
     session_start();
     print_r($_SESSION);
+    if (!isset($_SESSION["uid"])){
+        header("Location: ../html/login.php");
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,8 +28,12 @@
 
                     <div class = "options">
                         <div class = "box" id = "dilemma-box">
+                        <form method = "POST">
+                            <?php include '/Applications/XAMPP/xamppfiles/htdocs/Ethics_Dashboard_1/Project/server/deontology.php';
+                                determineState();
+                             ?>
                             <h3>Option 1</h3>
-                            <input type = "text" name = "option1-1" class = "textarea required" id = "option1-1" placeholder = "OPTION 1:  I can put loyalty to the company..." rows="1"/>
+                            <input type = "textarea" class = "textarea required" name = "option1_1" placeholder = "OPTION 1:  I can put loyalty to the company..." rows="1"/>
                         </div>
 
                         <div class = "box" id = "dilemma-box">
@@ -53,6 +60,10 @@
                             <label for="op9"> Its the right thing to do</label><br>       
                             <br>
                         </div>
+                   
+
+                    <input type = "submit" class="button" value = "Submit" name ="submit_option1">
+                    </form>
 
                     </div>        
             </div>
@@ -61,9 +72,13 @@
 
                 <div class = "options">
                     <div class = "box" id = "dilemma-box">
-                        <form method = "POST" action = "../../server/deontology.php" id = "deontology-options-form">
+                        
+                    <form method = "POST">
+                            <?php include '/Applications/XAMPP/xamppfiles/htdocs/Ethics_Dashboard_1/Project/server/deontology1_2.php';
+                                determineState1();
+                             ?>   
                         <h3>Option 2</h3>
-                        <input type = "text" name = "option1-1" class = "textarea required" id = "option1-1" placeholder = "OPTION 2: I can betray the company, go to the..." rows="1"/>
+                        <input type = "textarea" name = "option1_2" class = "textarea required" placeholder = "OPTION 2: I can betray the company, go to the..." rows="1"/>
                     </div>
 
                     <div class = "box" id = "dilemma-box">
@@ -90,7 +105,7 @@
                         <br>
                     </div>
 
-                    <input type = "submit" class="button" value = "Submit" id ="submit2">
+                    <input type = "submit" class="button" value = "Submit" name ="submit_option2">
                 </form>
                     
                 </div>        
