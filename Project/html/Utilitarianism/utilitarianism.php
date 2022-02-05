@@ -1,4 +1,4 @@
-<!-- NEED TO MAKE SURE THAT ALL THE FIELDS ARE SET FOR SUBMISSION -->
+<!-- ADD INSTRUCTOR FUNCTIONS -->
 <?php
     session_start();
 
