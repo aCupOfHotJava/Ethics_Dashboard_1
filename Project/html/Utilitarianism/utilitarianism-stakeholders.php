@@ -1,8 +1,104 @@
-<!--NEEDS A WAY OF SUBMITTING USER ANSWERS
-    NEED TO BE ABLE TO MOVE THE STAKEHOLDERS UP AND DOWN IN ORDER TO RANK THEM-->
+<!--NEED TO BE ABLE TO MOVE THE STAKEHOLDERS UP AND DOWN IN ORDER TO RANK THEM
+    HOW TO HANDLE THE FACT THAT WE DO NOT KNOW HOW MANY STAKEHOLDERS THERE ARE?
+
+    Needs more work - is not working properly right now-->
 <?php
     session_start();
     print_r($_SESSION);
+
+    if (!isset($_SESSION["uid"])){
+        header("Location: ../html/login.php");  
+    }
+
+        function setAnswers(){
+            try{
+                $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
+                $user = "rwalker_rampaul";
+                $pass = "1xlu7OMJ";
+                $pdo = new PDO($connString, $user, $pass);
+                $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                $uid = $_SESSION["uid"];
+
+                $sql1 =  "SELECT * FROM stakeholders WHERE uid = '". $uid."'";
+                $result1 = $pdo -> query($sql1);
+
+                $isInTable = False;
+                $count = 0;
+                $namearray = array();
+                while ($row = $result1 -> fetch()){
+                    $isInTable = True;
+                    $count += 1;
+                    array_push($namearray, $row['name']);
+                    echo "<div class = \"box\" id = \"dilemma-box\">
+                            <h3>Stakeholder ".$count."</h3>
+                            <p>".$row['name']."</p>
+                            <textarea class = \"textarea\" id = \"dilemma-text\" name - \"analysis".$count."\">".$row['utilitarianAnalysis']."</textarea>
+                         </div>";
+                }
+
+                if (isset($_POST['update-options'])){
+                    $analysis1 = $_POST["analysis1"];
+                    $analysis2 = $_POST["analysis2"];
+                    $analysis3 = $_POST["analysis3"];
+
+                    if ($isInTable){
+                        // update database
+                        $update1 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis1."' WHERE name = '".$namearray[0]."' and uid = ".$uid."";
+                        $pdo -> query($update1);
+
+                        $update2 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis2."' WHERE name = '".$namearray[1]."' and uid = ".$uid."";
+                        $pdo -> query($update2);
+
+                        $update3 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis3."' WHERE name = '".$namearray[2]."' and uid = ".$uid."";
+                        $pdo -> query($update3);
+       
+                        header("Refresh:0");
+                    }
+                    else{
+                        // insert into database
+                        $insert1 = "INSERT INTO `stakeholders`(`utilitarianAnalysis`) VALUES (".$analysis1.") WHERE name = '".$namearray[0]."' and uid = ".$uid."";
+                        $pdo -> query($insert1);
+
+                        $insert2 = "INSERT INTO `stakeholders`(`utilitarianAnalysis`) VALUES (".$analysis2.") WHERE name = '".$namearray[1]."' and uid = ".$uid."";
+                        $pdo -> query($insert2);
+
+                        $insert3 = "INSERT INTO `stakeholders`(`utilitarianAnalysis`) VALUES (".$analysis3.") WHERE name = '".$namearray[2]."' and uid = ".$uid."";
+                        $pdo -> query($insert3);
+
+                        header("Refresh:0");
+                    }
+                }
+
+                if (!$isInTable){
+                   echo "<div class = \"box has-background-primary\">
+                            <p>Provide reasons why you have included each stakeholder. Move stakeholders up or down to rank according to the degree of impact. 
+                                (Stakeholder 1 experiences the highest impact) Note: You may want to removed stakeholders if you can’t identify how they will 
+                                be impacted or if there is very little impact.  Also, you may add stakeholders at any time.</p>
+                        </div>
+           
+                        <div class = \"box\" id = \"dilemma-box\">
+                            <h3>Stakeholder 1</h3>
+                            <p>The engineer asked to design the VW defeat... </p>
+                            <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"The engineer is directly, and significantly, impacted by the issue.  They could lose their job at VW, lose industry friends and suffer career set backs. \"></textarea>
+                        </div>
+                        <div class = \"box\" id = \"dilemma-box\">
+                            <h3>Stakeholder 2</h3>
+                            <p>The decision makers at VW who asked...</p>
+                            <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"Defend the inclusion of Stakeholder 2 –Rank by degree of impact\"></textarea>
+                        </div>
+                        <div class = \"box\" id = \"dilemma-box\">
+                            <h3>Stakeholder 3</h3>
+                            <p>Consumers –vehicle buyers...</p>
+                            <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"Defend the inclusion of Stakeholder 3 –Rank by degree of impact\"></textarea>
+                        </div>";
+                }
+
+            }
+            catch(PDOException $e){
+                die($e -> getMessage());
+            }
+        }
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,28 +111,10 @@
 
         <div class = "columns">
             <div class = "column is-two-fifths">
-                <div class = "box has-background-primary">
-                    <p>Provide reasons why you have included each stakeholder. Move stakeholders up or down to rank according to the degree of impact. 
-                        (Stakeholder 1 experiences the highest impact) Note: You may want to removed stakeholders if you can’t identify how they will 
-                        be impacted or if there is very little impact.  Also, you may add stakeholders at any time.</p>
-                </div>
-            
-                <div class = "box" id = "dilemma-box">
-                    <h3>Stakeholder 1</h3>
-                    <p>The engineer asked to design the VW defeat... </p>
-                    <textarea class = "textarea" id = "dilemma-text" placeholder = "The engineer is directly, and significantly, impacted by the issue.  They could lose their job at VW, lose industry friends and suffer career set backs. "></textarea>
-                </div>
-                <div class = "box" id = "dilemma-box">
-                    <h3>Stakeholder 2</h3>
-                    <p>The decision makers at VW who asked...</p>
-                    <textarea class = "textarea" id = "dilemma-text" placeholder = "Defend the inclusion of Stakeholder 2 –Rank by degree of impact"></textarea>
-                </div>
-                <div class = "box" id = "dilemma-box">
-                    <h3>Stakeholder 3</h3>
-                    <p>Consumers –vehicle buyers...</p>
-                    <textarea class = "textarea" id = "dilemma-text" placeholder = "Defend the inclusion of Stakeholder 3 –Rank by degree of impact"></textarea>
-                </div>
-                <button class = "button">Submit</button>
+                <?php
+                    setAnswers();
+                ?>
+                <button class = 'button' name = 'update-options'>Update</button>
             </div>
 
             <div class = "column is-two-fifths">
