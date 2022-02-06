@@ -29,6 +29,7 @@
                     <div class = "options">
                         <div class = "box" id = "dilemma-box">
                         <form method = "POST">
+                            <!-- Will need to change links like these when we have the files on  the host -->
                             <?php include '/Applications/XAMPP/xamppfiles/htdocs/Ethics_Dashboard_1/Project/server/deontology.php';
                                 determineState();
                              ?>

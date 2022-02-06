@@ -19,6 +19,7 @@
             $uid = $_POST["form-uid"];
             $pid = $_POST["form-pid"];
 
+            $hpid = password_hash($pid, PASSWORD_DEFAULT);
             // Verify not already existing user
             $sql = "SELECT uid FROM user WHERE uid = '" .$uid ."';";
             $result = $pdo -> query($sql);
@@ -34,8 +35,9 @@
                 session_destroy();
             }
             else {
+                echo $pid;
                 // Insert
-                $sql = "INSERT INTO user VALUES (" .$uid .", '" .$pid ."');";
+                $sql = "INSERT INTO user VALUES (" .$uid .", '" .$hpid ."');";
                 $result = $pdo -> query($sql);
 
                 $SESSION["uid"] = $uid;

@@ -19,23 +19,33 @@
             $uid = $_POST["form-uid"];
             $pid = $_POST["form-pid"];
 
-            // Query
-            $sql = "SELECT uid, pid FROM user WHERE uid = '". $uid.
-                    "' AND pid = '". $pid. "'";
-            
-            $result = $pdo -> query($sql);
+            $sql = "SELECT pid FROM user WHERE uid = '" .$uid ."';";
+            $hpid = $pdo -> query($sql);
+            $pverify = password_verify($pid, $hpid);
 
-            $count = 0;
-            while($row = $result -> fetch()) {
-                echo "Hello user ". $row["uid"] ."<br>";
-                $count ++;
-                // Successful login should then lead the user to the homepage WITH A SESSION STATE
-                // that persists until logout or exit!
-                $_SESSION['uid'] = $uid;
-                echo "<br>You will be redirected to home in 3 seconds...";
-                header("Refresh: 3; URL = ../html/index.php");
+            if($pverify) {
+
+                // Query
+                $sql = "SELECT uid, pid FROM user WHERE uid = '". $uid.
+                "' AND pid = '". $pid. "'";
+                
+                $result = $pdo -> query($sql);
+
+                $count = 0;
+                while($row = $result -> fetch()) {
+                    echo "Hello user ". $row["uid"] ."<br>";
+                    $count ++;
+                    // Successful login should then lead the user to the homepage WITH A SESSION STATE
+                    // that persists until logout or exit!
+                    $_SESSION['uid'] = $uid;
+                    echo "<br>You will be redirected to home in 3 seconds...";
+                    header("Refresh: 3; URL = ../html/index.php");
+                }
+
             }
-            if($count == 0) {
+
+           
+            if(!$pverify) {
                 // We should be redirected to the login page again with some error info
                 // instead of being stuck on this empty php.
                 session_destroy();
