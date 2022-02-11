@@ -14,6 +14,9 @@
             }
         </style>
         <title>Ethics Dashboard</title>
+        <meta name="author" content="">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
         <div class = "title has-background-grey-lighter">

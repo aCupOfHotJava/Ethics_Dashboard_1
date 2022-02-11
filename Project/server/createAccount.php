@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>Account Creation</title>
+        <meta name="author" content="">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php
         session_start();
         // DO NOT handle login requests if request method is GET!!
