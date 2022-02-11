@@ -27,7 +27,10 @@
                     There are three main features of care. Attentiveness: Being aware of needs in others.  
                     Competence: The ability to deliver what is needed Responsiveness: Empathy for the position of others in need of care.</p>
             </div>
-        
+            <form  method = "POST">
+            <?php include '/Applications/XAMPP/xamppfiles/htdocs/Ethics_Dashboard_1/Project/server/careEthic-options.php';
+                                determineState();
+                             ?>
             <h1 class="title is-3 has-text-centered">Option 1</h1>
             <p class="subtitle is-5 has-text-centered">I can put loyalty to the company first ...</p>
             <div class="box">
@@ -37,9 +40,7 @@
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            
-          
-            <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-1">
+            <input type="range" min="1" max="10" value="5" class="slider" name="sliderAttentiveness1_1">
             <span class="range-value">5</span>
            
             <p>Competence</p>
@@ -47,15 +48,18 @@
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-1">
+            <input type="range" min="1" max="10" value="5" class="slider" name="sliderCompetence1_1">
             <span class="range-value">5</span>        
+
             <p>Responsiveness</p>
             <nav class="is-flex has-text-weight-bold">
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-1">
-            <span class="range-value">5</span></div>
+            <input type="range" min="1" max="10" value="5" class="slider" name="sliderResponsiveness1_1">
+            <span class="range-value">5</span>
+        
+        </div>
             <div class="box">
             <h2 class="title is-5"> Stakeholder 2- The decision makers at VW who asked...</h2>
             <p>Attentiveness</p>
@@ -63,21 +67,21 @@
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-1">
+            <input type="range" min="1" max="10" value="5" class="slider" id="sliderAttentiveness1_2">
             <span class="range-value">5</span>  
             <p>Competence</p>
             <nav class="is-flex has-text-weight-bold">
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-1">
+            <input type="range" min="1" max="10" value="5" class="slider" id="sliderCompetence1_2">
             <span class="range-value">5</span>        
             <p>Responsiveness</p>
             <nav class="is-flex has-text-weight-bold">
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-1">
+            <input type="range" min="1" max="10" value="5" class="slider" id="sliderResponsiveness1_3">
             <span class="range-value">5</span>
             <br>
             <br>
@@ -115,16 +119,20 @@
         </div>
         </div>
             <div class="box">
+            <br>
+            <br>
             <h1>Option 1</h1>
             <h2>Duty of Care</h2>
             <nav class="is-flex has-text-weight-bold">
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
+          
             </nav>
             <div class="slider">
             <input type="range" min="1" max="10" value="5" class="slider">
             <span class="range-value">5</span></div>
-            
+            <br>
+            <br>
             <h1>Option 2</h1>
             <h2>Duty of Care</h2>
             <nav class="is-flex has-text-weight-bold">
@@ -134,7 +142,8 @@
             <div class="slider">
             <input type="range" min="1" max="10" value="5" class="slider">
             <span class="range-value">5</span></div>
-
+            <br>
+            <br>
             <h1>Option 3</h1>
             <h2>Duty of Care</h2>
             <nav class="is-flex has-text-weight-bold">
@@ -144,10 +153,12 @@
             <div class="slider">
             <input type="range" min="1" max="10" value="5" class="slider">
             <span class="range-value">5</span></div>
-            <input type="text" class="average" name="" id="" value="" size="30">
-            <form>
+            <br>
+            <br>
+            <input type="text" name="average" class="average" value="">
+
                 <a href= "#"><button class = "button savepopup" id = "save" >Save</button>  </a>
-                <a href= "#"><button class = "button submitpopup" id = "submit" >Submit</button>  </a>
+                <a href= "#"><button class = "button submitpopup" name = "submit-CErange" >Submit</button>  </a>
             </form>
         </div>
     </div>
@@ -155,7 +166,7 @@
     
 </div>
     <script src = "../../scripts/jquery-3.6.0.js"></script>
-    <script src = "../../scripts/user-event.js"></script>
+    <script src = "../../scripts/careEthics.js"></script>
 
 </body>
 

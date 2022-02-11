@@ -1,17 +1,27 @@
 
-var sum = 0 ; 
-$('.slider').bind({
+$('.slider').on('input', function () {
+    $(this).next('.range-value').html(this.value);
+    $('.range-value').each(function () {
+        var val = parseInt(this.innerHTML, 10);
+        if (val !== 0) {
+            valid_labels += 1;
+            total += val;
+        }
+    });
     
-    slidechange : function(event,ui) {
-    $('.slider').each(function(){
-        var value = $( this ).slider( "option", "value" );
-        if(value > 0 ) 
-            sum += value ; 
-        
-        }); 
-       var avg = sum / 3 ; 
-       $('.average').val(avg);
-       console.log(avg); 
-    }
-}).slider();
+    average = total / valid_labels;
+    $('.average').val(average);
+});
+
+$('.savepopup').on('click',function(){
+    alert("Your work has been saved.");
+});
+
+$('.submitpopup').on('click',function(){
+    alert("Your work has been submitted.");
+});
+
+var total = 0,
+    valid_labels = 0,
+    average;
 
