@@ -27,20 +27,28 @@
                 $count = 0;
                 $namearray = array();
                 while ($row = $result1 -> fetch()){
-                    $isInTable = True;
-                    $count += 1;
                     array_push($namearray, $row['name']);
-                    echo "<div class = \"box\" id = \"dilemma-box\">
-                            <h3>Stakeholder ".$count."</h3>
-                            <p>".$row['name']."</p>
-                            <textarea class = \"textarea\" id = \"dilemma-text\" name - \"analysis".$count."\">".$row['utilitarianAnalysis']."</textarea>
-                         </div>";
+                    $count += 1;
+                    if ($row['utilitarianAnalysis'] == ""){
+                        $isInTable = False;
+
+                    }
+                    else{
+                        $isInTable = True;
+                        echo "<div class = \"box\" id = \"dilemma-box\">
+                                <h3>Stakeholder ".$count."</h3>
+                                <p>".$row['name']."</p>
+                                <textarea class = \"textarea\" id = \"dilemma-text\" name - \"analysis".$count."\">".$row['utilitarianAnalysis']."</textarea>
+                            </div>";
+                    }
                 }
 
                 if (isset($_POST['update-options'])){
                     $analysis1 = $_POST["analysis1"];
                     $analysis2 = $_POST["analysis2"];
                     $analysis3 = $_POST["analysis3"];
+
+                    print_r($analysis1);
 
                     if ($isInTable){
                         // update database
@@ -71,13 +79,7 @@
                 }
 
                 if (!$isInTable){
-                   echo "<div class = \"box has-background-primary\">
-                            <p>Provide reasons why you have included each stakeholder. Move stakeholders up or down to rank according to the degree of impact. 
-                                (Stakeholder 1 experiences the highest impact) Note: You may want to removed stakeholders if you can’t identify how they will 
-                                be impacted or if there is very little impact.  Also, you may add stakeholders at any time.</p>
-                        </div>
-           
-                        <div class = \"box\" id = \"dilemma-box\">
+                   echo "<div class = \"box\" id = \"dilemma-box\">
                             <h3>Stakeholder 1</h3>
                             <p>The engineer asked to design the VW defeat... </p>
                             <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"The engineer is directly, and significantly, impacted by the issue.  They could lose their job at VW, lose industry friends and suffer career set backs. \"></textarea>
@@ -111,9 +113,16 @@
 
         <div class = "columns">
             <div class = "column is-two-fifths">
+                <div class = "box has-background-primary">
+                    <p>Provide reasons why you have included each stakeholder. Move stakeholders up or down to rank according to the degree of impact. 
+                                (Stakeholder 1 experiences the highest impact) Note: You may want to removed stakeholders if you can’t identify how they will 
+                                be impacted or if there is very little impact.  Also, you may add stakeholders at any time.</p>
+                </div>
+
                 <?php
                     setAnswers();
                 ?>
+
                 <button class = 'button' name = 'update-options'>Update</button>
             </div>
 
