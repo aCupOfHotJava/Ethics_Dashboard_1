@@ -1,9 +1,107 @@
 <!--FORM NEEDS TO BE SEND TO CLIENT VALIDATION AS WELL AS SERVER SIDE SCRIPTING TO SAVE ANSWERS
     STILL NEEDS TO HAVE A TOTAL BOARD ADDED UNDER THE SITE MENU - SEE SLIDE 12 OF PROPOSAL
-    ADD OPTION 2 PROPERLY-->
+    ADD OPTION 2 PROPERLY
+
+Need to rethink architechture of tables and implement properly on here-->
 <?php
     session_start();
     print_r($_SESSION);
+
+    if (!isset($_SESSION["uid"])){
+        header("Location: ../html/login.php");  
+    }
+
+        function setAnswers(){
+            try{
+                $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
+                $user = "rwalker_rampaul";
+                $pass = "1xlu7OMJ";
+                $pdo = new PDO($connString, $user, $pass);
+                $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                $uid = $_SESSION["uid"];
+
+                $sql1 =  "SELECT * FROM stakeholders WHERE uid = '". $uid."'";
+                $result1 = $pdo -> query($sql1);
+
+                $isInTable = False;
+                $count = 0;
+                $namearray = array();
+                while ($row = $result1 -> fetch()){
+                    array_push($namearray, $row['name']);
+                    $count += 1;
+                    if ($row['utilitarianAnalysis'] == ""){
+                        $isInTable = False;
+
+                    }
+                    else{
+                        $isInTable = True;
+                        echo "<div class = \"box\" id = \"dilemma-box\">
+                                <h3>Stakeholder ".$count."</h3>
+                                <p>".$row['name']."</p>
+                                <textarea class = \"textarea\" id = \"dilemma-text\" name - \"analysis".$count."\">".$row['utilitarianAnalysis']."</textarea>
+                            </div>";
+                    }
+                }
+
+                if (isset($_POST['update-options'])){
+                    $analysis1 = $_POST["analysis1"];
+                    $analysis2 = $_POST["analysis2"];
+                    $analysis3 = $_POST["analysis3"];
+
+                    print_r($analysis1);
+
+                    if ($isInTable){
+                        // update database
+                        $update1 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis1."' WHERE name = '".$namearray[0]."' and uid = ".$uid."";
+                        $pdo -> query($update1);
+
+                        $update2 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis2."' WHERE name = '".$namearray[1]."' and uid = ".$uid."";
+                        $pdo -> query($update2);
+
+                        $update3 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis3."' WHERE name = '".$namearray[2]."' and uid = ".$uid."";
+                        $pdo -> query($update3);
+       
+                        header("Refresh:0");
+                    }
+                    else{
+                        // insert into database
+                        $insert1 = "INSERT INTO `stakeholders`(`utilitarianAnalysis`) VALUES (".$analysis1.") WHERE name = '".$namearray[0]."' and uid = ".$uid."";
+                        $pdo -> query($insert1);
+
+                        $insert2 = "INSERT INTO `stakeholders`(`utilitarianAnalysis`) VALUES (".$analysis2.") WHERE name = '".$namearray[1]."' and uid = ".$uid."";
+                        $pdo -> query($insert2);
+
+                        $insert3 = "INSERT INTO `stakeholders`(`utilitarianAnalysis`) VALUES (".$analysis3.") WHERE name = '".$namearray[2]."' and uid = ".$uid."";
+                        $pdo -> query($insert3);
+
+                        header("Refresh:0");
+                    }
+                }
+
+                if (!$isInTable){
+                   echo "<div class = \"box\" id = \"dilemma-box\">
+                            <h3>Stakeholder 1</h3>
+                            <p>The engineer asked to design the VW defeat... </p>
+                            <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"The engineer is directly, and significantly, impacted by the issue.  They could lose their job at VW, lose industry friends and suffer career set backs. \"></textarea>
+                        </div>
+                        <div class = \"box\" id = \"dilemma-box\">
+                            <h3>Stakeholder 2</h3>
+                            <p>The decision makers at VW who asked...</p>
+                            <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"Defend the inclusion of Stakeholder 2 –Rank by degree of impact\"></textarea>
+                        </div>
+                        <div class = \"box\" id = \"dilemma-box\">
+                            <h3>Stakeholder 3</h3>
+                            <p>Consumers –vehicle buyers...</p>
+                            <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"Defend the inclusion of Stakeholder 3 –Rank by degree of impact\"></textarea>
+                        </div>";
+                }
+
+            }
+            catch(PDOException $e){
+                die($e -> getMessage());
+            }
+        }
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,13 +133,13 @@
                             <h4>STAKEHOLDER 1</h4>
                             <p>The engineer asked to design the VW defeat... </p>
                             <div class = "box has-text-weight-bold">
-                                <nav class="is-flex">
+                                <nav class="is-flex has-text-weight-bold">
                                     <label id="Low" class="has-text-left">Low</label>
                                     <label id=High class="has-text-right">High</label>
-                                </nav>
+                                 </nav>
 
-                                <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-1">
-                                <span class="range-value">5</span>   
+                                 <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-1">
+                                 <span class="range-value">5</span>
 
                                 <input type="text" class="textarea" name="s1-2" id="s1-2" placeholder="Guilt" rows="1">
 
