@@ -141,6 +141,7 @@
             <div class="slider">
             <input type="range" min="1" max="10" value="5" class="slider">
             <span class="range-value">5</span></div>
+            <input type="text" class="average" name="" id="" value="" size="30">
         </div>
         </div>
     </div>
