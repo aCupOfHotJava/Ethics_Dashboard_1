@@ -64,7 +64,8 @@
 
                 if ($isInTable){
                     //update new answers the database
-                    $updateStatement = "UPDATE virtueEthics SET `option1`='".$option1"',`option2`='".$option2."',`option3`='".$option3."',`optionsRanked`='".$optionsRanked."' WHERE `uid` = '".$uid."'";
+                    //$updateStatement = "UPDATE virtueEthics SET `option1`='".$option1"',`option2`='".$option2."',`option3`='".$option3."',`optionsRanked`='".$optionsRanked."' WHERE `uid` = '".$uid."'";
+                    $updateStatement = "UPDATE `virtueEthics` SET `option1` = '".$option1."', `option2` = '".$option2."', `option3` = '".$option3."', `optionsRanked` = '".$optionsRanked."' WHERE `uid` = '".$uid."'";
                     $pdo -> query($updateStatement);
                 }
                 else{
