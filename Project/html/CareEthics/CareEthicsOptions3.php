@@ -117,7 +117,6 @@
             of being connected to the nav panel like they were before. -->
         </div>
         </div>
-        </div>
 
             <div class="box">
             <h1>Option 1</h1>
@@ -153,10 +152,8 @@
         </div>
         </div>
     </div>
-</div>
-
     <script src = "../../scripts/jquery-3.6.0.js"></script>
-    <script src = "../../scripts/user-event.js"></script>
+    <script src = "../../scripts/careEthics.js"></script>
 
 </body>
 

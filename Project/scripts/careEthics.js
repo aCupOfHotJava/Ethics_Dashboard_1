@@ -1,4 +1,7 @@
 
+var total = 0,
+valid_labels = 0,
+average;
 $('.slider').on('input', function () {
     $(this).next('.range-value').html(this.value);
     $('.range-value').each(function () {
@@ -20,8 +23,4 @@ $('.savepopup').on('click',function(){
 $('.submitpopup').on('click',function(){
     alert("Your work has been submitted.");
 });
-
-var total = 0,
-    valid_labels = 0,
-    average;
 

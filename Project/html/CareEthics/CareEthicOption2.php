@@ -145,10 +145,8 @@
         </div>
         </div>
     </div>
- </div>
-
     <script src = "../../scripts/jquery-3.6.0.js"></script>
-    <script src = "../../scripts/user-event.js"></script>
+    <script src = "../../scripts/careEthics.js"></script>
 
 </body>
 
