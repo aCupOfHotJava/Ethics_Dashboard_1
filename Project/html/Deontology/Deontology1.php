@@ -29,7 +29,7 @@
                     <div class = "options">
                         <div class = "box" id = "dilemma-box">
                         <form method = "POST">
-                            <?php include '/Applications/XAMPP/xamppfiles/htdocs/Ethics_Dashboard_1/Project/server/deontology.php';
+                            <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/Ethics_Dashboard_1/Project/server/deontology.php');
                                 determineState();
                              ?>
                             <h3>Option 1</h3>
