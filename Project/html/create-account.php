@@ -20,6 +20,14 @@
                 <div class = "box">
                     <form action = "../server/createAccount.php" method = "POST"
                             id = "create-form">
+                        First Name:
+                        <br/>
+                        <input type = "text" name = "form-firstName" class = ""/>
+                        <br/> <br/>
+                        Last Name:
+                        <br/>
+                        <input type = "text" name = "form-lastName" class = ""/>
+                        <br/> 
                         Student ID:
                         <br/>
                         <input type = "text" name = "form-uid" class = "required"/>
@@ -47,6 +55,9 @@
                         <br/>
                         <input type = "submit" value = "Create Account">
                     </form>
+                    </div>
+                <a href = "login.php">Login</a>
+            </div>
                 </div>
             </div>
         </div>

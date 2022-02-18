@@ -23,6 +23,8 @@
             // Get form data in preparation for login query
             $uid = $_POST["form-uid"];
             $pid = $_POST["form-pid"];
+            $firstName = $_POST["form-firstName"];
+            $lastName = $_POST["form-lastName"];
 
             $hpid = password_hash($pid, PASSWORD_DEFAULT);
             // Verify not already existing user
@@ -42,7 +44,7 @@
             else {
                 echo $pid;
                 // Insert
-                $sql = "INSERT INTO user VALUES (" .$uid .", '" .$hpid ."');";
+                $sql = "INSERT INTO user VALUES (" .$uid .", '" .$hpid ."','".$firstName ."','".$lastName ."');";
                 $result = $pdo -> query($sql);
 
                 $SESSION["uid"] = $uid;
