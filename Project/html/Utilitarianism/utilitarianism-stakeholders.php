@@ -29,18 +29,12 @@
                 while ($row = $result1 -> fetch()){
                     array_push($namearray, $row['name']);
                     $count += 1;
-                    if ($row['utilitarianAnalysis'] == ""){
-                        $isInTable = False;
-
-                    }
-                    else{
-                        $isInTable = True;
-                        echo "<div class = \"box\" id = \"dilemma-box\">
-                                <h3>Stakeholder ".$count."</h3>
-                                <p>".$row['name']."</p>
-                                <textarea class = \"textarea\" id = \"dilemma-text\" name - \"analysis".$count."\">".$row['utilitarianAnalysis']."</textarea>
-                            </div>";
-                    }
+                    $isInTable = True;
+                    echo "<div class = \"box\" id = \"dilemma-box\">
+                            <h3>Stakeholder ".$count."</h3>
+                            <p>".$row['name']."</p>
+                            <textarea class = \"textarea\" id = \"dilemma-text\" name - \"analysis".$count."\">".$row['utilitarianAnalysis']."</textarea>
+                        </div>";
                 }
 
                 if (isset($_POST['update-stakeholders'])){
