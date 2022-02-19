@@ -1,7 +1,4 @@
-<!--NEED TO BE ABLE TO MOVE THE STAKEHOLDERS UP AND DOWN IN ORDER TO RANK THEM
-    HOW TO HANDLE THE FACT THAT WE DO NOT KNOW HOW MANY STAKEHOLDERS THERE ARE?
-
-    Needs more work - is not working properly right now-->
+<!--NEED TO BE ABLE TO MOVE THE STAKEHOLDERS UP AND DOWN IN ORDER TO RANK THEM-->
 <?php
     session_start();
     print_r($_SESSION);
@@ -39,12 +36,11 @@
 
                 if (isset($_POST['update-stakeholders'])){
 
-                    echo $_POST['update-stakeholders'];
                     $analysis1 = $_POST["analysis1"];
                     $analysis2 = $_POST["analysis2"];
                     $analysis3 = $_POST["analysis3"];
 
-                    if ($isInTable){
+                    
                         // update database
                         $update1 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis1."' WHERE name = '".$namearray[0]."' and uid = ".$uid."";
                         $pdo -> query($update1);
@@ -56,20 +52,7 @@
                         $pdo -> query($update3);
        
                         header("Refresh:0");
-                    }
-                    else{
-                        // insert into database
-                        $update1 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis1."' WHERE name = '".$namearray[0]."' and uid = ".$uid."";
-                        $pdo -> query($update1);
-
-                        $update2 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis2."' WHERE name = '".$namearray[1]."' and uid = ".$uid."";
-                        $pdo -> query($update2);
-
-                        $update3 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis3."' WHERE name = '".$namearray[2]."' and uid = ".$uid."";
-                        $pdo -> query($update3);
-       
-                        header("Refresh:0");
-                    }
+                   
                 }
 
                 if (!$isInTable){
@@ -88,6 +71,35 @@
                             <p>Consumers –vehicle buyers...</p>
                             <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"Defend the inclusion of Stakeholder 3 –Rank by degree of impact\" name = \"analysis3\"></textarea>
                         </div>";
+                }
+
+            }
+            catch(PDOException $e){
+                die($e -> getMessage());
+            }
+        }
+
+        function addStakeholder(){
+            try{
+                $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
+                $user = "rwalker_rampaul";
+                $pass = "1xlu7OMJ";
+                $pdo = new PDO($connString, $user, $pass);
+                $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                $uid = $_SESSION["uid"];
+
+                if (isset($_POST['addStake'])){
+
+                    $newStakeholder = $_POST["newStake"];
+                    $newStakeholderAnalysis = $_POST["newStakeAnalysis"];
+                    
+                        // insert into database
+                        $insert = "INSERT INTO `stakeholders`(`uid`, `name`, `utilitarianAnalysis`) VALUES (".$uid.",'".$newStakeholder."','".$newStakeholderAnalysis."')";
+                        $pdo -> query($insert);
+       
+                        header("Refresh:0");
+                   
                 }
 
             }
@@ -126,8 +138,15 @@
             <div class = "column is-two-fifths">
                 <div class = "box" id = "ethics-options-wrapper">
                     <p class = "heading" id = "empty">Add Stakeholder</p>
+                    <form method = "POST">
+                        <textarea class = "textarea" id = "dilemma-text" placeholder = "Enter New Stakeholder" name = "newStake"></textarea>
+                        <textarea class = "textarea" id = "dilemma-text" placeholder = "Enter new Stakeholder Analysis" name = "newStakeAnalysis"></textarea>
+                        <?php
+                            addStakeholder();
+                        ?>
+                        <button class = "button" name="addStake">Submit</button>
+                    </form>
                 </div>
-                <button class = "button" id = "add-option">Add</button>
             </div>
             <div>
             <div class = "column has-fixed-size is-20">
@@ -157,6 +176,5 @@
         </div>
 
         <script src = "../../scripts/jquery-3.6.0.js"></script>
-        <script src = "../../scripts/user-event.js?ver=0.1"></script>
     </body>
 </html>
