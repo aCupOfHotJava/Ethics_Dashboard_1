@@ -43,12 +43,12 @@
                     }
                 }
 
-                if (isset($_POST['update-options'])){
+                if (isset($_POST['update-stakeholders'])){
+
+                    echo $_POST['update-stakeholders'];
                     $analysis1 = $_POST["analysis1"];
                     $analysis2 = $_POST["analysis2"];
                     $analysis3 = $_POST["analysis3"];
-
-                    print_r($analysis1);
 
                     if ($isInTable){
                         // update database
@@ -65,15 +65,15 @@
                     }
                     else{
                         // insert into database
-                        $insert1 = "INSERT INTO `stakeholders`(`utilitarianAnalysis`) VALUES (".$analysis1.") WHERE name = '".$namearray[0]."' and uid = ".$uid."";
-                        $pdo -> query($insert1);
+                        $update1 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis1."' WHERE name = '".$namearray[0]."' and uid = ".$uid."";
+                        $pdo -> query($update1);
 
-                        $insert2 = "INSERT INTO `stakeholders`(`utilitarianAnalysis`) VALUES (".$analysis2.") WHERE name = '".$namearray[1]."' and uid = ".$uid."";
-                        $pdo -> query($insert2);
+                        $update2 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis2."' WHERE name = '".$namearray[1]."' and uid = ".$uid."";
+                        $pdo -> query($update2);
 
-                        $insert3 = "INSERT INTO `stakeholders`(`utilitarianAnalysis`) VALUES (".$analysis3.") WHERE name = '".$namearray[2]."' and uid = ".$uid."";
-                        $pdo -> query($insert3);
-
+                        $update3 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis3."' WHERE name = '".$namearray[2]."' and uid = ".$uid."";
+                        $pdo -> query($update3);
+       
                         header("Refresh:0");
                     }
                 }
@@ -82,17 +82,17 @@
                    echo "<div class = \"box\" id = \"dilemma-box\">
                             <h3>Stakeholder 1</h3>
                             <p>The engineer asked to design the VW defeat... </p>
-                            <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"The engineer is directly, and significantly, impacted by the issue.  They could lose their job at VW, lose industry friends and suffer career set backs. \"></textarea>
+                            <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"The engineer is directly, and significantly, impacted by the issue.  They could lose their job at VW, lose industry friends and suffer career set backs. \" name = \"analysis1\"></textarea>
                         </div>
                         <div class = \"box\" id = \"dilemma-box\">
                             <h3>Stakeholder 2</h3>
                             <p>The decision makers at VW who asked...</p>
-                            <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"Defend the inclusion of Stakeholder 2 –Rank by degree of impact\"></textarea>
+                            <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"Defend the inclusion of Stakeholder 2 –Rank by degree of impact\" name = \"analysis2\"></textarea>
                         </div>
                         <div class = \"box\" id = \"dilemma-box\">
                             <h3>Stakeholder 3</h3>
                             <p>Consumers –vehicle buyers...</p>
-                            <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"Defend the inclusion of Stakeholder 3 –Rank by degree of impact\"></textarea>
+                            <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"Defend the inclusion of Stakeholder 3 –Rank by degree of impact\" name = \"analysis3\"></textarea>
                         </div>";
                 }
 
@@ -102,6 +102,7 @@
             }
         }
 ?>
+<!------------------------------------------------------------------------------------------------>
 <!DOCTYPE html>
 <html>
     <head>
@@ -118,12 +119,14 @@
                                 (Stakeholder 1 experiences the highest impact) Note: You may want to removed stakeholders if you can’t identify how they will 
                                 be impacted or if there is very little impact.  Also, you may add stakeholders at any time.</p>
                 </div>
+                
+                <form method = "POST">
+                    <?php
+                        setAnswers();
+                    ?>
 
-                <?php
-                    setAnswers();
-                ?>
-
-                <button class = 'button' name = 'update-options'>Update</button>
+                    <button class = 'button' name = 'update-stakeholders'>Update</button>
+                </form>
             </div>
 
             <div class = "column is-two-fifths">
