@@ -30,47 +30,35 @@
                     echo "<div class = \"box\" id = \"dilemma-box\">
                             <h3>Stakeholder ".$count."</h3>
                             <p>".$row['name']."</p>
-                            <textarea class = \"textarea\" id = \"dilemma-text\" name - \"analysis".$count."\">".$row['utilitarianAnalysis']."</textarea>
+                            <textarea class = \"textarea\" id = \"dilemma-text\" name = \"analysis".$count."\">".$row['utilitarianAnalysis']."</textarea>
                         </div>";
                 }
 
                 if (isset($_POST['update-stakeholders'])){
 
-                    $analysis1 = $_POST["analysis1"];
-                    $analysis2 = $_POST["analysis2"];
-                    $analysis3 = $_POST["analysis3"];
+                    for ($i = 1; $i <= $count; $i++){
+                        $strRep = strval($i);
+                        $getpost = "analysis$strRep";
+                        $analysis = $_POST[$getpost];
 
-                    
-                        // update database
-                        $update1 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis1."' WHERE name = '".$namearray[0]."' and uid = ".$uid."";
+                        $update1 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis."' WHERE name = '".$namearray[$i-1]."' and uid = ".$uid."";
                         $pdo -> query($update1);
 
-                        $update2 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis2."' WHERE name = '".$namearray[1]."' and uid = ".$uid."";
-                        $pdo -> query($update2);
-
-                        $update3 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis3."' WHERE name = '".$namearray[2]."' and uid = ".$uid."";
-                        $pdo -> query($update3);
-       
                         header("Refresh:0");
+                    }
                    
                 }
 
                 if (!$isInTable){
-                   echo "<div class = \"box\" id = \"dilemma-box\">
-                            <h3>Stakeholder 1</h3>
-                            <p>The engineer asked to design the VW defeat... </p>
-                            <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"The engineer is directly, and significantly, impacted by the issue.  They could lose their job at VW, lose industry friends and suffer career set backs. \" name = \"analysis1\"></textarea>
-                        </div>
-                        <div class = \"box\" id = \"dilemma-box\">
-                            <h3>Stakeholder 2</h3>
-                            <p>The decision makers at VW who asked...</p>
-                            <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"Defend the inclusion of Stakeholder 2 –Rank by degree of impact\" name = \"analysis2\"></textarea>
-                        </div>
-                        <div class = \"box\" id = \"dilemma-box\">
-                            <h3>Stakeholder 3</h3>
-                            <p>Consumers –vehicle buyers...</p>
-                            <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"Defend the inclusion of Stakeholder 3 –Rank by degree of impact\" name = \"analysis3\"></textarea>
-                        </div>";
+                    $count2 = 0;
+                    while ($row = $result1 -> fetch()){
+                        $count++;
+                        echo "<div class = \"box\" id = \"dilemma-box\">
+                                <h3>Stakeholder ".$count."</h3>
+                                <p>".$row['name']."</p>
+                                <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"The engineer is directly, and significantly, impacted by the issue.  They could lose their job at VW, lose industry friends and suffer career set backs. \"></textarea>
+                            </div>";
+                    }
                 }
 
             }

@@ -27,11 +27,12 @@
                     <div>
                         <h1 class="title is-3 has-text-centered">OPTION 1</h1>
                         <p class="subtitle is-5 has-text-centered">I can put loyalty to the company first ...</p>
+                        <div class="box">
                         <h2 class="title is-5"> Stakeholder 1- The engineer asked to design the VW defeat... </h2>
                         <h3 class="title is-6">Long-term Concequences</h3>
     
-                        <form method="POST" action="../../../server/utilitarianismAnalysis.php">
-                            <div>
+                        <!--<form method="POST" action="../../../server/utilitarianismAnalysis.php">-->
+                            <div>  
                                 <h4>STAKEHOLDER 1</h4>
                                 <p>The engineer asked to design the VW defeat... </p>
                                 <div class = "box has-text-weight-bold">
@@ -105,8 +106,9 @@
                                 </div>
                             </div>
                             <br>
-                            <input type = "submit" class="button" value = "Submit">
-                        </form>
+                            <!--<input type = "submit" class="button" value = "Submit">
+                        </form>-->
+                        </div>
     
                         <a href= "utilitarianism-analysis1.php"><button class = "button" id = "option2" >Option 1 - Short-term</button>  </a>
                         <a href= "utilitarianism-analysis2.php"><button class = "button is-primary" id = "option2" >Option 1 - Long-term</button>  </a>
@@ -186,6 +188,9 @@
 
                 </div>
             </div>
+
+            <script src = "../../scripts/jquery-3.6.0.js"></script>
+            <script src = "../../scripts/user-event.js"></script>
         
         </body>
     </html>

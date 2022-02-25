@@ -30,18 +30,24 @@ Need to rethink architechture of tables and implement properly on here-->
                 while ($row = $result1 -> fetch()){
                     array_push($namearray, $row['name']);
                     $count += 1;
-                    if ($row['utilitarianAnalysis'] == ""){
-                        $isInTable = False;
-
-                    }
-                    else{
-                        $isInTable = True;
-                        echo "<div class = \"box\" id = \"dilemma-box\">
-                                <h3>Stakeholder ".$count."</h3>
+                    $isInTable = True;
+                    echo "<h4>STAKEHOLDER ".$count."</h4>
                                 <p>".$row['name']."</p>
-                                <textarea class = \"textarea\" id = \"dilemma-text\" name - \"analysis".$count."\">".$row['utilitarianAnalysis']."</textarea>
-                            </div>";
-                    }
+                                <div class = \"box has-text-weight-bold\">
+                                    <nav class=\"is-flex has-text-weight-bold\">
+                                        <label id=\"Low\" class=\"has-text-left\">Low</label>
+                                        <label id=\"High\" class=\"has-text-right\">High</label>
+                                    </nav>
+
+                                    <input type=\"range\" min=\"1\" max=\"10\" value=\"5\" class=\"slider\" id=\"Stakeholer1-1\">
+                                    <span class=\"range-value\">5</span>
+
+                                    <input type=\"text\" class=\"textarea\" name=\"s1-2\" id=\"s1-2\" placeholder=\"Guilt\" rows=\"1\">
+
+                                    <p>Pleasure: </p>
+                                    <label>High</label><input type=\"checkbox\" name=\"high1\" id=\"high1\" value=\"High\"/>
+                                    <label>Low</label><input type=\"checkbox\" name=\"low1\" id=\"low1\" value=\"Low\"/>
+                        </div>";
                 }
 
                 if (isset($_POST['update-options'])){
@@ -80,7 +86,16 @@ Need to rethink architechture of tables and implement properly on here-->
                 }
 
                 if (!$isInTable){
-                   echo "<div class = \"box\" id = \"dilemma-box\">
+                    $count2 = 0;
+                    while ($row = $result1 -> fetch()){
+                        $count++;
+                        echo "<div class = \"box\" id = \"dilemma-box\">
+                                <h3>Stakeholder ".$count."</h3>
+                                <p>".$row['name']."</p>
+                                <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"The engineer is directly, and significantly, impacted by the issue.  They could lose their job at VW, lose industry friends and suffer career set backs. \"></textarea>
+                            </div>";
+                    }
+                   /*echo "<div class = \"box\" id = \"dilemma-box\">
                             <h3>Stakeholder 1</h3>
                             <p>The engineer asked to design the VW defeat... </p>
                             <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"The engineer is directly, and significantly, impacted by the issue.  They could lose their job at VW, lose industry friends and suffer career set backs. \"></textarea>
@@ -94,7 +109,7 @@ Need to rethink architechture of tables and implement properly on here-->
                             <h3>Stakeholder 3</h3>
                             <p>Consumers –vehicle buyers...</p>
                             <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"Defend the inclusion of Stakeholder 3 –Rank by degree of impact\"></textarea>
-                        </div>";
+                        </div>";*/
                 }
 
             }
@@ -125,10 +140,11 @@ Need to rethink architechture of tables and implement properly on here-->
                 <div>
                     <h1 class="title is-3 has-text-centered">OPTION 1</h1>
                     <p class="subtitle is-5 has-text-centered">I can put loyalty to the company first ...</p>
+                    <div class = "box">
                     <h2 class="title is-5"> Stakeholder 1- The engineer asked to design the VW defeat... </h2>
                     <h3 class="title is-6">Short-term Concequences</h3>
 
-                    <form method="POST" action="../../../server/utilitarianismAnalysis.php">
+                    <!--<form method="POST" action="../../../server/utilitarianismAnalysis.php">-->
                         <div>
                             <h4>STAKEHOLDER 1</h4>
                             <p>The engineer asked to design the VW defeat... </p>
@@ -203,8 +219,9 @@ Need to rethink architechture of tables and implement properly on here-->
                             </div>
                         </div>
                         <br>
-                        <input type = "submit" class="button" value = "Submit">
-                    </form>
+                       <!-- <input type = "submit" class="button" value = "Submit">
+                    </form>-->
+                    </div>
 
                     <a href= "utilitarianism-analysis1.php"><button class = "button is-primary" id = "option2" >Option 1 - Short-term</button>  </a>
                     <a href= "utilitarianism-analysis2.php"><button class = "button" id = "option2" >Option 1 - Long-term</button>  </a>
@@ -288,5 +305,7 @@ Need to rethink architechture of tables and implement properly on here-->
             </div>
         </div>
     
+        <script src = "../../../scripts/jquery-3.6.0.js"></script>
+        <script src = "../../../scripts/user-event.js"></script>
     </body>
 </html>
