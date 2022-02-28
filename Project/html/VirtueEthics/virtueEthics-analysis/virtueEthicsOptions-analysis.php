@@ -3,6 +3,91 @@ no functionality added yet-->
 <?php
     session_start();
     print_r($_SESSION);
+
+    if (!isset($_SESSION["uid"])){
+        header("Location: ../html/login.php");  
+    }
+
+        function setAnswers(){
+            try{
+                $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
+                $user = "rwalker_joseph";
+                $pass = "GRzQ8Gwh";
+                $pdo = new PDO($connString, $user, $pass);
+                $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                $uid = $_SESSION["uid"];
+
+                $sql1 =  "SELECT * FROM options WHERE uid = '". $uid."'";
+                $result1 = $pdo -> query($sql1);
+
+                $isInTable = False;
+                $count = 0;
+                $namearray = array();
+                while ($row = $result1 -> fetch()){
+                    array_push($namearray, $row['name']);
+                    $count += 1;
+                    if ($row['virtueEthicsOptions'] == ""){
+                        $isInTable = False;
+
+                    }
+                    else{
+                        $isInTable = True;
+                        echo "DONE";
+                    }
+                }
+
+                if (isset($_POST['update-options'])){
+                    $option1 = $_POST["submit1"];
+                    $option2 = $_POST["submit2"];
+                    $option3 = $_POST["submit3"];
+                    $option4 = $_POST["submitOptions"];
+
+                    print_r($option1);
+
+                    if ($isInTable){
+                        // update database
+                        $update1 = "UPDATE `options` SET `virtueEthicsOptions`= '".$option1."' WHERE name = '".$namearray[0]."' and uid = ".$uid."";
+                        $pdo -> query($update1);
+
+                        $update2 = "UPDATE `options` SET `virtueEthicsOptions`= '".$option2."' WHERE name = '".$namearray[1]."' and uid = ".$uid."";
+                        $pdo -> query($update2);
+
+                        $update3 = "UPDATE `options` SET `virtueEthicsOptions`= '".$option3."' WHERE name = '".$namearray[2]."' and uid = ".$uid."";
+                        $pdo -> query($update3);
+
+                        $update4 = "UPDATE `options` SET `virtueEthicsOptions`= '".$option4."' WHERE name = '".$namearray[3]."' and uid = ".$uid."";
+                        $pdo -> query($update4);
+       
+                        header("Refresh:0");
+                    }
+                    else{
+                        // insert into database
+                        $insert1 = "INSERT INTO `options`(`virtueEthicsOptions`) VALUES (".$option1.") WHERE name = '".$namearray[0]."' and uid = ".$uid."";
+                        $pdo -> query($insert1);
+
+                        $insert2 = "INSERT INTO `options`(`virtueEthicsOptions`) VALUES (".$option2.") WHERE name = '".$namearray[1]."' and uid = ".$uid."";
+                        $pdo -> query($insert2);
+
+                        $insert3 = "INSERT INTO `options`(`virtueEthicsOptions`) VALUES (".$option3.") WHERE name = '".$namearray[2]."' and uid = ".$uid."";
+                        $pdo -> query($insert3);
+
+                        $insert4 = "INSERT INTO `options`(`virtueEthicsOptions`) VALUES (".$option4.") WHERE name = '".$namearray[3]."' and uid = ".$uid."";
+                        $pdo -> query($insert3);
+
+                        header("Refresh:0");
+                    }
+                }
+
+                if (!$isInTable){
+                   echo "DONE";
+                }
+
+            }
+            catch(PDOException $e){
+                die($e -> getMessage());
+            }
+        }
 ?>
 <!DOCTYPE html>
 <html>
