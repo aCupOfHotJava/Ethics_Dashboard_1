@@ -1,6 +1,9 @@
 <?php
     session_start();
-    print_r($_SESSION);
+    if($_SESSION == NULL) {
+        session_destroy();
+        header("Location: login.php");
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,11 +17,19 @@
             }
         </style>
         <title>Ethics Dashboard</title>
+        <meta name="author" content="">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
         <div class = "title has-background-grey-lighter">
             <h1>ETHICS DASHBOARD</h1>
             <a href = "../server/logout.php" class = "is-size-6">Logout</a>
+            <?php
+                if($_SESSION['isAdmin'] == 1) {
+                    echo "<br><a href = 'instructor-home.php' class = 'is-size-6'>Instructor Home</a>";
+                }
+            ?>
         </div>
 
         <div class="columns">
