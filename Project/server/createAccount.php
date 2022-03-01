@@ -42,7 +42,7 @@
             else {
                 echo $pid;
                 // Insert
-                $sql = "INSERT INTO user VALUES (" .$uid .", '" .$hpid ."');";
+                $sql = "INSERT INTO user VALUES (" .$uid .", '" .$hpid ."', 0);";
                 $result = $pdo -> query($sql);
 
                 $SESSION["uid"] = $uid;

@@ -13,7 +13,44 @@
         session_destroy();
         header("Location: login.php");
     }
-    function determineState() {
+    function determineStateOptions() {
+        $uid = $_SESSION["uid"];
+        $option = NULL;
+        $isEmpty = true;
+        try {
+            $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
+            $user = "rwalker_krieg";
+            $pass = "rB87mkNG";
+            $pdo = new PDO($connString, $user, $pass);
+            $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // check for existing options to display
+            $sql = "SELECT studentOption FROM ethical_options WHERE uid = '" .$uid ."';";
+            $result = $pdo -> query($sql);
+            $count = 0;
+            while($row = $result -> fetch()) {
+                $count ++;
+                $isEmpty = false;
+                $option = $row[0];
+                echo "<h3>Option Number " .$count ."</h3>";
+                echo "<div class = 'box'>";
+                echo $option;
+                echo "</div>";
+            }
+            if(isset($_POST['add-option'])) {
+                $option = $_POST['option-text'];
+                $stmt = $pdo -> prepare("INSERT INTO ethical_options VALUES (:uid, :option)");
+                $stmt -> bindParam(":uid", $uid);
+                $stmt -> bindParam(":option", $option);
+                $stmt -> execute();
+                header("Location: #");
+            }
+            echo "<textarea class = 'textarea' name = 'option-text' placeholder = 'Enter your option here.'></textarea>";
+        }
+        catch(PDOException $e) {
+            die($e -> getMessage());
+        }
+    }
+    function determineStateDilemma() {
         $uid = $_SESSION["uid"];
         $dilemma = 0;
         $isEmpty = true;
@@ -36,15 +73,17 @@
                 $dilemma = $_POST['dilemma-text'];
                 // If there is no record for the dilemma, insert a new record under that uid
                 if($isEmpty) {
-                    $sql = "INSERT INTO ethical_issues VALUES ('" .$uid ."', '" .$dilemma ."');";
-                    echo $sql;
-                    $pdo -> query($sql);
+                    $stmt = $pdo -> prepare("INSERT INTO ethical_issues VALUES (:uid, :dilemma");
+                    $stmt -> bindParam(":uid", $uid);
+                    $stmt -> bindParam(":dilemma", $dilemma);
+                    $stmt -> execute();
                 }
                 // If there is a record, find it and update it instead.
                 else {
-                    $sql = "UPDATE ethical_issues SET dilemma = '" .$dilemma ."' WHERE uid = " .$uid .";";
-                    echo $sql;
-                    $pdo -> query($sql);
+                    $stmt = $pdo -> prepare("UPDATE ethical_issues SET dilemma = :dilemma WHERE uid = :uid");
+                    $stmt -> bindParam(":dilemma", $dilemma);
+                    $stmt -> bindParam(":uid", $uid);
+                    $stmt -> execute();
                 }
             }
 
@@ -83,17 +122,21 @@
                 <form method = 'POST'>
                     <div class = 'box' id = 'dilemma-box'>
                         <?php
-                            determineState();
+                            determineStateDilemma();
                         ?>
                     </div>
                     <button class = 'button' name = 'update-dilemma'>Update</button>
                 </form>
             </div>
             <div class = "column is-two-fifths">
-                <div class = "box" id = "ethics-options-wrapper">
-                    <p class = "heading" id = "empty">There's nothing here. Add an option that you could solve your dilemma with:</p>
-                </div>
-                <button class = "button" id = "add-option">Add Option</button>
+                <form method = 'POST'>
+                    <div class = "box">
+                        <?php
+                            determineStateOptions();
+                        ?>
+                    </div>
+                    <button class = 'button' name = 'add-option'>Add Option</button>    
+                </form>
             </div>
             <div>
                 <div class = "column has-fixed-size is-20">
@@ -118,8 +161,9 @@
                 </div>
             </div>
         </div>
-
+        <!--
         <script src = "../scripts/jquery-3.6.0.js"></script>
         <script src = "../scripts/user-event.js"></script>
+        -->
     </body>
 </hmtl>
