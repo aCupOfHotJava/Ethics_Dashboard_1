@@ -5,7 +5,7 @@
     print_r($_SESSION);
 
     if (!isset($_SESSION["uid"])){
-        header("Location: ../html/login.php");  
+        header("Location: ../login.php");  
     }
 
     function setSummary (){

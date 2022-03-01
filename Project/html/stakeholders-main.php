@@ -5,6 +5,54 @@
 <?php
     session_start();
     print_r($_SESSION);
+
+    function setStakeholders(){
+        try{
+            $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
+            $user = "rwalker_rampaul";
+            $pass = "1xlu7OMJ";
+            $pdo = new PDO($connString, $user, $pass);
+            $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $uid = $_SESSION["uid"];
+
+            $sql1 =  "SELECT `name` FROM stakeholders WHERE uid = '". $uid."'";
+            $result1 = $pdo -> query($sql1);
+
+            $isInTable = false;
+            $count = 0;
+            while ($row = $result1 -> fetch()){
+                $isInTable = true;
+                $count ++;
+
+                echo "<br>
+                    <p>STAKEHOLDER ".$count."</p>
+                    <p>".$row['name']."</p>";
+            }
+
+            if (!$isInTable){
+                echo "STAKEHOLDER 1
+                <br>
+                <br>
+                STAKEHOLDER 2
+                <br>
+                <br>
+                STAKEHOLDER 3
+                <br>
+                <br>
+                STAKEHOLDER 4
+                <br>
+                <br>
+                STAKEHOLDER 5
+                <br>
+                <br>
+                STAKEHOLDER 6";
+            }
+        }
+        catch(PDOException $e){
+            die($e -> getMessage());
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,7 +98,7 @@
             <div class = "column is-two-fifths">
                 <div class = "box" id = "ethics-options-wrapper">
                     <p class = "stakeholders" id = "options">
-                        STAKEHOLDER 1
+                        <!--STAKEHOLDER 1
                         <br>
                         <br>
                         STAKEHOLDER 2
@@ -65,7 +113,11 @@
                         STAKEHOLDER 5
                         <br>
                         <br>
-                        STAKEHOLDER 6
+                        STAKEHOLDER 6-->
+
+                        <?php
+                            setStakeholders();
+                        ?>
                     </p>
                 </div>
 
