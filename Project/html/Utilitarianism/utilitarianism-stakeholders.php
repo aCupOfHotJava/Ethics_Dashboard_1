@@ -1,7 +1,4 @@
-<!--NEED TO BE ABLE TO MOVE THE STAKEHOLDERS UP AND DOWN IN ORDER TO RANK THEM
-    HOW TO HANDLE THE FACT THAT WE DO NOT KNOW HOW MANY STAKEHOLDERS THERE ARE?
-
-    Needs more work - is not working properly right now-->
+<!--NEED TO BE ABLE TO MOVE THE STAKEHOLDERS UP AND DOWN IN ORDER TO RANK THEM-->
 <?php
     session_start();
     print_r($_SESSION);
@@ -29,71 +26,68 @@
                 while ($row = $result1 -> fetch()){
                     array_push($namearray, $row['name']);
                     $count += 1;
-                    if ($row['utilitarianAnalysis'] == ""){
-                        $isInTable = False;
+                    $isInTable = True;
+                    echo "<div class = \"box\" id = \"dilemma-box\">
+                            <h3>Stakeholder ".$count."</h3>
+                            <p>".$row['name']."</p>
+                            <textarea class = \"textarea\" id = \"dilemma-text\" name = \"analysis".$count."\">".$row['utilitarianAnalysis']."</textarea>
+                        </div>";
+                }
 
+                if (isset($_POST['update-stakeholders'])){
+
+                    for ($i = 1; $i <= $count; $i++){
+                        $strRep = strval($i);
+                        $getpost = "analysis$strRep";
+                        $analysis = $_POST[$getpost];
+
+                        $update1 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis."' WHERE name = '".$namearray[$i-1]."' and uid = ".$uid."";
+                        $pdo -> query($update1);
+
+                        header("Refresh:0");
                     }
-                    else{
-                        $isInTable = True;
+                   
+                }
+
+                if (!$isInTable){
+                    $count2 = 0;
+                    while ($row = $result1 -> fetch()){
+                        $count++;
                         echo "<div class = \"box\" id = \"dilemma-box\">
-                                <h3>Stakeholder ".$count."</h3>
+                                <h3>Stakeholder ".$count2."</h3>
                                 <p>".$row['name']."</p>
-                                <textarea class = \"textarea\" id = \"dilemma-text\" name - \"analysis".$count."\">".$row['utilitarianAnalysis']."</textarea>
+                                <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"The engineer is directly, and significantly, impacted by the issue.  They could lose their job at VW, lose industry friends and suffer career set backs. \"></textarea>
                             </div>";
                     }
                 }
 
-                if (isset($_POST['update-options'])){
-                    $analysis1 = $_POST["analysis1"];
-                    $analysis2 = $_POST["analysis2"];
-                    $analysis3 = $_POST["analysis3"];
+            }
+            catch(PDOException $e){
+                die($e -> getMessage());
+            }
+        }
 
-                    print_r($analysis1);
+        function addStakeholder(){
+            try{
+                $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
+                $user = "rwalker_rampaul";
+                $pass = "1xlu7OMJ";
+                $pdo = new PDO($connString, $user, $pass);
+                $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                    if ($isInTable){
-                        // update database
-                        $update1 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis1."' WHERE name = '".$namearray[0]."' and uid = ".$uid."";
-                        $pdo -> query($update1);
+                $uid = $_SESSION["uid"];
 
-                        $update2 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis2."' WHERE name = '".$namearray[1]."' and uid = ".$uid."";
-                        $pdo -> query($update2);
+                if (isset($_POST['addStake'])){
 
-                        $update3 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis3."' WHERE name = '".$namearray[2]."' and uid = ".$uid."";
-                        $pdo -> query($update3);
+                    $newStakeholder = $_POST["newStake"];
+                    $newStakeholderAnalysis = $_POST["newStakeAnalysis"];
+                    
+                        // insert into database
+                        $insert = "INSERT INTO `stakeholders`(`uid`, `name`, `utilitarianAnalysis`) VALUES (".$uid.",'".$newStakeholder."','".$newStakeholderAnalysis."')";
+                        $pdo -> query($insert);
        
                         header("Refresh:0");
-                    }
-                    else{
-                        // insert into database
-                        $insert1 = "INSERT INTO `stakeholders`(`utilitarianAnalysis`) VALUES (".$analysis1.") WHERE name = '".$namearray[0]."' and uid = ".$uid."";
-                        $pdo -> query($insert1);
-
-                        $insert2 = "INSERT INTO `stakeholders`(`utilitarianAnalysis`) VALUES (".$analysis2.") WHERE name = '".$namearray[1]."' and uid = ".$uid."";
-                        $pdo -> query($insert2);
-
-                        $insert3 = "INSERT INTO `stakeholders`(`utilitarianAnalysis`) VALUES (".$analysis3.") WHERE name = '".$namearray[2]."' and uid = ".$uid."";
-                        $pdo -> query($insert3);
-
-                        header("Refresh:0");
-                    }
-                }
-
-                if (!$isInTable){
-                   echo "<div class = \"box\" id = \"dilemma-box\">
-                            <h3>Stakeholder 1</h3>
-                            <p>The engineer asked to design the VW defeat... </p>
-                            <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"The engineer is directly, and significantly, impacted by the issue.  They could lose their job at VW, lose industry friends and suffer career set backs. \"></textarea>
-                        </div>
-                        <div class = \"box\" id = \"dilemma-box\">
-                            <h3>Stakeholder 2</h3>
-                            <p>The decision makers at VW who asked...</p>
-                            <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"Defend the inclusion of Stakeholder 2 –Rank by degree of impact\"></textarea>
-                        </div>
-                        <div class = \"box\" id = \"dilemma-box\">
-                            <h3>Stakeholder 3</h3>
-                            <p>Consumers –vehicle buyers...</p>
-                            <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"Defend the inclusion of Stakeholder 3 –Rank by degree of impact\"></textarea>
-                        </div>";
+                   
                 }
 
             }
@@ -102,6 +96,7 @@
             }
         }
 ?>
+<!------------------------------------------------------------------------------------------------>
 <!DOCTYPE html>
 <html>
     <head>
@@ -121,19 +116,28 @@
                                 (Stakeholder 1 experiences the highest impact) Note: You may want to removed stakeholders if you can’t identify how they will 
                                 be impacted or if there is very little impact.  Also, you may add stakeholders at any time.</p>
                 </div>
+                
+                <form method = "POST">
+                    <?php
+                        setAnswers();
+                    ?>
 
-                <?php
-                    setAnswers();
-                ?>
-
-                <button class = 'button' name = 'update-options'>Update</button>
+                    <button class = 'button' name = 'update-stakeholders'>Update</button>
+                </form>
             </div>
 
             <div class = "column is-two-fifths">
                 <div class = "box" id = "ethics-options-wrapper">
                     <p class = "heading" id = "empty">Add Stakeholder</p>
+                    <form method = "POST">
+                        <textarea class = "textarea" id = "dilemma-text" placeholder = "Enter New Stakeholder" name = "newStake"></textarea>
+                        <textarea class = "textarea" id = "dilemma-text" placeholder = "Enter new Stakeholder Analysis" name = "newStakeAnalysis"></textarea>
+                        <?php
+                            addStakeholder();
+                        ?>
+                        <button class = "button" name="addStake">Submit</button>
+                    </form>
                 </div>
-                <button class = "button" id = "add-option">Add</button>
             </div>
             <div>
             <div class = "column has-fixed-size is-20">
@@ -163,6 +167,5 @@
         </div>
 
         <script src = "../../scripts/jquery-3.6.0.js"></script>
-        <script src = "../../scripts/user-event.js?ver=0.1"></script>
     </body>
 </html>
