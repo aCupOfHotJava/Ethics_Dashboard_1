@@ -1,9 +1,5 @@
-<!--FORM NEEDS TO BE SEND TO CLIENT VALIDATION AS WELL AS SERVER SIDE SCRIPTING TO SAVE ANSWERS
-    STILL NEEDS TO HAVE A TOTAL BOARD ADDED UNDER THE SITE MENU - SEE SLIDE 12 OF PROPOSAL
-    ADD OPTION 2 PROPERLY
-
-Need to rethink architechture of tables and implement properly on here-->
 <?php
+    ob_start();
     session_start();
     print_r($_SESSION);
 
@@ -31,6 +27,31 @@ Need to rethink architechture of tables and implement properly on here-->
                     array_push($namearray, $row['name']);
                     $count += 1;
                     $isInTable = True;
+
+                    $slider = $row['1-short-slider'];
+                    $ex = $row['1-short-ex'];
+                    $pleasure = $row['1-short-pleasure'];
+
+                    if ($slider == 0){
+                        $slider = 5;
+                    }
+                    if ($ex == ""){
+                        $ex = "Explaination";
+                    }
+                    if ($pleasure == ""){
+                        $pleasure = "<label>High</label><input type=\"checkbox\" name=\"pleasure".$count."-1\" id=\"high1\" value=\"High\"/>
+                                <label>Low</label><input type=\"checkbox\" name=\"pleasure".$count."-2\" id=\"low1\" value=\"Low\"/>";
+                    }
+                    elseif ($pleasure == "High"){
+                        $pleasure = "<label>High</label><input type=\"checkbox\" name=\"pleasure".$count."-1\" id=\"high1\" value=\"High\" checked/>
+                                    <label>Low</label><input type=\"checkbox\" name=\"pleasure".$count."-2\" id=\"low1\" value=\"Low\"/>";
+                    }
+                    else {
+                        $pleasure = "<label>High</label><input type=\"checkbox\" name=\"pleasure".$count."-1\" id=\"high1\" value=\"High\"/>
+                                    <label>Low</label><input type=\"checkbox\" name=\"pleasure".$count."-2\" id=\"low1\" value=\"Low\" checked/>";
+                    }
+
+
                     echo "<h4>STAKEHOLDER ".$count."</h4>
                                 <p>".$row['name']."</p>
                                 <div class = \"box has-text-weight-bold\">
@@ -39,47 +60,38 @@ Need to rethink architechture of tables and implement properly on here-->
                                         <label id=\"High\" class=\"has-text-right\">High</label>
                                     </nav>
 
-                                    <input type=\"range\" min=\"1\" max=\"10\" value=\"5\" class=\"slider\" id=\"Stakeholer1-1\">
-                                    <span class=\"range-value\">5</span>
+                                    <input type=\"range\" min=\"1\" max=\"10\" value=\"".$slider."\" class=\"slider\" id=\"Stakeholer1-1\" name = \"slider".$count."\" \">
+                                    <span class=\"range-value\">".$slider."</span>
 
-                                    <input type=\"text\" class=\"textarea\" name=\"s1-2\" id=\"s1-2\" placeholder=\"Guilt\" rows=\"1\">
+                                    <input type=\"text\" class=\"textarea\" name=\"ex".$count."\" id=\"s1-2\" placeholder=\"".$ex."\" rows=\"1\">
 
                                     <p>Pleasure: </p>
-                                    <label>High</label><input type=\"checkbox\" name=\"high1\" id=\"high1\" value=\"High\"/>
-                                    <label>Low</label><input type=\"checkbox\" name=\"low1\" id=\"low1\" value=\"Low\"/>
+                                    ".$pleasure."
                         </div>";
                 }
 
-                if (isset($_POST['update-options'])){
-                    $analysis1 = $_POST["analysis1"];
-                    $analysis2 = $_POST["analysis2"];
-                    $analysis3 = $_POST["analysis3"];
+                if (isset($_POST['o1-short'])){
+                    for ($i = 1; $i <= $count; $i++){
+                        $strRep = strval($i);
 
-                    print_r($analysis1);
+                        $getSliderVal = "slider$strRep";
+                        $sliderVal = $_POST[$getSliderVal];
 
-                    if ($isInTable){
-                        // update database
-                        $update1 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis1."' WHERE name = '".$namearray[0]."' and uid = ".$uid."";
+                        $getExVal = "ex$strRep";
+                        $exVal = $_POST[$getExVal];
+
+                        $getPleasureVal1 = "pleasure$strRep-1";
+                        $getPleasureVal2 = "pleasure$strRep-2";
+                        $pleasureVal;
+                        if (isset($_POST[$getPleasureVal1])){
+                            $pleasureVal = $_POST[$getPleasureVal1]; 
+                        }
+                        elseif (isset($_POST[$getPleasureVal2])){
+                            $pleasureVal = $_POST[$getPleasureVal2];
+                        }
+
+                        $update1 = "UPDATE `stakeholders` SET `1-short-slider`= ".$sliderVal." ,`1-short-ex`= '".$exVal."',`1-short-pleasure`= '".$pleasureVal."' WHERE name = '".$namearray[$i-1]."' and uid = ".$uid."";
                         $pdo -> query($update1);
-
-                        $update2 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis2."' WHERE name = '".$namearray[1]."' and uid = ".$uid."";
-                        $pdo -> query($update2);
-
-                        $update3 = "UPDATE `stakeholders` SET `utilitarianAnalysis`= '".$analysis3."' WHERE name = '".$namearray[2]."' and uid = ".$uid."";
-                        $pdo -> query($update3);
-       
-                        header("Refresh:0");
-                    }
-                    else{
-                        // insert into database
-                        $insert1 = "INSERT INTO `stakeholders`(`utilitarianAnalysis`) VALUES (".$analysis1.") WHERE name = '".$namearray[0]."' and uid = ".$uid."";
-                        $pdo -> query($insert1);
-
-                        $insert2 = "INSERT INTO `stakeholders`(`utilitarianAnalysis`) VALUES (".$analysis2.") WHERE name = '".$namearray[1]."' and uid = ".$uid."";
-                        $pdo -> query($insert2);
-
-                        $insert3 = "INSERT INTO `stakeholders`(`utilitarianAnalysis`) VALUES (".$analysis3.") WHERE name = '".$namearray[2]."' and uid = ".$uid."";
-                        $pdo -> query($insert3);
 
                         header("Refresh:0");
                     }
@@ -89,27 +101,24 @@ Need to rethink architechture of tables and implement properly on here-->
                     $count2 = 0;
                     while ($row = $result1 -> fetch()){
                         $count++;
-                        echo "<div class = \"box\" id = \"dilemma-box\">
-                                <h3>Stakeholder ".$count."</h3>
-                                <p>".$row['name']."</p>
-                                <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"The engineer is directly, and significantly, impacted by the issue.  They could lose their job at VW, lose industry friends and suffer career set backs. \"></textarea>
+                        echo "<h4>STAKEHOLDER ".$count2."</h4>
+                            <p>".$row['name']."</p>
+                            <div class = \"box has-text-weight-bold\">
+                                <nav class=\"is-flex has-text-weight-bold\">
+                                    <label id=\"Low\" class=\"has-text-left\">Low</label>
+                                    <label id=\"High\" class=\"has-text-right\">High</label>
+                                </nav>
+
+                                <input type=\"range\" min=\"1\" max=\"10\" value=\"5\" class=\"slider\" id=\"Stakeholer1-1\" name = \"slider".$count2."\" \">
+                                <span class=\"range-value\">5</span>
+
+                                <input type=\"text\" class=\"textarea\" name=\"ex".$count2."\" id=\"s1-2\" placeholder=\"Example\" rows=\"1\">
+
+                                <p>Pleasure: </p>
+                                <label>High</label><input type=\"checkbox\" name=\"pleasure".$count2."\" id=\"high1\" value=\"High\"/>
+                                <label>Low</label><input type=\"checkbox\" name=\"pleasure".$count2."\" id=\"low1\" value=\"Low\"/>
                             </div>";
                     }
-                   /*echo "<div class = \"box\" id = \"dilemma-box\">
-                            <h3>Stakeholder 1</h3>
-                            <p>The engineer asked to design the VW defeat... </p>
-                            <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"The engineer is directly, and significantly, impacted by the issue.  They could lose their job at VW, lose industry friends and suffer career set backs. \"></textarea>
-                        </div>
-                        <div class = \"box\" id = \"dilemma-box\">
-                            <h3>Stakeholder 2</h3>
-                            <p>The decision makers at VW who asked...</p>
-                            <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"Defend the inclusion of Stakeholder 2 –Rank by degree of impact\"></textarea>
-                        </div>
-                        <div class = \"box\" id = \"dilemma-box\">
-                            <h3>Stakeholder 3</h3>
-                            <p>Consumers –vehicle buyers...</p>
-                            <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"Defend the inclusion of Stakeholder 3 –Rank by degree of impact\"></textarea>
-                        </div>";*/
                 }
 
             }
@@ -117,7 +126,126 @@ Need to rethink architechture of tables and implement properly on here-->
                 die($e -> getMessage());
             }
         }
+
+        function setSummary(){
+            try{
+                $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
+                $user = "rwalker_rampaul";
+                $pass = "1xlu7OMJ";
+                $pdo = new PDO($connString, $user, $pass);
+                $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                $uid = $_SESSION["uid"];
+
+                $sql1 =  "SELECT * FROM stakeholders WHERE uid = '". $uid."'";
+                $result1 = $pdo -> query($sql1);
+
+                $isInTable = False;
+                $o1ShortSlider= 0;
+                $o1LongSlider= 0;
+                $o2ShortSlider= 0;
+                $o2LongSlider= 0;
+
+                $count = 0;
+
+                $o1ShortAvg = 50;
+                $o1LongAvg = 50;
+                $o2ShortAvg = 50;
+                $o2LongAvg = 50;
+
+                while ($row = $result1 -> fetch()){
+                    $isInTable = True;
+                    $count ++;
+
+                    $o1ShortSlider += $row['1-short-slider'];
+                    $o1LongSlider += $row['1-long-slider'];
+                    $o2ShortSlider += $row['2-short-slider'];
+                    $o2LongSlider += $row['2-long-slider'];
+                }
+
+                if ($o1ShortSlider != 0){
+                    $o1ShortAvg = ($o1ShortSlider / $count) * 10;
+                }
+                if ($o1LongSlider != 0){
+                    $o1LongAvg = ($o1LongSlider / $count) * 10;
+                }
+                if ($o2ShortSlider != 0){
+                    $o2ShortAvg = ($o2ShortSlider / $count) * 10;
+                }
+                if ($o2LongSlider != 0){
+                    $o2LongAvg = ($o2LongSlider / $count) * 10;
+                }
+               
+                echo '<h1>Option 1</h1>
+                        <h2>Aggregate of short-term outcomes:</h2>
+                        <nav class="is-flex has-text-weight-bold">
+                            <label id="Low" class="has-text-left">Low</label>
+                            <label id=High class="has-text-right">High</label>
+                        </nav>
+                        <div class="slider">
+                            <input type="range" min="1" max="100" value="'.$o1ShortAvg.'" class="slider">
+                            
+                        </div>
+                    
+                        <h2>Aggregate of long-term outcomes:</h2>
+                        <nav class="is-flex has-text-weight-bold">
+                            <label id="Low" class="has-text-left">Low</label>
+                            <label id=High class="has-text-right">High</label>
+                        </nav>
+                        <div class="slider">
+                            <input type="range" min="1" max="100" value="'.$o1LongAvg.'" class="slider">
+                            
+                        </div>
+
+                        <h1>Option 2</h1>
+                        <h2>Aggregate of short-term outcomes:</h2>
+                        <nav class="is-flex has-text-weight-bold">
+                            <label id="Low" class="has-text-left">Low</label>
+                            <label id=High class="has-text-right">High</label>
+                        </nav>
+                        <div class="slider">
+                            <input type="range" min="1" max="100" value="'.$o2ShortAvg.'" class="slider">
+                            
+                        </div>
+
+                        <h2>Aggregate of long-term outcomes:</h2>
+                        <nav class="is-flex has-text-weight-bold">
+                            <label id="Low" class="has-text-left">Low</label>
+                            <label id=High class="has-text-right">High</label>
+                        </nav>
+                        <div class="slider">
+                            <input type="range" min="1" max="100" value="'.$o2LongAvg.'" class="slider">
+                            
+                        </div>';
+
+
+                $sql2 =  "SELECT * FROM utilAnalysisSummary WHERE uid = '". $uid."'";
+                $result2 = $pdo -> query($sql2);
+
+                $isInTable2 = false;
+                while ($row = $result2 -> fetch()){
+                    $isInTable2 = true;
+                }
+
+                if($isInTable2){
+                    //update table
+                   $updateSummary = 'UPDATE `utilAnalysisSummary` SET `1-short-avg`='.$o1ShortAvg.',`1-long-avg`='.$o1LongAvg.',`2-short-avg`='.$o2ShortAvg.',`2-long-avg`='.$o2LongAvg.' WHERE `uid` = '.$uid.'';
+                   $update = $pdo -> query($updateSummary);
+                }
+                else{
+                    //insert into table
+                    $InsertSummary = 'INSERT INTO `utilAnalysisSummary`(`uid`, `1-short-avg`, `1-long-avg`, `2-short-avg`, `2-long-avg`) VALUES ('.$uid.','.$o1ShortAvg.','.$o1LongAvg.','.$o2ShortAvg.','.$o2LongAvg.')';
+                    $insert = $pdo -> query($InsertSummary);
+                }
+            }
+            catch(PDOException $e){
+                die($e -> getMessage());
+            }
+        }
 ?>
+
+<!------------------------------------------------------------------------------------------------>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -141,86 +269,17 @@ Need to rethink architechture of tables and implement properly on here-->
                     <h1 class="title is-3 has-text-centered">OPTION 1</h1>
                     <p class="subtitle is-5 has-text-centered">I can put loyalty to the company first ...</p>
                     <div class = "box">
-                    <h2 class="title is-5"> Stakeholder 1- The engineer asked to design the VW defeat... </h2>
-                    <h3 class="title is-6">Short-term Concequences</h3>
+                    <h3 class="title is-5">Short-term Concequences</h3>
 
-                    <!--<form method="POST" action="../../../server/utilitarianismAnalysis.php">-->
-                        <div>
-                            <h4>STAKEHOLDER 1</h4>
-                            <p>The engineer asked to design the VW defeat... </p>
-                            <div class = "box has-text-weight-bold">
-                                <nav class="is-flex has-text-weight-bold">
-                                    <label id="Low" class="has-text-left">Low</label>
-                                    <label id=High class="has-text-right">High</label>
-                                 </nav>
-
-                                 <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-1">
-                                 <span class="range-value">5</span>
-
-                                <input type="text" class="textarea" name="s1-2" id="s1-2" placeholder="Guilt" rows="1">
-
-                                <p>Pleasure: </p>
-                                <label>High</label><input type="checkbox" name="high1" id="high1" value="High"/>
-                                <label>Low</label><input type="checkbox" name="low1" id="low1" value="Low"/>
-                            </div>
-
-                            <h4>STAKEHOLDER 2</h4>
-                            <p>The decision makers at VW who asked...</p>
-                            <div class = "box has-text-weight-bold">
-                                <nav class="is-flex">
-                                    <label id="Low" class="has-text-left">Low</label>
-                                    <label id=High class="has-text-right">High</label>
-                                </nav>
-                                
-                                <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-2">
-                                <span class="range-value">5</span>  
-
-                                <input type="text" class="textarea" name="s2" id="s2-2" placeholder="Explanation" rows="1">
-
-                                <p>Pleasure: </p>
-                                <label>High</label><input type="checkbox" name="high2" id="high2" value="High"/>
-                                <label>Low</label><input type="checkbox" name="low2" id="low2" value="Low"/>
-                            </div>
-
-                            <h4>STAKEHOLDER 3</h4>
-                            <p>Consumers...</p>
-                            <div class="box has-text-weight-bold">
-                                <nav class="is-flex">
-                                    <label id="Low" class="has-text-left">Low</label>
-                                    <label id=High class="has-text-right">High</label>
-                                </nav>
-                                
-                                <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-3">
-                                <span class="range-value">5</span>  
-
-                                <input type="text" class="textarea" name="s3" id="s3-2" placeholder="Explanation" rows="1">
-
-                                <p>Pleasure: </p>
-                                <label>High</label><input type="checkbox" name="high3" id="high3" value="High"/>
-                                <label>Low</label><input type="checkbox" name="low3" id="low3" value="Low"/>
-                            </div>
-
-                            <h4>STAKEHOLDER 4</h4>
-                            <p>VW Owners/Shareholders...</p>
-                            <div class="box has-text-weight-bold">
-                                <nav class="is-flex">
-                                    <label id="Low" class="has-text-left">Low</label>
-                                    <label id=High class="has-text-right">High</label>
-                                </nav>
-                                
-                                <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-4">
-                                <span class="range-value">5</span> 
-        
-                                <input type="text" class="textarea" name="s4" id="s4-2" placeholder="Explanation" rows="1">
-
-                                <p>Pleasure: </p>
-                                <label>High</label><input type="checkbox" name="high4" id="high4" value="High"/>
-                                <label>Low</label><input type="checkbox" name="low4" id="low4" value="Low"/>
-                            </div>
+                    <form method="POST">
+                        <div> 
+                            <?php
+                                setAnswers();
+                            ?>
                         </div>
                         <br>
-                       <!-- <input type = "submit" class="button" value = "Submit">
-                    </form>-->
+                        <button class = "button" name="o1-short">Submit</button>
+                    </form>
                     </div>
 
                     <a href= "utilitarianism-analysis1.php"><button class = "button is-primary" id = "option2" >Option 1 - Short-term</button>  </a>
@@ -255,50 +314,9 @@ Need to rethink architechture of tables and implement properly on here-->
                 </div>
                 </div>
 
-                <!--    Just moving this button to the bottom for better flow
-                     <a class="button" href="../utilitarianism-summary.php">Proceed to Summary ></a> -->
-
-                <h1>Option 1</h1>
-                <h2>Aggregate of short-term outcomes:</h2>
-                <nav class="is-flex has-text-weight-bold">
-                    <label id="Low" class="has-text-left">Low</label>
-                    <label id=High class="has-text-right">High</label>
-                </nav>
-                <div class="slider">
-                    <input type="range" min="1" max="10" value="5" class="slider">
-                    <span class="range-value">5</span>
-                </div>
-            
-                <h2>Long-term outcomes:</h2>
-                <nav class="is-flex has-text-weight-bold">
-                    <label id="Low" class="has-text-left">Low</label>
-                    <label id=High class="has-text-right">High</label>
-                </nav>
-                <div class="slider">
-                    <input type="range" min="1" max="10" value="5" class="slider">
-                    <span class="range-value">5</span>
-                </div>
-
-                <h1>Option 2</h1>
-                <h2>Short-term outcomes:</h2>
-                <nav class="is-flex has-text-weight-bold">
-                    <label id="Low" class="has-text-left">Low</label>
-                    <label id=High class="has-text-right">High</label>
-                </nav>
-                <div class="slider">
-                    <input type="range" min="1" max="10" value="5" class="slider">
-                    <span class="range-value">5</span>
-                </div>
-
-                <h2>Long-term outcomes:</h2>
-                <nav class="is-flex has-text-weight-bold">
-                    <label id="Low" class="has-text-left">Low</label>
-                    <label id=High class="has-text-right">High</label>
-                </nav>
-                <div class="slider">
-                    <input type="range" min="1" max="10" value="5" class="slider">
-                    <span class="range-value">5</span>
-                </div>
+                <?php
+                    setSummary();
+                ?>
 
                 <a class="button" href="../utilitarianism-summary.php">Proceed to Summary ></a>
 

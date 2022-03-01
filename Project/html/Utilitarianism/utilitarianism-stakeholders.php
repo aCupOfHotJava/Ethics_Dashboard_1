@@ -54,7 +54,7 @@
                     while ($row = $result1 -> fetch()){
                         $count++;
                         echo "<div class = \"box\" id = \"dilemma-box\">
-                                <h3>Stakeholder ".$count."</h3>
+                                <h3>Stakeholder ".$count2."</h3>
                                 <p>".$row['name']."</p>
                                 <textarea class = \"textarea\" id = \"dilemma-text\" placeholder = \"The engineer is directly, and significantly, impacted by the issue.  They could lose their job at VW, lose industry friends and suffer career set backs. \"></textarea>
                             </div>";
