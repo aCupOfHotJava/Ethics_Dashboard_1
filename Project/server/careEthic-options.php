@@ -23,14 +23,14 @@
             $pdo = new PDO($connString, $user, $pass);
             $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $sql = "SELECT sliderAttentiveness, sliderCompetence, sliderResponsiveness, dutyofCare1 FROM careEthics WHERE uid = '" .$uid ."';";
+            $sql = "SELECT sliderAttentiveness, sliderCompetence, sliderResponsiveness, DutyofCare1 FROM careEthics WHERE uid = '" .$uid ."';";
             $result = $pdo -> query($sql);
             while($row = $result -> fetch()) {
                 $isEmpty = false;
                 $sliderAttentiveness = 0;
                 $sliderCompetence = 0;
                 $sliderResponsiveness = 0;
-                $dutyofCare = 0;
+                $DutyofCare = 0;
                 $sliderAttentiveness2 = 0;
                 $sliderCompetence2 = 0;
                 $sliderResponsiveness2 = 0;
@@ -42,7 +42,7 @@
                 $sliderAttentiveness = $_POST['sliderAttentiveness1_1'];
                 $sliderCompetence = $_POST['sliderCompetence1_1'];
                 $sliderResponsiveness = $_POST['sliderResponsiveness1_1'];
-                $dutyofCare = $_POST['dutyofCare1'];
+                $DutyofCare = $_POST['doCAVG1'];
                 // $sliderAttentivenes2 = $_POST['sliderAttentiveness1_2'];
                 // $sliderCompetence2 = $_POST['sliderCompetence1_2'];
                 // $sliderResponsiveness2 = $_POST['sliderResponsiveness1_2'];
@@ -50,11 +50,12 @@
                     // $sql = "INSERT INTO careEthics VALUES ('" .$uid ."', '" .$sliderAttentiveness ."','" .$sliderCompetence ."','" .$sliderResponsiveness ."');";
                     // echo $sql;
                     // $pdo -> query($sql);
-                    $stmt = $pdo -> prepare("INSERT INTO careEthics(uid, sliderAttentiveness, sliderCompetence, sliderResponsiveness) VALUES ('" .$uid ."', '" .$sliderAttentiveness ."','" .$sliderCompetence ."','" .$sliderResponsiveness ."');");
+                    $stmt = $pdo -> prepare("INSERT INTO careEthics(uid, sliderAttentiveness, sliderCompetence, sliderResponsiveness, DutyofCare1) VALUES ('" .$uid ."', '" .$sliderAttentiveness ."','" .$sliderCompetence ."','" .$sliderResponsiveness ."','".$DutyofCare ."');");
                     $stmt -> bindParam("uid", $uid);
                     $stmt -> bindParam("sliderAttentiveness", $sliderAttentiveness);
                     $stmt -> bindParam("sliderCompetence", $sliderCompetence);
                     $stmt -> bindParam("sliderResponsiveness", $sliderResponsiveness);
+                    $stmt -> bindParam("DutyofCare1", $DutyofCare);
                     $stmt -> execute();
                     header("Refresh:0");
 
@@ -65,10 +66,11 @@
                     // $sql = "UPDATE careEthics SET sliderAttentiveness = '" .$sliderAttentiveness ."',sliderCompetence = '" .$sliderCompetence ."',sliderResponsiveness = '" .$sliderResponsiveness ."' WHERE uid = " .$uid .";";
                     // echo $sql;
                     // $pdo -> query($sql);
-                    $stmt = $pdo -> prepare("UPDATE careEthics SET sliderAttentiveness = '" .$sliderAttentiveness ."',sliderCompetence = '" .$sliderCompetence ."',sliderResponsiveness = '" .$sliderResponsiveness ."' WHERE uid = " .$uid .";");
+                    $stmt = $pdo -> prepare("UPDATE careEthics SET sliderAttentiveness = '" .$sliderAttentiveness ."',sliderCompetence = '" .$sliderCompetence ."',sliderResponsiveness = '" .$sliderResponsiveness ."',DutyofCare1 = '" .$DutyofCare ."' WHERE uid = " .$uid .";");
                     $stmt -> bindParam("sliderAttentiveness", $sliderAttentiveness);
                     $stmt -> bindParam("sliderCompetence", $sliderCompetence);
                     $stmt -> bindParam("sliderResponsiveness", $sliderResponsiveness);
+                    $stmt -> bindParam("DutyofCare1", $DutyofCare);
                     $stmt -> bindParam("uid", $uid);
                     $stmt -> execute();
 
@@ -84,7 +86,8 @@
                 echo "</p>";
                 echo "<p class = 'textarea' name = 'sliderResponsiveness1_1' rows='5' cols='45'>";
                 echo $sliderResponsiveness;
-                
+                echo "<p class = 'textarea' name = 'doCAVG1' rows='5' cols='45'>";
+                echo $DutyofCare;
                 echo "</p>";
             }
             if($isEmpty) {

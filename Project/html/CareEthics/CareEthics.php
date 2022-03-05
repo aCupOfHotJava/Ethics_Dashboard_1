@@ -124,40 +124,29 @@
             <h1>Option 1</h1>
             <h2>Duty of Care</h2>
             <nav class="is-flex has-text-weight-bold">
-                <label id="Low" class="has-text-left">Low</label>
-                <label id=High class="has-text-right">High</label>
-          
+                <label id="AVG" class="has-text-left">Average</label>          
+            <input type="text" name="doCAVG1" class="average" value="" readonly>
             </nav>
-            <div class="slider">
-            <input type="range" min="1" max="10" value="5" class="slider">
-            <span class="range-value">5</span></div>
             <br>
             <br>
             <h1>Option 2</h1>
             <h2>Duty of Care</h2>
             <nav class="is-flex has-text-weight-bold">
-                <label id="Low" class="has-text-left">Low</label>
-                <label id=High class="has-text-right">High</label>
+                <label id="AVG" class="has-text-left">Average</label>          
+            <input type="text" name="doCAVG2" class="average2" value="" readonly>
             </nav>
-            <div class="slider">
-            <input type="range" min="1" max="10" value="5" class="slider">
-            <span class="range-value">5</span></div>
+
             <br>
             <br>
             <h1>Option 3</h1>
             <h2>Duty of Care</h2>
             <nav class="is-flex has-text-weight-bold">
-                <label id="Low" class="has-text-left">Low</label>
-                <label id=High class="has-text-right">High</label>
+                <label id="AVG" class="has-text-left">Average</label>          
+            <input type="text" name="doCAVG3" class="average3" value="" readonly>
             </nav>
-            <div class="slider, dutyofCare1">
-            <input type="range" min="1" max="10" value="5" class="slider">
-            <span class="range-value" name="doCAVG1">5</span></div>
-            <br>
-            <br>
-            <input type="text" name="average" class="average" value="">
 
-                <a href= "#"><button class = "button savepopup" id = "save" >Save</button>  </a>
+            <br>
+            <br>
                 <a href= "#"><button class = "button submitpopup" name = "submit-CErange" >Submit</button>  </a>
             </form>
         </div>
@@ -166,7 +155,7 @@
     
 </div>
     <script src = "../../scripts/jquery-3.6.0.js"></script>
-    <script src = "../../scripts/careEthics.js"></script>
+    <script src = "../../scripts/careEthics.js?ver=0.1"></script>
 
 </body>
 
