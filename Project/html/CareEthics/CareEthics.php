@@ -150,9 +150,9 @@
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <div class="slider">
+            <div class="slider, dutyofCare1">
             <input type="range" min="1" max="10" value="5" class="slider">
-            <span class="range-value">5</span></div>
+            <span class="range-value" name="doCAVG1">5</span></div>
             <br>
             <br>
             <input type="text" name="average" class="average" value="">
