@@ -87,8 +87,9 @@
             <br>
         </div>
         
-            <a href= "CareEthicOption2.php"><button class = "button" id = "option2" >Option 2</button>  </a>
-            <a href= "CareEthicsOptions3.php"><button class = "button" id = "option3" >Option 3</button>  </a>
+            <a class="button" href="CareEthicOption2.php">Option 2</a>
+            <a class="button" href="CareEthicsOptions3.php">Option 3</a>
+
 
       
     </div>
@@ -154,7 +155,7 @@
     </div>
     
 </div>
-    <script src = "../../scripts/jquery-3.6.0.js"></script>
+    <script src = "../../scripts/jquery-3.6.0.js?ver=0.1"></script>
     <script src = "../../scripts/careEthics.js?ver=0.1"></script>
 
 </body>

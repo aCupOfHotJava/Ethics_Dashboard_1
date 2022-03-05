@@ -89,7 +89,6 @@
   
    
        
-        <div>
         <div class = "column has-fixed-size is-20">
             <a class = "box has-background-grey has-text-white" id = "dashboard" href = "../index.php">
                 DASHBOARD
@@ -109,47 +108,41 @@
             <a class = "box has-background-grey has-text-white" id = "my-progress" href = "../MyProgress.php">
                 MY PROGRESS
             </a>
-        <!-- FIX THIS WALL OF DIVS SOMETIME
-            I think that some divs above weren't closed but this
-            is a really quick fix so that the nav panel has an appropriate
-            size consistent with the other pages. Also necessary to get the
-            sliders (coded below) to appear at the bottom of the page, instead
-            of being connected to the nav panel like they were before. -->
         </div>
-        </div>
+        
         </div>
 
-            <div class="box">
+
+        <div class="box">
+            <br>
+            <br>
             <h1>Option 1</h1>
             <h2>Duty of Care</h2>
             <nav class="is-flex has-text-weight-bold">
-                <label id="Low" class="has-text-left">Low</label>
-                <label id=High class="has-text-right">High</label>
+                <label id="AVG" class="has-text-left">Average</label>          
+            <input type="text" name="doCAVG1" class="average" value="" readonly>
             </nav>
-            <div class="slider">
-            <input type="range" min="1" max="10" value="5" class="slider">
-            <span class="range-value">5</span></div>
-            
+            <br>
+            <br>
             <h1>Option 2</h1>
             <h2>Duty of Care</h2>
             <nav class="is-flex has-text-weight-bold">
-                <label id="Low" class="has-text-left">Low</label>
-                <label id=High class="has-text-right">High</label>
+                <label id="AVG" class="has-text-left">Average</label>          
+            <input type="text" name="doCAVG2" class="average2" value="" readonly>
             </nav>
-            <div class="slider">
-            <input type="range" min="1" max="10" value="5" class="slider">
-            <span class="range-value">5</span></div>
 
+            <br>
+            <br>
             <h1>Option 3</h1>
             <h2>Duty of Care</h2>
             <nav class="is-flex has-text-weight-bold">
-                <label id="Low" class="has-text-left">Low</label>
-                <label id=High class="has-text-right">High</label>
+                <label id="AVG" class="has-text-left">Average</label>          
+            <input type="text" name="doCAVG3" class="average3" value="" readonly>
             </nav>
-            <div class="slider">
-            <input type="range" min="1" max="10" value="5" class="slider">
-            <span class="range-value">5</span></div>
-            <input type="text" class="average" name="" id="" value="" size="30">
+
+            <br>
+            <br>
+                <a href= "#"><button class = "button submitpopup" name = "submit-CErange" >Submit</button>  </a>
         </div>
         </div>
     </div>

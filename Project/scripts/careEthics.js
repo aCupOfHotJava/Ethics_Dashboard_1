@@ -1,5 +1,5 @@
 
-$('.slider').on('input', function () {
+$('.slider1').on('input', function () {
     $(this).next('.range-value').html(this.value);
     $('.range-value').each(function () {
         var val = parseInt(this.innerHTML, 10);
