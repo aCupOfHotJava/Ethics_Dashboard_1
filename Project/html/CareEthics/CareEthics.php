@@ -28,8 +28,8 @@
                     Competence: The ability to deliver what is needed Responsiveness: Empathy for the position of others in need of care.</p>
             </div>
             <form  method = "POST">
-            <?php include '/Applications/XAMPP/xamppfiles/htdocs/Ethics_Dashboard_1/Project/server/careEthic-options.php';
-                                determineState();
+            <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/Ethics_Dashboard_1/Project/server/careEthic-options.php');
+                                    determineState();
                              ?>
             <h1 class="title is-3 has-text-centered">Option 1</h1>
             <p class="subtitle is-5 has-text-centered">I can put loyalty to the company first ...</p>
