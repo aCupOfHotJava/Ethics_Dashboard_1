@@ -67,21 +67,21 @@
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" id="sliderAttentiveness1_2">
+            <input type="range" min="1" max="10" value="5" class="slider" name="sliderAttentiveness1_2">
             <span class="range-value">5</span>  
             <p>Competence</p>
             <nav class="is-flex has-text-weight-bold">
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" id="sliderCompetence1_2">
+            <input type="range" min="1" max="10" value="5" class="slider" name="sliderCompetence1_2">
             <span class="range-value">5</span>        
             <p>Responsiveness</p>
             <nav class="is-flex has-text-weight-bold">
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" id="sliderResponsiveness1_3">
+            <input type="range" min="1" max="10" value="5" class="slider" name="sliderResponsiveness1_2">
             <span class="range-value">5</span>
             <br>
             <br>
@@ -125,6 +125,7 @@
             <h1>Option 1</h1>
             <h2>Duty of Care</h2>
             <nav class="is-flex has-text-weight-bold">
+            <div class="slider avg"></div>
                 <label id="AVG" class="has-text-left">Average</label>          
             <input type="text" name="doCAVG1" class="average" value="" readonly>
             </nav>
@@ -156,7 +157,7 @@
     
 </div>
     <script src = "../../scripts/jquery-3.6.0.js?ver=0.1"></script>
-    <script src = "../../scripts/careEthics.js?ver=0.1"></script>
+    <script src = "../../scripts/careEthics.js?ver=0.4"></script>
 
 </body>
 

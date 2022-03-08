@@ -30,7 +30,10 @@
                     There are three main features of care. Attentiveness: Being aware of needs in others.  
                     Competence: The ability to deliver what is needed Responsiveness: Empathy for the position of others in need of care.</p>
             </div>
-            
+            <form  method = "POST">
+            <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/Ethics_Dashboard_1/Project/server/careEthic-options2.php');
+                                    determineState();
+                             ?>
             <h1 class="title is-3 has-text-centered">Option 2</h1>
             <p class="subtitle is-5 has-text-centered">I can betray the company ...</p>
             <div class="box">
@@ -40,8 +43,7 @@
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-          
-            <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-1">
+            <input type="range" min="1" max="10" value="5" class="slider" name="sliderAttentiveness2_1">
             <span class="range-value">5</span>
            
             <p>Competence</p>
@@ -49,15 +51,18 @@
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-1">
+            <input type="range" min="1" max="10" value="5" class="slider" name="sliderCompetence2_1">
             <span class="range-value">5</span>        
+
             <p>Responsiveness</p>
             <nav class="is-flex has-text-weight-bold">
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-1">
-            <span class="range-value">5</span></div>
+            <input type="range" min="1" max="10" value="5" class="slider" name="sliderResponsiveness2_1">
+            <span class="range-value">5</span>
+        
+        </div>
             <br>
             <div class="box">
             <h2 class="title is-5"> Stakeholder 2- The decision makers at VW who asked...</h2>
@@ -66,22 +71,23 @@
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-1">
+            <input type="range" min="1" max="10" value="5" class="slider" name="sliderAttentiveness2_2">
             <span class="range-value">5</span>  
             <p>Competence</p>
             <nav class="is-flex has-text-weight-bold">
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-1">
+            <input type="range" min="1" max="10" value="5" class="slider" name="sliderCompetence2_2">
             <span class="range-value">5</span>        
             <p>Responsiveness</p>
             <nav class="is-flex has-text-weight-bold">
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" id="Stakeholer1-1">
-            <span class="range-value">5</span></div>
+            <input type="range" min="1" max="10" value="5" class="slider" name="sliderResponsiveness2_2">
+            <span class="range-value">5</span>
+        </div>
             <a href= "CareEthics.php"><button class = "button" id = "option1" >Option 1</button>  </a>
             <a href= "CareEthicsOptions3.php"><button class = "button" id = "option3" >Option 3</button>  </a>
 
@@ -141,13 +147,15 @@
             <br>
             <br>
                 <a href= "#"><button class = "button submitpopup" name = "submit-CErange" >Submit</button>  </a>
+                </form>
+
         </div>
         </div>
     </div>
  </div>
 
     <script src = "../../scripts/jquery-3.6.0.js"></script>
-    <script src = "../../scripts/user-event.js"></script>
+    <script src = "../../scripts/careEthics.js?ver=0.2"></script>
 
 </body>
 
