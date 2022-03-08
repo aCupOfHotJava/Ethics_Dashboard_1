@@ -1,5 +1,8 @@
 <!-- slide 8 in the proposal
-working on the stakeholder analysis page-->
+working on the stakeholder analysis page
+
+* Needs to take and add the stakeholders from/to the stakeholders table in the database.
+-->
 <?php
     session_start();
     print_r($_SESSION);
