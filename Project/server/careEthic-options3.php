@@ -91,10 +91,7 @@
             if(!$isEmpty) {
          echo "Answer Submitted";
             }
-            if($isEmpty) {
 
-
-            }
         }
         catch(PDOException $e) {
             die($e -> getMessage());

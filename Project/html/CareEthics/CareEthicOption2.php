@@ -43,24 +43,24 @@
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" name="sliderAttentiveness2_1">
-            <span class="range-value">5</span>
+            <input type="range" min="1" max="10" value="5" class="slider s2 " name="sliderAttentiveness2_1">
+            <span class="range-value2">5</span>
            
             <p>Competence</p>
             <nav class="is-flex has-text-weight-bold">
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" name="sliderCompetence2_1">
-            <span class="range-value">5</span>        
+            <input type="range" min="1" max="10" value="5" class="slider s2 " name="sliderCompetence2_1">
+            <span class="range-value2">5</span>        
 
             <p>Responsiveness</p>
             <nav class="is-flex has-text-weight-bold">
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" name="sliderResponsiveness2_1">
-            <span class="range-value">5</span>
+            <input type="range" min="1" max="10" value="5" class="slider s2 " name="sliderResponsiveness2_1">
+            <span class="range-value2">5</span>
         
         </div>
             <br>
@@ -71,30 +71,28 @@
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" name="sliderAttentiveness2_2">
-            <span class="range-value">5</span>  
+            <input type="range" min="1" max="10" value="5" class="slider s2 " name="sliderAttentiveness2_2">
+            <span class="range-value2">5</span>  
             <p>Competence</p>
             <nav class="is-flex has-text-weight-bold">
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" name="sliderCompetence2_2">
-            <span class="range-value">5</span>        
+            <input type="range" min="1" max="10" value="5" class="slider s2 " name="sliderCompetence2_2">
+            <span class="range-value2">5</span>        
             <p>Responsiveness</p>
             <nav class="is-flex has-text-weight-bold">
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" name="sliderResponsiveness2_2">
-            <span class="range-value">5</span>
+            <input type="range" min="1" max="10" value="5" class="slider s2 " name="sliderResponsiveness2_2">
+            <span class="range-value2">5</span>
         </div>
             <a class="button" href="CareEthics.php">Option 1</a>
             <a class="button" href="CareEthicsOptions3.php">Option 3</a>
 
         </div>
-   
-       
-        <div>
+
         <div class = "column has-fixed-size is-20">
             <a class = "box has-background-grey has-text-white" id = "dashboard" href = "../index.php">
                 DASHBOARD
@@ -114,7 +112,6 @@
             <a class = "box has-background-grey has-text-white" id = "my-progress" href = "../MyProgress.php">
                 MY PROGRESS
             </a>
-            </div>
             </div>
             </div>
             <div class="box">

@@ -89,22 +89,10 @@
             }
 
             if(!$isEmpty) {
-                echo "<p class = 'textarea' name = 'sliderAttentiveness2_1' rows='5' cols='45'>";
-                echo $sliderAttentiveness;
-                echo "</p>";
-                echo "<p class = 'textarea' name = 'sliderCompetence2_1' rows='5' cols='45'>";
-                echo $sliderCompetence;
-                echo "</p>";
-                echo "<p class = 'textarea' name = 'sliderResponsiveness2_1' rows='5' cols='45'>";
-                echo $sliderResponsiveness;
-                echo "<p class = 'textarea' name = 'doCAVG1' rows='5' cols='45'>";
-                echo $DutyofCare;
-                echo "</p>";
-            }
-            if($isEmpty) {
-
-
-            }
+                echo "Answer Submitted";
+                   }
+       
+               
         }
         catch(PDOException $e) {
             die($e -> getMessage());
