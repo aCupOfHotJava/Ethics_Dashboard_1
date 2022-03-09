@@ -28,8 +28,8 @@
                     Competence: The ability to deliver what is needed Responsiveness: Empathy for the position of others in need of care.</p>
             </div>
             <form  method = "POST">
-            <?php include '/Applications/XAMPP/xamppfiles/htdocs/Ethics_Dashboard_1/Project/server/careEthic-options.php';
-                                determineState();
+            <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/Ethics_Dashboard_1/Project/server/careEthic-options.php');
+                                    determineState();
                              ?>
             <h1 class="title is-3 has-text-centered">Option 1</h1>
             <p class="subtitle is-5 has-text-centered">I can put loyalty to the company first ...</p>
@@ -40,7 +40,7 @@
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" name="sliderAttentiveness1_1">
+            <input type="range" min="1" max="10" value="5" class="slider s1" name="sliderAttentiveness1_1">
             <span class="range-value">5</span>
            
             <p>Competence</p>
@@ -48,7 +48,7 @@
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" name="sliderCompetence1_1">
+            <input type="range" min="1" max="10" value="5" class="slider s1 name="sliderCompetence1_1">
             <span class="range-value">5</span>        
 
             <p>Responsiveness</p>
@@ -56,7 +56,7 @@
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" name="sliderResponsiveness1_1">
+            <input type="range" min="1" max="10" value="5" class="slider s1 " name="sliderResponsiveness1_1">
             <span class="range-value">5</span>
         
         </div>
@@ -67,33 +67,34 @@
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" id="sliderAttentiveness1_2">
+            <input type="range" min="1" max="10" value="5" class="slider s1 " name="sliderAttentiveness1_2">
             <span class="range-value">5</span>  
             <p>Competence</p>
             <nav class="is-flex has-text-weight-bold">
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" id="sliderCompetence1_2">
+            <input type="range" min="1" max="10" value="5" class="slider s1 " name="sliderCompetence1_2">
             <span class="range-value">5</span>        
             <p>Responsiveness</p>
             <nav class="is-flex has-text-weight-bold">
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider" id="sliderResponsiveness1_3">
+            <input type="range" min="1" max="10" value="5" class="slider s1 " name="sliderResponsiveness1_2">
             <span class="range-value">5</span>
             <br>
             <br>
         </div>
         
-            <a href= "CareEthicOption2.php"><button class = "button" id = "option2" >Option 2</button>  </a>
-            <a href= "CareEthicsOptions3.php"><button class = "button" id = "option3" >Option 3</button>  </a>
+            <a class="button" href="CareEthicOption2.php">Option 2</a>
+            <a class="button" href="CareEthicsOptions3.php">Option 3</a>
+
 
       
-    </div>
 
-        <div>
+
+        </div>
         <div class = "column has-fixed-size is-20">
 
             <a class = "box has-background-grey has-text-white" id = "dashboard" href = "../index.php">
@@ -116,48 +117,37 @@
             </a>
         </div>
         </div>
-        </div>
-        </div>
+        
             <div class="box">
             <br>
             <br>
             <h1>Option 1</h1>
             <h2>Duty of Care</h2>
             <nav class="is-flex has-text-weight-bold">
-                <label id="Low" class="has-text-left">Low</label>
-                <label id=High class="has-text-right">High</label>
-          
+      
+                <label id="AVG" class="has-text-left">Average</label>          
+            <input type="text" name="doCAVG1" class="average" value="" readonly>
             </nav>
-            <div class="slider">
-            <input type="range" min="1" max="10" value="5" class="slider">
-            <span class="range-value">5</span></div>
             <br>
             <br>
             <h1>Option 2</h1>
             <h2>Duty of Care</h2>
             <nav class="is-flex has-text-weight-bold">
-                <label id="Low" class="has-text-left">Low</label>
-                <label id=High class="has-text-right">High</label>
+                <label id="AVG" class="has-text-left">Average</label>          
+            <input type="text" name="doCAVG2" class="average2" value="" readonly>
             </nav>
-            <div class="slider">
-            <input type="range" min="1" max="10" value="5" class="slider">
-            <span class="range-value">5</span></div>
+
             <br>
             <br>
             <h1>Option 3</h1>
             <h2>Duty of Care</h2>
             <nav class="is-flex has-text-weight-bold">
-                <label id="Low" class="has-text-left">Low</label>
-                <label id=High class="has-text-right">High</label>
+                <label id="AVG" class="has-text-left">Average</label>          
+            <input type="text" name="doCAVG3" class="average3" value="" readonly>
             </nav>
-            <div class="slider">
-            <input type="range" min="1" max="10" value="5" class="slider">
-            <span class="range-value">5</span></div>
-            <br>
-            <br>
-            <input type="text" name="average" class="average" value="">
 
-                <a href= "#"><button class = "button savepopup" id = "save" >Save</button>  </a>
+            <br>
+            <br>
                 <a href= "#"><button class = "button submitpopup" name = "submit-CErange" >Submit</button>  </a>
             </form>
         </div>
@@ -165,8 +155,8 @@
     </div>
     
 </div>
-    <script src = "../../scripts/jquery-3.6.0.js"></script>
-    <script src = "../../scripts/careEthics.js"></script>
+    <script src = "../../scripts/jquery-3.6.0.js?ver=0.1"></script>
+    <script src = "../../scripts/careEthics.js?ver=0.8"></script>
 
 </body>
 

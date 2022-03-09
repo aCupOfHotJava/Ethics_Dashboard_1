@@ -1,11 +1,7 @@
-<?php
-    session_start();
-    print_r($_SESSION);
-?>
+
 <!DOCTYPE html>
 <html>
     <head>
-        <!--<link rel="stylesheet" href="Project/styles/main.css">-->
         <link rel = "stylesheet" href = "../styles/bulma/css/bulma.css">
         <title>My Progress</title>
         <meta name="author" content="">
@@ -15,14 +11,41 @@
     <body>
         
         <h1 class = "title has-background-grey-lighter">ETHICS DASHBOARD</h1>
-        
+        <?php require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/Ethics_Dashboard_1/Project/server/MyProgress.php');
+                                    determineState();
+                             ?>
         <div class="columns">
         <div class="column is-two-fifths">
             <div class=" box has-background-grey-lighter">
                 <h3>ETHICAL ISSUE & OPTIONS</h3>
                 <h4>Comments Summary:</h4>
-                <p>This summary lists all comments posted in-text by the marker. </p>
-
+                <?php
+                    try {
+                        $sql = "SELECT option1, option1Ex, option2, option2Ex FROM utilitarianism WHERE uid = " .$uid;
+                        $result = $pdo -> query($sql);
+                        while($row = $result -> fetch()) {
+                            echo "Student Option 1";
+                            echo "<div class = 'box'>";
+                            echo $row[0];
+                            echo "</div>";
+                            echo "Student Explanation 1";
+                            echo "<div class = 'box'>";
+                            echo $row[1];
+                            echo "</div>";
+                            echo "Student Option 2";
+                            echo "<div class = 'box'>";
+                            echo $row[2];
+                            echo "</div>";
+                            echo "Student Explanation 2";
+                            echo "<div class = 'box'>";
+                            echo $row[3];
+                            echo "</div>";
+                        }
+                    }
+                    catch(SQLException $e) {
+                        die($e -> getMessage());
+                    }
+                ?>
             </div>
 
             <div class=" box has-background-grey-lighter">

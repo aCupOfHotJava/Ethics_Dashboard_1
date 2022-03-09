@@ -22,22 +22,11 @@
                 $dilemma = $row[0];
             }
 
-            $sel = mysql_query("SELECT * FROM table_name") or die(mysql_error());
-            while($row = mysql_fetch_array($sel)){
-                echo $row['column_1']." ".$row['column_2']."<br>";
-            }
+ 
 
-            if(!$isEmpty) {
-                echo "<textarea class = 'textarea' name = 'dilemma-text'>";
-                echo $dilemma;
-                echo "</textarea>";
-            }
-            if($isEmpty) {
-                echo "<textarea class = 'textarea' name = 'dilemma-text' placeholder = 'Enter your dilemma here.'></textarea>";
-            }
+
         }
         catch(PDOException $e) {
             die($e -> getMessage());
         }
     }
-?>
