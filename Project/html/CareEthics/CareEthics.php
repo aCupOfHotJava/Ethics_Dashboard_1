@@ -118,14 +118,14 @@
         </div>
         </div>
         </div>
-        </div>
+        
             <div class="box">
             <br>
             <br>
             <h1>Option 1</h1>
             <h2>Duty of Care</h2>
             <nav class="is-flex has-text-weight-bold">
-            <div class="slider avg"></div>
+      
                 <label id="AVG" class="has-text-left">Average</label>          
             <input type="text" name="doCAVG1" class="average" value="" readonly>
             </nav>
@@ -157,7 +157,7 @@
     
 </div>
     <script src = "../../scripts/jquery-3.6.0.js?ver=0.1"></script>
-    <script src = "../../scripts/careEthics.js?ver=0.4"></script>
+    <script src = "../../scripts/careEthics.js?ver=0.5"></script>
 
 </body>
 

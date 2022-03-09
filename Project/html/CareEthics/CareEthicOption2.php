@@ -88,8 +88,8 @@
             <input type="range" min="1" max="10" value="5" class="slider" name="sliderResponsiveness2_2">
             <span class="range-value">5</span>
         </div>
-            <a href= "CareEthics.php"><button class = "button" id = "option1" >Option 1</button>  </a>
-            <a href= "CareEthicsOptions3.php"><button class = "button" id = "option3" >Option 3</button>  </a>
+            <a class="button" href="CareEthics.php">Option 1</a>
+            <a class="button" href="CareEthicsOptions3.php">Option 3</a>
 
         </div>
    
@@ -155,7 +155,7 @@
  </div>
 
     <script src = "../../scripts/jquery-3.6.0.js"></script>
-    <script src = "../../scripts/careEthics.js?ver=0.2"></script>
+    <script src = "../../scripts/careEthics.js?ver=0.4"></script>
 
 </body>
 
