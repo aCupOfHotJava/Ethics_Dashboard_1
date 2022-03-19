@@ -1,0 +1,28 @@
+TEAM MEETING
+Date: March 18, 2022
+
+Attendees:
+Brandon Kreig
+Monica Rampaul
+Sophia Joseph
+Alvin Villafranca
+
+Progress:
+-continuing fixing errors, refactoring code, and adding changes from peer testing
+
+Tasks for this week:
+Brandon: 
+- continue working on changes from peer testing (instructor view)
+
+Monica: 
+- continue working on changes from peer testing (refactoring, cleaning up code)
+
+Sophia: 
+- continue working on changes from peer testing (virtue ethics pages)
+- change virtue ethics ball page
+
+Alvin: 
+- continue working on my progress report page
+
+Aside notes/ideas:
+- do not need to implement anything else, just clean up code and implement changes
