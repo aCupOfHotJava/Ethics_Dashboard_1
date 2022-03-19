@@ -5,7 +5,7 @@ no functionality added yet-->
     print_r($_SESSION);
 
     if (!isset($_SESSION["uid"])){
-        header("Location: ../html/login.php");  
+        header("Location: ../../login.php");  
     }
 
         function setAnswers(){
@@ -18,73 +18,97 @@ no functionality added yet-->
 
                 $uid = $_SESSION["uid"];
 
-                $sql1 =  "SELECT * FROM virtueEthicsOptions WHERE uid = '". $uid."'";
+                $sql1 =  "SELECT * FROM virtueEthics WHERE uid = '". $uid."'";
                 $result1 = $pdo -> query($sql1);
 
                 $isInTable = False;
-                $count = 0;
-                $namearray = array();
                 while ($row = $result1 -> fetch()){
-                    array_push($namearray, $row['name']);
-                    $count += 1;
-                    if ($row['option1'] == ""){
-                        $isInTable = False;
+                    $isInTable = True;
 
-                    }
-                    else{
-                        $isInTable = True;
-                        echo "placeholder";
-                    }
-                }
+                    $option1_1 = $row['option1_1'];
+                    $option1_2 = $row['option1_2'];
+                    $option2_1 = $row['option2_1'];
+                    $option2_2 = $row['option2_2'];
+                    $option3_1 = $row['option3_1'];
+                    $option3_2 = $row['option3_2'];
 
-                if (isset($_POST['update-options'])){
-                    $option1 = $_POST["submit1"];
-                    $option2 = $_POST["submit2"];
-                    $option3 = $_POST["submit3"];
-                    $virtuousOptions = $_POST["submitOptions"];
+                    echo '<div>
+                        <h2>OPTION 1 - I can put loyalty to the company...</h2>
+                        <br>
+                        <div class="box">
+                            <h2> VICE (EXCESS) - VIRTUE (MEAN) - VICE (DEFICIENCY) </h2>
+                            <label>Blind Devotion</label><input type="range" min="1" max="10" value="'.$option1_1.'" name="option1_1" id="s1-1"><label>Loyalty</label><input type="range" min="1" max="10" value="'.$option1_2.'" name="option1_2" id="s1-1"><label>Disloyalty</label>
+                        </div>
 
+                        <h2>OPTION 2 - I can betray the company, go to the press ...</h2>
+                        <br>
+                        <div class="box">
+                            <h2> VICE (EXCESS) - VIRTUE (MEAN) - VICE (DEFICIENCY) </h2>
+                            <label>Over-Sharing</label><input type="range" min="1" max="10" value="'.$option2_1.'" name="option2_1" id="s1-1"><label>Honesty</label><input type="range" min="1" max="10" value="'.$option2_2.'" name="option2_2" id="s1-1"><label>Dishonesty</label>
+                        </div>
 
-                    print_r($analysis1);
+                        <h2>OPTION 3 - I can stand up to my superiors, say no and organize ...</h2>
+                        <br>
+                        <div class="box">
+                            <h2> VICE (EXCESS) - VIRTUE (MEAN) - VICE (DEFICIENCY) </h2>
+                            <label>Rashness</label><input type="range" min="1" max="10" value="'.$option3_1.'" name="option3_1" id="s1-1"><label>Courage</label><input type="range" min="1" max="10" value="'.$option3_2.'" name="option3_2" id="s1-1"><label>Cowardice</label>
+                        </div>
+                        </div>';
 
-                    if ($isInTable){
-                        // update database
-                        $update1 = "UPDATE `virtueEthicsOptions` SET `option1`= '".$option1."' WHERE name = '".$namearray[0]."' and uid = ".$uid."";
-                        $pdo -> query($update1);
-
-                        $update2 = "UPDATE `virtueEthicsOptions` SET `option2`= '".$option2."' WHERE name = '".$namearray[1]."' and uid = ".$uid."";
-                        $pdo -> query($update2);
-
-                        $update3 = "UPDATE `virtueEthicsOptions` SET `option3`= '".$option3."' WHERE name = '".$namearray[2]."' and uid = ".$uid."";
-                        $pdo -> query($update3);
-
-                        $update4 = "UPDATE `virtueEthicsOptions` SET `virtuousOptions`= '".$virtuousOptions."' WHERE name = '".$namearray[3]."' and uid = ".$uid."";
-                        $pdo -> query($update4);
-       
-                        header("Refresh:0");
-                    }
-                    else{
-                        // insert into database
-                        $insert1 = "INSERT INTO `virtueEthicsOptions`(`option1`) VALUES (".$option1.") WHERE name = '".$namearray[0]."' and uid = ".$uid."";
-                        $pdo -> query($insert1);
-
-                        $insert2 = "INSERT INTO `virtueEthicsOptions`(`option2`) VALUES (".$option2.") WHERE name = '".$namearray[1]."' and uid = ".$uid."";
-                        $pdo -> query($insert2);
-
-                        $insert3 = "INSERT INTO `virtueEthicsOptions`(`option3`) VALUES (".$option3.") WHERE name = '".$namearray[2]."' and uid = ".$uid."";
-                        $pdo -> query($insert3);
-
-                        $insert4 = "INSERT INTO `virtueEthicsOptions`(`virtuousOptions`) VALUES (".$virtuousOptions.") WHERE name = '".$namearray[3]."' and uid = ".$uid."";
-                        $pdo -> query($insert4);
-
-                        header("Refresh:0");
-                    }
                 }
 
                 if (!$isInTable){
-                   echo "placeholder";
-                }
+                    echo '<div>
+                            <h2>OPTION 1 - I can put loyalty to the company...</h2>
+                            <br>
+                            <div class="box">
+                                <h2> VICE (EXCESS) - VIRTUE (MEAN) - VICE (DEFICIENCY) </h2>
+                                <label>Blind Devotion</label><input type="range" min="1" max="10" value="5" name="option1_1" id="s1-1"><label>Loyalty</label><input type="range" min="1" max="10" value="5" name="option1_2" id="s1-1"><label>Disloyalty</label>
+                            </div>
 
-            }
+                            <h2>OPTION 2 - I can betray the company, go to the press ...</h2>
+                            <br>
+                            <div class="box">
+                                <h2> VICE (EXCESS) - VIRTUE (MEAN) - VICE (DEFICIENCY) </h2>
+                                <label>Over-Sharing</label><input type="range" min="1" max="10" value="5" name="option2_1" id="s1-1"><label>Honesty</label><input type="range" min="1" max="10" value="5" name="option2_2" id="s1-1"><label>Dishonesty</label>
+                            </div>
+
+                            <h2>OPTION 3 - I can stand up to my superiors, say no and organize ...</h2>
+                            <br>
+                            <div class="box">
+                                <h2> VICE (EXCESS) - VIRTUE (MEAN) - VICE (DEFICIENCY) </h2>
+                                <label>Rashness</label><input type="range" min="1" max="10" value="5" name="option3_1" id="s1-1"><label>Courage</label><input type="range" min="1" max="10" value="5" name="option3_2" id="s1-1"><label>Cowardice</label>
+                            </div>
+                        </div>
+                        <br>';
+                }
+                
+                if (isset($_POST['options'])){
+
+                    $option1_1 = $_POST['option1_1'];
+                    $option1_2 = $_POST['option1_2'];
+                    $option2_1 = $_POST['option2_1'];
+                    $option2_2 = $_POST['option2_2'];
+                    $option3_1 = $_POST['option3_1'];
+                    $option3_2 = $_POST['option3_2'];
+
+                    if ($isInTable){
+                        //update new answers the database
+                        //$updateStatement = "UPDATE virtueEthics SET `option1`='".$option1"',`option2`='".$option2."',`option3`='".$option3."',`optionsRanked`='".$optionsRanked."' WHERE `uid` = '".$uid."'";
+                        $updateStatement = "UPDATE `virtueEthics` SET `option1_1` = '".$option1_1."', `option1_2` = '".$option1_2."', `option2_1` = '".$option2_1."', `option2_2` = '".$option2_2."', `option3_1` = '".$option3_1."', `option3_2` = '".$option3_2."'WHERE `uid` = '".$uid."'";
+                        $pdo -> query($updateStatement);
+
+                        header("Refresh:0");
+                    }
+                    else{
+                        //insert answers into the database
+                        $insertStatement = "INSERT INTO `virtueEthics`(`uid`, `option1_1`, `option1_2`, `option2_1`, `option2_2`, `option3_1`, `option3_2`) VALUES (".$uid.", ".$option1_1.", ".$option1_2.",".$option2_1.",".$option2_2.",".$option3_1.",".$option3_2.")";
+                        $pdo -> query($insertStatement);
+
+                        header("Refresh:0");
+                    }
+                }         
+            }                
             catch(PDOException $e){
                 die($e -> getMessage());
             }
@@ -110,55 +134,14 @@ no functionality added yet-->
                     </div>
     
                     <div class = "box has-background-grey-lighter">
-                        <h2>OPTION 1 - I can put loyalty to the company...</h2>
-                        <br>
-                        <form method="POST" action="../../server/virtueEthics-options.php">
-                            <div>
-                                <div class="box">
-                                    <h2> VICE (EXCESS) - VIRTUE (MEAN) - VICE (DEFICIENCY) </h2>
-                                    <label>Blind Devotion</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Loyalty</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Disloyalty</label>
-                                </div>
-                            </div>
-                            <br>
-                            <input type = "submit" class="button" name = "submit1" value = "Submit">
-                        </form>
-                    </div>
-                    <br>
-                    <div class = "box has-background-grey-lighter">
-                        <h2>OPTION 2 - I can betray the company, go to the press ...</h2>
-                        <br>
-    
-                        <form method="POST" action="../../server/virtueEthics-options.php">
-                            <div>
-                                <div class="box">
-                                    <h2> VICE (EXCESS) - VIRTUE (MEAN) - VICE (DEFICIENCY) </h2>
-                                    <label>Over-Sharing</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Honesty</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Dishonesty</label>
-                                </div>
-    
-                            </div>
-                            <br>
-                            <input type = "submit" class="button" name = "submit2" value = "Submit">
-                        </form>
-                    </div>
-                
-                    <br>
-                    <div class = "box has-background-grey-lighter">
-                        <h2>OPTION 3 - I can stand up to my superiors, say no and organize ...</h2>
-                        <br>
-
-                        <form method="POST" action="../../server/virtueEthics-options.php">
-                            <div>
-                                <div class="box">
-                                    <h2> VICE (EXCESS) - VIRTUE (MEAN) - VICE (DEFICIENCY) </h2>
-                                    <label>Rashness</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Courage</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Cowardice</label>
-                                </div>
-
-                            <br>
-                            <input type = "submit" class="button" name = "submit3" value = "Submit">
+                        <form method="POST">
+                                <?php
+                                    setAnswers();
+                                ?>
+                            <button class = "button" name="options">Submit</button>
                         </form>
                     </div>
                 </div>
-            </div>
                 <div>
                 <div class="column has-fixed-size is-20">
                     <a class = "box has-background-grey has-text-white" id = "dashboard" href = "../index.php">
