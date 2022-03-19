@@ -5,6 +5,7 @@ average;
 
 
 $('.s1').on('input', function () {
+
     $(this).next('.range-value').html(this.value);
     $('.range-value').each(function () {
         var val = parseInt(this.innerHTML, 10);
@@ -19,8 +20,6 @@ $('.s1').on('input', function () {
 });
 
 
-
-    
 
     $('.s2').on('input', function () {
         $(this).next('.range-value2').html(this.value);
@@ -52,3 +51,4 @@ $('.s1').on('input', function () {
            average = total / valid_labels;
            $('.average3').val(average);
        });
+

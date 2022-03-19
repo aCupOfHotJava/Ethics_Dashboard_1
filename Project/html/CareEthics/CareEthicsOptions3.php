@@ -113,7 +113,11 @@
             <a class = "box has-background-grey has-text-white" id = "my-progress" href = "../MyProgress.php">
                 MY PROGRESS
             </a>
+
+        </div>
+
         </div>  
+
         </div>
 
 
@@ -151,10 +155,10 @@
         </div>
         </div>
     </div>
-</div>
-
     <script src = "../../scripts/jquery-3.6.0.js"></script>
+
     <script src = "../../scripts/careEthics.js?ver=0.8"></script>
+
 
 </body>
 
