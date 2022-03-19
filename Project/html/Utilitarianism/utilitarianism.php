@@ -1,9 +1,9 @@
-<!-- NEED TO MAKE SURE THAT ALL THE FIELDS ARE SET FOR SUBMISSION -->
+<!-- ADD INSTRUCTOR FUNCTIONS -->
 <?php
     session_start();
 
         if (!isset($_SESSION["uid"])){
-            header("Location: ../html/login.php");  
+            header("Location: ../login.php");  
         }
 
             function setAnswers(){
@@ -41,14 +41,35 @@
 
                         if ($isInTable){
                             // update database
-                            $update = "UPDATE utilitarianism SET `option1`='".$option1_1."',`option1Ex`='".$option1_2."',`option2`='".$option2_1."',`option2Ex`='".$option2_2."' WHERE `uid` = '".$uid."'";
-                            $pdo -> query($update);
+                            //$update = "UPDATE utilitarianism SET `option1`='".$option1_1."',`option1Ex`='".$option1_2."',
+                            //`option2`='".$option2_1."',`option2Ex`='".$option2_2."' WHERE `uid` = '".$uid."'";
+
+                            //PSTMT
+                            $stmt = $pdo -> prepare("UPDATE utilitarianism SET option1 = ':option1_1', option1Ex = "
+                                    ."':option1_2', option2 = ':option2_1', option2Ex = ':option2_2' WHERE uid = ':uid'");
+                            $stmt -> bindParam(":option1_1", $option1_1);
+                            $stmt -> bindParam(":option1_2", $option1_2);
+                            $stmt -> bindParam(":option2_1", $option2_1);
+                            $stmt -> bindParam(":option2_2", $option2_2);
+                            $stmt -> bindParam(":uid", $uid);
+                            $stmt -> execute();
                             header("Refresh:0");
                         }
                         else{
                             // insert into database
-                            $insert = "INSERT INTO `utilitarianism`(`uid`, `option1`, `option1Ex`, `option2`, `option2Ex`) VALUES ('".$uid."','".$option1_1."','".$option1_2."','".$option2_1."','".$option2_2."')";
-                            $pdo -> query($insert);
+                            //$insert = "INSERT INTO `utilitarianism`(`uid`, `option1`, `option1Ex`, `option2`, 
+                            //`option2Ex`) VALUES ('".$uid."','".$option1_1."','".$option1_2."','".$option2_1."',
+                            //'".$option2_2."')";
+
+                            //PSTMT
+                            $stmt = $pdo -> prepare("INSERT INTO utilitarianism(uid, option1, option1Ex, option2, "
+                                    ."option2Ex) VALUES (:uid, :option1_1, :option1_2, :option2_1, :option2_2)");
+                            $stmt -> bindParam(":uid", $uid);
+                            $stmt -> bindParam(":option1_1", $option1_1);
+                            $stmt -> bindParam(":option1_2", $option1_2);
+                            $stmt -> bindParam(":option2_1", $option2_1);
+                            $stmt -> bindParam(":option2_2", $option2_2);
+                            $stmt -> execute();
                             header("Refresh:0");
                         }
                     }
@@ -89,6 +110,9 @@
 <html>
     <head>
         <title>Utilitarianism</title>
+        <meta name="author" content="">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel = "stylesheet" href = "../../styles/bulma/css/bulma.css">
     </head>
     <body>

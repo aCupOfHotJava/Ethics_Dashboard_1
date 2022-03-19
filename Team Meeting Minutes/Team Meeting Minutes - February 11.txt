@@ -1,0 +1,24 @@
+					TEAM MEETING
+Date: February 11, 2022
+
+Attendees:
+Brandon Kreig
+Monica Rampaul
+Sophia Joseph
+Alvin Villafranca
+
+Progress:
+-did not hold a formal meeting today as we are still working on database implementation
+
+Tasks for this week:
+Brandon: 
+- continue working on database implementation for connection, login page, etc
+Monica: 
+- continue working on database implementation for utilitarianism pages
+Sophia: 
+- continue working on database implementation for virtue ethics pages
+Alvin: 
+- continue working on database implementation for deontology pages
+
+Aside notes/ideas:
+-started a Google document to start working on user task list for milestone #3

@@ -1,8 +1,0 @@
-/**
- * THIS PAGE WILL BE USED FOR CLIENT SIDE VALIDATION FOR THE UTLITARIANISM.HTML FORM
- */
-
-window.onload = function() {
-
-
-}

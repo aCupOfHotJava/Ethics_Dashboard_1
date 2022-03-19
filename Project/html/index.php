@@ -1,6 +1,53 @@
 <?php
     session_start();
-    print_r($_SESSION);
+    if($_SESSION == NULL) {
+        session_destroy();
+        header("Location: login.php");
+    }
+
+    function setStakeholders(){
+        try{
+            $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
+            $user = "rwalker_rampaul";
+            $pass = "1xlu7OMJ";
+            $pdo = new PDO($connString, $user, $pass);
+            $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $uid = $_SESSION["uid"];
+
+            $sql1 =  "SELECT `name` FROM stakeholders WHERE uid = '". $uid."'";
+            $result1 = $pdo -> query($sql1);
+
+            $isInTable = false;
+            $count = 0;
+            while ($row = $result1 -> fetch()){
+                $isInTable = true;
+                $count ++;
+
+                echo "<br>
+                    <p>STAKEHOLDER ".$count."</p>
+                    <p>".$row['name']."</p>";
+            }
+
+            if (!$isInTable){
+                echo "<br>
+                        <p>STAKEHOLDER 1</p>
+                        <br>
+                        <p>STAKEHOLDER 2</p>
+                        <br>
+                        <p>STAKEHOLDER 3</p>
+                        <br>
+                        <p>STAKEHOLDER 4</p>
+                        <br>
+                        <p>STAKEHOLDER 5</p>
+                        <br>
+                        <p>STAKEHOLDER ...</p>";
+            }
+        }
+        catch(PDOException $e){
+            die($e -> getMessage());
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,11 +61,19 @@
             }
         </style>
         <title>Ethics Dashboard</title>
+        <meta name="author" content="">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
         <div class = "title has-background-grey-lighter">
             <h1>ETHICS DASHBOARD</h1>
             <a href = "../server/logout.php" class = "is-size-6">Logout</a>
+            <?php
+                if($_SESSION['isAdmin'] == 1) {
+                    echo "<br><a href = 'instructor-home.php' class = 'is-size-6'>Instructor Home</a>";
+                }
+            ?>
         </div>
 
         <div class="columns">
@@ -49,18 +104,9 @@
         <div class = "column is-two-fifths">
             <div class="box link has-background-primary" onclick = "window.location = 'stakeholders-main.php';" id = "clickable1">
                 <h3>STAKEHOLDERS</h3>
-                <br>
-                <p>STAKEHOLDER 1</p>
-                <br>
-                <p>STAKEHOLDER 2</p>
-                <br>
-                <p>STAKEHOLDER 3</p>
-                <br>
-                <p>STAKEHOLDER 4</p>
-                <br>
-                <p>STAKEHOLDER 5</p>
-                <br>
-                <p>STAKEHOLDER ...</p>
+                <?php
+                    setStakeholders();
+                ?>
             </div>
 
             <div class="utilitarianism box has-background-grey-lighter">

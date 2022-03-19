@@ -2,7 +2,10 @@
 var total = 0,
 valid_labels = 0,
 average;
-$('.slider').on('input', function () {
+
+
+$('.s1').on('input', function () {
+
     $(this).next('.range-value').html(this.value);
     $('.range-value').each(function () {
         var val = parseInt(this.innerHTML, 10);
@@ -16,11 +19,36 @@ $('.slider').on('input', function () {
     $('.average').val(average);
 });
 
-$('.savepopup').on('click',function(){
-    alert("Your work has been saved.");
-});
 
-$('.submitpopup').on('click',function(){
-    alert("Your work has been submitted.");
-});
+
+    $('.s2').on('input', function () {
+        $(this).next('.range-value2').html(this.value);
+
+           $('.range-value2').each(function () {
+               var val = parseInt(this.innerHTML, 10);
+               if (val !== 0) {
+                   valid_labels += 1;
+                   total += val;
+               }
+           });
+           
+           average = total / valid_labels;
+           $('.average2').val(average);
+       });
+       
+
+       $('.s3').on('input', function () {
+        $(this).next('.range-value').html(this.value);
+
+           $('.range-value').each(function () {
+               var val = parseInt(this.innerHTML, 10);
+               if (val !== 0) {
+                   valid_labels += 1;
+                   total += val;
+               }
+           });
+           
+           average = total / valid_labels;
+           $('.average3').val(average);
+       });
 

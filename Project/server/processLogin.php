@@ -18,24 +18,35 @@
             // Get form data in preparation for login query
             $uid = $_POST["form-uid"];
             $pid = $_POST["form-pid"];
+            $admin = NULL;
 
-            // Query
-            $sql = "SELECT uid, pid FROM user WHERE uid = '". $uid.
-                    "' AND pid = '". $pid. "'";
-            
+            $sql = "SELECT pid FROM user WHERE uid = '" .$uid ."';";
             $result = $pdo -> query($sql);
+            $hpid = $result -> fetch();
+            $hpid = $hpid[0];
+            $pverify = password_verify($pid, $hpid);
+            if($pverify) {
+                // Query
+                $sql = "SELECT uid, pid, isAdmin FROM user WHERE uid = '". $uid.
+                "' AND pid = '". $hpid. "'";
+                
+                $result = $pdo -> query($sql);
 
-            $count = 0;
-            while($row = $result -> fetch()) {
-                echo "Hello user ". $row["uid"] ."<br>";
-                $count ++;
-                // Successful login should then lead the user to the homepage WITH A SESSION STATE
-                // that persists until logout or exit!
-                $_SESSION['uid'] = $uid;
-                echo "<br>You will be redirected to home in 3 seconds...";
-                header("Refresh: 3; URL = ../html/index.php");
+                $count = 0;
+                while($row = $result -> fetch()) {
+                    $count ++;
+                    // Successful login should then lead the user to the homepage WITH A SESSION STATE
+                    // that persists until logout or exit!
+                    $_SESSION['uid'] = $uid;
+                    // Also add the admin status to the session! This will affect the view of the user
+                    $_SESSION['isAdmin'] = $row[2];
+                    header("Location: ../html/index.php");
+                }
+
             }
-            if($count == 0) {
+
+           
+            if(!$pverify) {
                 // We should be redirected to the login page again with some error info
                 // instead of being stuck on this empty php.
                 session_destroy();
