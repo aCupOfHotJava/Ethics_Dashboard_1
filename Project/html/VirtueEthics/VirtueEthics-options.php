@@ -107,14 +107,14 @@ no functionality added yet-->
 
                         header("Refresh:0");
                     }
-                }
-               
+                }         
             }                
             catch(PDOException $e){
                 die($e -> getMessage());
             }
         }
 ?>
+<!---------------------------------------------------------------------------------------------------------------------------------------->
 <!DOCTYPE html>
 <html>
     <head>
@@ -191,7 +191,7 @@ no functionality added yet-->
                                 </div>
                             </div>
                             <br>
-                            <input type = "submit" class="button" value = "Submit">
+                            <input type = "submit" class="button" name = "submitOptions" value = "Submit">
                         </form>
                     </div>
                     <a class="button" href="VirtueEthics3.php">Proceed></a>
