@@ -47,11 +47,12 @@
                 $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                 //options 1-3 with submit buttons
-                $option1 = $_POST["option1"];
+                /*$option1 = $_POST["option2"]; 
                 $option2 = $_POST["option2"];
                 $option3 = $_POST["option3"];
                 //options ranked by most virtuous
-                $optionsRanked = $_POST["optionsRanked"];
+                $optionsRanked = $_POST["optionsRanked"];*/
+
                 $uid = $_SESSION["uid"];
 
                 $sql1 =  "SELECT * FROM virtueEthics WHERE uid = '". $uid."'";
@@ -71,7 +72,6 @@
                 else{
                     //insert answers into the database
                 }
-
             }
             catch(PDOException $e){
                 die($e -> getMessage());
