@@ -152,7 +152,7 @@ no functionality yet-->
                 </div>
                 </div>
                 </div>
-                <a class="button" href="VirtueEthics2.php">Proceed></a>
+                <a class="button" href="VirtueEthics2.php">Balance Balls</a>
             </div>
         </div>
 
