@@ -148,9 +148,6 @@
             <input type="text" name="doCAVG2" class="average2" value="" readonly>
             </nav>
 
-            <div class="">
-            <input type="range" min="1" max="10" value="5" class="slider">
-            <span><input type="text" name="average2" class="average2" value=""readonly></span></div>
 
             <br>
             <br>
@@ -161,9 +158,6 @@
             <input type="text" name="doCAVG3" class="average3" value="" readonly>
             </nav>
 
-            <div class="">
-            <input type="range" min="1" max="10" value="5" class="slider">
-            <span><input type="text" name="average2" class="average2" value=""readonly></span></div>
             <br>
             <br>
 
