@@ -23,15 +23,3 @@ $('#update-dilemma').click(function() {
     $('#dilemma-text').remove();
     $('#update-dilemma').remove();
 })
-
-$('.slider').on('input', function () {
-    $(this).next('.range-value').html(this.value);
-});
-
-$('.savepopup').on('click',function(){
-    alert("Your work has been saved.");
-});
-
-$('.submitpopup').on('click',function(){
-    alert("Your work has been submitted.");
-});

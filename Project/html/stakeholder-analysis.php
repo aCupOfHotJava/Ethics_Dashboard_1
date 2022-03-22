@@ -1,5 +1,8 @@
 <!-- slide 8 in the proposal
-working on the stakeholder analysis page-->
+working on the stakeholder analysis page
+
+* Needs to take and add the stakeholders from/to the stakeholders table in the database.
+-->
 <?php
     session_start();
     print_r($_SESSION);
@@ -8,6 +11,9 @@ working on the stakeholder analysis page-->
 <html>
     <head>
         <title>Stakeholder Analysis</title>
+        <meta name="author" content="">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel = "stylesheet" href = "../styles/bulma/css/bulma.css">
     </head>
     <body>

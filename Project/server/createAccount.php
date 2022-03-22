@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>Account Creation</title>
+        <meta name="author" content="">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php
         session_start();
         // DO NOT handle login requests if request method is GET!!
@@ -19,6 +24,7 @@
             $uid = $_POST["form-uid"];
             $pid = $_POST["form-pid"];
 
+            $hpid = password_hash($pid, PASSWORD_DEFAULT);
             // Verify not already existing user
             $sql = "SELECT uid FROM user WHERE uid = '" .$uid ."';";
             $result = $pdo -> query($sql);
@@ -34,8 +40,9 @@
                 session_destroy();
             }
             else {
+                echo $pid;
                 // Insert
-                $sql = "INSERT INTO user VALUES (" .$uid .", '" .$pid ."');";
+                $sql = "INSERT INTO user VALUES (" .$uid .", '" .$hpid ."', 0);";
                 $result = $pdo -> query($sql);
 
                 $SESSION["uid"] = $uid;

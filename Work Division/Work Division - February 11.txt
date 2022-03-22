@@ -1,0 +1,11 @@
+Brandon: 
+- continue working on database implementation for connection, login page, etc
+
+Monica: 
+- continue working on database implementation for utilitarianism pages
+
+Sophia: 
+- continue working on database implementation for virtue ethics pages
+
+Alvin: 
+- continue working on database implementation for deontology pages
