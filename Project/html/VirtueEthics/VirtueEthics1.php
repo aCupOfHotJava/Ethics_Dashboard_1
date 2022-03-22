@@ -108,12 +108,12 @@ no functionality yet-->
         <h1 class = "title has-background-grey-lighter">VIRTUE ETHICS</h1>
 
         <div class = "columns">
-            <div class = "column is-two-fifths">
+            <div class = "column is-two-thirds">
                 <div class = "box has-background-primary">
                     <p>Virtue ethics is a theory that focuses on the character of the decision maker. Building a virtuous character requires
                         practing the virtues until the moral agent knows the right thing to do in the right time in the right place in the
                         right way. To begin, one must achieve a stable equilibrium of the soul by balancing various influences - both internal
-                        and external that might interfere with good judgement. Move the cursor to balance the balls.
+                        and external that might interfere with good judgement. Click the button to balance the balls.
                     </p>
                 </div>
 
@@ -152,7 +152,7 @@ no functionality yet-->
                 </div>
                 </div>
                 </div>
-                <a class="button" href="VirtueEthics2.php">Proceed></a>
+                <a class="button" href="VirtueEthics2.php">Balance ></a>
             </div>
         </div>
 
