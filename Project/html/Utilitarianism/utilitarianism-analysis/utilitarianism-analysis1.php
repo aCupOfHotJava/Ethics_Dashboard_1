@@ -7,6 +7,31 @@
         header("Location: ../../login.php");  
     }
 
+    function getOption(){
+        try {
+            $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
+            $user = "rwalker_rampaul";
+            $pass = "1xlu7OMJ";
+            $pdo = new PDO($connString, $user, $pass);
+            $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $uid = $_SESSION["uid"];
+
+            $sql = "SELECT * FROM utilitarianism WHERE uid = '". $uid."'";
+            $result = $pdo -> query($sql);
+
+            $namearray = array();
+            while($row = $result -> fetch()){
+                array_push($namearray, $row['option']);
+            }
+
+            echo '<p class="subtitle is-5 has-text-centered">'.$namearray[0].'</p>';
+        }
+        catch (PDOException $e){
+            die($e -> getMessage());
+        }
+    }
+
         function setAnswers(){
             try{
                 $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
@@ -267,7 +292,9 @@
 
                 <div>
                     <h1 class="title is-3 has-text-centered">OPTION 1</h1>
-                    <p class="subtitle is-5 has-text-centered">I can put loyalty to the company first ...</p>
+                    <?php
+                        getOption();
+                    ?>
                     <div class = "box">
                     <h3 class="title is-5">Short-term Concequences</h3>
 

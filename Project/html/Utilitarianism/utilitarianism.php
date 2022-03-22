@@ -16,87 +16,47 @@
 
                     $uid = $_SESSION["uid"];
 
-                    $response1_1 = "";
-                    $response1_2 = "";
-                    $response2_1 = "";
-                    $response2_2 = "";
-
                     $sql1 =  "SELECT * FROM utilitarianism WHERE uid = '". $uid."'";
                     $result1 = $pdo -> query($sql1);
 
                     $isInTable = False;
+                    $count = 0;
+                    $optionArray = array();
                     while ($row = $result1 -> fetch()){
                         $isInTable = True;
-                        $response1_1 = $row['option1'];
-                        $response1_2 = $row['option1Ex'];
-                        $response2_1 = $row['option2'];
-                        $response2_2 = $row['option2Ex'];
+                        $count++; 
+                        array_push($optionArray, $row['option']);
+
+                        $ex = $row['explanation'];
+                        if ($ex == ""){
+                            $ex = "Enter your explanation here";
+                        }
+                        
+                        echo '<div class = "box" id = "dilemma-box">
+                                <h3>Option '.$count.'</h3>
+                                <input type = "text" name = "option1-1" class = "textarea required" id = "option1-1" value = "'.$row['option'].'" rows="1"/>
+                                <textarea class = "textarea required" name="ex'.$count.'" id = "option1-2">'.$ex.'</textarea>
+                            </div>'; 
                     }
 
                     if (isset($_POST['update-options'])){
-                        $option1_1 = $_POST["option1-1"];
-                        $option1_2 = $_POST["option1-2"];
-                        $option2_1 = $_POST["option2-1"];
-                        $option2_2 = $_POST["option2-2"];
-
                         if ($isInTable){
-                            // update database
-                            //$update = "UPDATE utilitarianism SET `option1`='".$option1_1."',`option1Ex`='".$option1_2."',
-                            //`option2`='".$option2_1."',`option2Ex`='".$option2_2."' WHERE `uid` = '".$uid."'";
+                            for ($i = 1; $i <= $count; $i++){
+                                $strRep = strval($i);
+                                $item = "ex$strRep";
+                                $explanation = $_POST[$item]; 
+                                $option = $optionArray[$i-1];
 
-                            //PSTMT
-                            $stmt = $pdo -> prepare("UPDATE utilitarianism SET option1 = ':option1_1', option1Ex = "
-                                    ."':option1_2', option2 = ':option2_1', option2Ex = ':option2_2' WHERE uid = ':uid'");
-                            $stmt -> bindParam(":option1_1", $option1_1);
-                            $stmt -> bindParam(":option1_2", $option1_2);
-                            $stmt -> bindParam(":option2_1", $option2_1);
-                            $stmt -> bindParam(":option2_2", $option2_2);
-                            $stmt -> bindParam(":uid", $uid);
-                            $stmt -> execute();
-                            header("Refresh:0");
-                        }
-                        else{
-                            // insert into database
-                            //$insert = "INSERT INTO `utilitarianism`(`uid`, `option1`, `option1Ex`, `option2`, 
-                            //`option2Ex`) VALUES ('".$uid."','".$option1_1."','".$option1_2."','".$option2_1."',
-                            //'".$option2_2."')";
+                                $update = "UPDATE `utilitarianism` SET `explanation`= '".$explanation."' WHERE `uid` = ".$uid." and `option` = '".$option."'";
+                                $pdo -> query($update);
 
-                            //PSTMT
-                            $stmt = $pdo -> prepare("INSERT INTO utilitarianism(uid, option1, option1Ex, option2, "
-                                    ."option2Ex) VALUES (:uid, :option1_1, :option1_2, :option2_1, :option2_2)");
-                            $stmt -> bindParam(":uid", $uid);
-                            $stmt -> bindParam(":option1_1", $option1_1);
-                            $stmt -> bindParam(":option1_2", $option1_2);
-                            $stmt -> bindParam(":option2_1", $option2_1);
-                            $stmt -> bindParam(":option2_2", $option2_2);
-                            $stmt -> execute();
-                            header("Refresh:0");
+                                header("Refresh:0");
+                            }
                         }
                     }
 
-                    if ($isInTable){
-                        echo "<div class = \"box\" id = \"dilemma-box\">
-                                <h3>Option 1</h3>
-                                <input type = \"text\" name = \"option1-1\" class = \"textarea required\" id = \"option1-1\" value = \"".$response1_1."\" rows=\"1\"/>
-                                <textarea class = \"textarea required\" name=\"option1-2\" id = \"option1-2\" placeholder = \"Short term –personal guilt but I keep my job –the consumers are betrayed –the environment is damagedLong term -If the device is discovered I will likely lose my job and possibly my career –VW’s reputation, and business, will be damaged.\">".$response1_2."</textarea>
-                            </div>
-                            <div class = \"box\" id = \"dilemma-box\">
-                                <h3>Option 2</h3>
-                                <input type = \"text\" name = \"option2-1\" class = \"textarea required\" id = \"option2-1\" value = \"".$response2_1."\" rows=\"1\"/>
-                                <textarea class = \"textarea required\" name=\"option2-2\" id = \"option2-2\" placeholder = \"Short term –I will have done the right thing, but I will likely lose my job and possibly my career.  The device will not be built and that will have a negative impact on VW’s ability to produce certain types of vehicles. Long term –I will feel good knowing that I did the right thing –consumers will not be betrayed –the environment is protected.\">".$response2_2."</textarea>
-                            </div>";
-                    }
-                    else {
-                       echo "<div class = \"box\" id = \"dilemma-box\">
-                            <h3>Option 1</h3>
-                            <input type = \"text\" name = \"option1-1\" class = \"textarea required\" id = \"option1-1\" placeholder = \"I can betray the company, go to the press ...\" rows=\"1\"/>
-                            <textarea class = \"textarea required\" name=\"option1-2\" id = \"option1-2\" placeholder = \"Short term –personal guilt but I keep my job –the consumers are betrayed –the environment is damagedLong term -If the device is discovered I will likely lose my job and possibly my career –VW’s reputation, and business, will be damaged.\"></textarea>
-                        </div>
-                        <div class = \"box\" id = \"dilemma-box\">
-                            <h3>Option 2</h3>
-                            <input type = \"text\" name = \"option2-1\" class = \"textarea required\" id = \"option2-1\" placeholder = \"I can betray the company, go to the press ...\" rows=\"1\"/>
-                            <textarea class = \"textarea required\" name=\"option2-2\" id = \"option2-2\" placeholder = \"Short term –I will have done the right thing, but I will likely lose my job and possibly my career.  The device will not be built and that will have a negative impact on VW’s ability to produce certain types of vehicles. Long term –I will feel good knowing that I did the right thing –consumers will not be betrayed –the environment is protected.\"></textarea>
-                        </div>";
+                    if (!$isInTable){
+                        echo '<p>There are no options to analyze. To add options, go to the "ethical issues" page.</p>';
                     }
 
                 }

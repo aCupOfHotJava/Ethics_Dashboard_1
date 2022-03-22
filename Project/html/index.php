@@ -48,6 +48,41 @@
             die($e -> getMessage());
         }
     }
+
+    function setOptions(){
+        try{
+            $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
+            $user = "rwalker_rampaul";
+            $pass = "1xlu7OMJ";
+            $pdo = new PDO($connString, $user, $pass);
+            $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $uid = $_SESSION["uid"];
+
+            $sql1 =  "SELECT `studentOption` FROM ethical_options WHERE uid = '". $uid."'";
+            $result1 = $pdo -> query($sql1);
+
+            $isInTable = false;
+            $count = 0;
+            while ($row = $result1 -> fetch()){
+                $isInTable = true;
+                $count ++;
+
+                echo "<p>OPTION ".$count."</p>
+                    <p>".$row['studentOption']."</p>";
+            }
+
+            if (!$isInTable){
+                echo "<br>
+                        <p>OPTION 1</p>
+                        <p>OPTION 2</p>
+                        <p>OPTION ...</p>";
+            }
+        }
+        catch(PDOException $e){
+            die($e -> getMessage());
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -80,9 +115,9 @@
         <div class="column is-two-fifths">
             <div class="box has-background-primary " onclick = "window.location = 'ethical-issues.php';" id = "clickable0">
                 <h3>ETHICAL ISSUE</h3>
-                <p>OPTION 1</p>
-                <p>OPTION 2</p>
-                <p>OPTION ...</p>
+                <?php
+                    setOptions();
+                ?>
             </div>
 
             <div class="virtueEthics box has-background-grey-lighter">
