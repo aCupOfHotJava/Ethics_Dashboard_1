@@ -42,6 +42,11 @@
                 $stmt -> bindParam(":uid", $uid);
                 $stmt -> bindParam(":option", $option);
                 $stmt -> execute();
+
+                $stmt = $pdo -> prepare("INSERT INTO utilitarianism (`uid`, `option`) VALUES (:uid, :option)");
+                $stmt -> bindParam(":uid", $uid);
+                $stmt -> bindParam(":option", $option);
+                $stmt -> execute();
                 header("Location: #");
             }
             echo "<textarea class = 'textarea' name = 'option-text' placeholder = 'Enter your option here.'></textarea>";
@@ -143,16 +148,16 @@
                     <a class = "box has-background-grey has-text-white" id = "dashboard" href = "index.php">
                         DASHBOARD
                     </a>
-                    <a class = "box has-background-grey has-text-white" id = "utilitarianism" href = "../Utilitarianism/utilitarianism.php">
+                    <a class = "box has-background-grey has-text-white" id = "utilitarianism" href = "Utilitarianism/utilitarianism.php">
                         UTILITARIANISM
                     </a>
-                    <a class = "box has-background-grey has-text-white" id = "deontology" href = "../Deontology/Deontology1.php">
+                    <a class = "box has-background-grey has-text-white" id = "deontology" href = "Deontology/Deontology1.php">
                         DEONTOLOGY
                     </a>
-                    <a class = "box has-background-grey has-text-white" id = "virtue-ethics" href = "../VirtueEthics/VirtueEthics1.php">
+                    <a class = "box has-background-grey has-text-white" id = "virtue-ethics" href = "VirtueEthics/VirtueEthics1.php">
                         VIRTUE ETHICS
                     </a>
-                    <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "../CareEthics/CareEthics.php">
+                    <a class = "box has-background-grey has-text-white" id = "care-ethics" href = "CareEthics/CareEthics.php">
                         CARE ETHICS
                     </a>
                     <a class = "box has-background-grey has-text-white" id = "my-progress" href = "MyProgress.php">

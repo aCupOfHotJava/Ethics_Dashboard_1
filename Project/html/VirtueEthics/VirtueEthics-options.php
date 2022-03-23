@@ -1,6 +1,7 @@
 <!--slide 29 of proposal
 no functionality added yet-->
 <?php
+    ob_start(); 
     session_start();
     print_r($_SESSION);
 
@@ -113,6 +114,90 @@ no functionality added yet-->
                 die($e -> getMessage());
             }
         }
+
+        function setAvgs(){
+            try{
+                $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
+                $user = "rwalker_joseph";
+                $pass = "GRzQ8Gwh";
+                $pdo = new PDO($connString, $user, $pass);
+                $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                $uid = $_SESSION["uid"];
+
+                $sql1 =  "SELECT * FROM virtueEthics WHERE uid = '". $uid."'";
+                $result1 = $pdo -> query($sql1);
+
+                $isInTable = False;
+                $blindDevotion = 5;
+                $oversharing = 5;
+                $courage = 5;
+
+                while ($row = $result1 -> fetch()){
+                    $isInTable = True;
+
+                    $blindDevotion = ($row['option1_1'] + $row['option1_2']) / 2;
+                    $oversharing = ($row['option2_1'] + $row['option2_2']) / 2;
+                    $courage = ($row['option3_1'] + $row['option3_2']) / 2;
+
+                    echo '<div>
+                            <div class="box">
+                                <h2> O 3: COURAGE </h2>
+                                <label>Virtue</label><input type="range" min="1" max="10" value="'.$courage.'" name="s1-1" id="s1-1"><label>Vice</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div>
+                            <div class="box">
+                                <h2> O 2: OVER-SHARING </h2>
+                                <label>Virtue</label><input type="range" min="1" max="10" value="'.$oversharing.'" name="s1-1" id="s1-1"><label>Vice</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div>
+                            <div class="box">
+                                <h2> O 1: BLIND DEVOTION </h2>
+                                <label>Virtue</label><input type="range" min="1" max="10" value="'.$blindDevotion.'" name="s1-1" id="s1-1"><label>Vice</label>
+                            </div>
+                        </div>';
+                }
+
+                if (!$isInTable){
+                    echo '<div>
+                            <div class="box">
+                                <h2> O 3: COURAGE </h2>
+                                <label>Virtue</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Vice</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div>
+                            <div class="box">
+                                <h2> O 2: OVER-SHARING </h2>
+                                <label>Virtue</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Vice</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div>
+                            <div class="box">
+                                <h2> O 1: BLIND DEVOTION </h2>
+                                <label>Virtue</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Vice</label>
+                            </div>
+                        </div>';
+                }   
+                
+                if ($isInTable){
+                    //update new answers the database
+                    //$updateStatement = "UPDATE virtueEthics SET `option1`='".$option1"',`option2`='".$option2."',`option3`='".$option3."',`optionsRanked`='".$optionsRanked."' WHERE `uid` = '".$uid."'";
+                    $updateStatement = "UPDATE `virtueEthics` SET `courageAvg` = '".$courage."', `oversharingAvg` = '".$oversharing."', `blindDevotionAvg` = '".$blindDevotion."' WHERE `uid` = '".$uid."'";
+                    $pdo -> query($updateStatement);
+
+                    header("Refresh:0");
+                }
+            }                
+            catch(PDOException $e){
+                die($e -> getMessage());
+            }
+        }
 ?>
 <!---------------------------------------------------------------------------------------------------------------------------------------->
 <!DOCTYPE html>
@@ -147,7 +232,7 @@ no functionality added yet-->
                     <a class = "box has-background-grey has-text-white" id = "dashboard" href = "../index.php">
                         DASHBOARD
                     </a>
-                    <a class = "box has-background-grey has-text-white" id = "utilitarianism" href = "Utilitarianism/utilitarianism.php">
+                    <a class = "box has-background-grey has-text-white" id = "utilitarianism" href = "../Utilitarianism/utilitarianism.php">
                         UTILITARIANISM
                     </a>
                     <a class = "box has-background-grey has-text-white" id = "deontology" href = "../Deontology/Deontology1.php">
@@ -169,30 +254,9 @@ no functionality added yet-->
                     <div class = "box has-background-grey-lighter">
                         <h1> OPTIONS RANKED BY MOST VIRTUOUS </h1>
                         <br>
-                        <form method="POST" action="../../server/virtueEthics-options.php">
-                            <div>
-                                <div class="box">
-                                    <h2> O 3: COURAGE </h2>
-                                    <label>Virtue</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Vice</label>
-                                </div>
-                            </div>
-                            <br>
-                            <div>
-                                <div class="box">
-                                    <h2> O 2: OVER-SHARING </h2>
-                                    <label>Virtue</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Vice</label>
-                                </div>
-                            </div>
-                            <br>
-                            <div>
-                                <div class="box">
-                                    <h2> O 1: BLIND DEVOTION </h2>
-                                    <label>Virtue</label><input type="range" min="1" max="10" value="5" name="s1-1" id="s1-1"><label>Vice</label>
-                                </div>
-                            </div>
-                            <br>
-                            <input type = "submit" class="button" name = "submitOptions" value = "Submit">
-                        </form>
+                            <?php
+                                setAvgs();
+                            ?>
                     </div>
                     <a class="button" href="VirtueEthics3.php">Proceed></a>
                 </div>
