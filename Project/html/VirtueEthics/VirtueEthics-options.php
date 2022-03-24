@@ -9,6 +9,57 @@ no functionality added yet-->
         header("Location: ../../login.php");  
     }
 
+    //taking the student input option from the ethical issues table in db and setting them as the options in the virtue ethics options
+        function setOption() {
+            try {
+                $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
+                $user = "rwalker_joseph";
+                $pass = "GRzQ8Gwh";
+                $pdo = new PDO($connString, $user, $pass);
+                $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                $uid = $_SESSION["uid"];
+
+                $sql1 =  "SELECT * FROM ethical_options WHERE uid = '". $uid."'";
+                $result1 = $pdo -> query($sql1);
+
+                $isInTable = False;
+                while ($row = $result1 -> fetch()){
+                    $isInTable = True;
+
+                    $option1 = $row['option1'];
+                    $option2 = $row['option2'];
+                    $option3 = $row['option3'];
+                }
+                    echo '<div>
+                        <h2>OPTION 1 - '.$option1.'</h2>
+                        <br>
+                        <div class="box">
+                            <h2> VICE (EXCESS) - VIRTUE (MEAN) - VICE (DEFICIENCY) </h2>
+                            <label>Blind Devotion</label><input type="range" min="1" max="10" value="'.$option1_1.'" name="option1_1" id="s1-1"><label>Loyalty</label><input type="range" min="1" max="10" value="'.$option1_2.'" name="option1_2" id="s1-1"><label>Disloyalty</label>
+                        </div>
+
+                        <h2>OPTION 2 - '.$option2.'</h2>
+                        <br>
+                        <div class="box">
+                            <h2> VICE (EXCESS) - VIRTUE (MEAN) - VICE (DEFICIENCY) </h2>
+                            <label>Over-Sharing</label><input type="range" min="1" max="10" value="'.$option2_1.'" name="option2_1" id="s1-1"><label>Honesty</label><input type="range" min="1" max="10" value="'.$option2_2.'" name="option2_2" id="s1-1"><label>Dishonesty</label>
+                        </div>
+
+                        <h2>OPTION 3 - '.$option3.'</h2>
+                        <br>
+                        <div class="box">
+                            <h2> VICE (EXCESS) - VIRTUE (MEAN) - VICE (DEFICIENCY) </h2>
+                            <label>Rashness</label><input type="range" min="1" max="10" value="'.$option3_1.'" name="option3_1" id="s1-1"><label>Courage</label><input type="range" min="1" max="10" value="'.$option3_2.'" name="option3_2" id="s1-1"><label>Cowardice</label>
+                        </div>
+                        </div>';
+            }
+            catch (PDOException $e) {
+                die($e -> getMessage());
+            }
+        }
+
+
         function setAnswers(){
             try{
                 $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
@@ -221,6 +272,7 @@ no functionality added yet-->
                     <div class = "box has-background-grey-lighter">
                         <form method="POST">
                                 <?php
+                                    setOption();
                                     setAnswers();
                                 ?>
                             <button class = "button" name="options">Submit</button>
