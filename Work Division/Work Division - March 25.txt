@@ -1,0 +1,12 @@
+Tasks for this week:
+Brandon: 
+- refactoring, cleaning up code, fixing styling overall, etc
+
+Monica: 
+- refactoring and cleaning up code on utilitarianism pages
+
+Sophia: 
+- fix the virtue ethics backend problems
+
+Alvin: 
+- continue working on my progress report page

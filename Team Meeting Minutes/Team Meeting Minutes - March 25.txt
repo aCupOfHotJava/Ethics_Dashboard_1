@@ -1,0 +1,30 @@
+TEAM MEETING
+Date: March 25, 2022
+
+Attendees:
+Brandon Kreig
+Monica Rampaul
+Sophia Joseph
+Alvin Villafranca
+
+Progress:
+-no formal meeting held as we are working on the same things as before 
+    - fixing styling
+    - fixing anything not working properly
+
+Tasks for this week:
+Brandon: 
+- refactoring, cleaning up code, fixing styling overall, etc
+
+Monica: 
+- refactoring and cleaning up code on utilitarianism pages
+
+Sophia: 
+- fix the virtue ethics backend problems
+
+Alvin: 
+- continue working on my progress report page
+
+Aside notes/ideas:
+- main focus is not to implement anything else but just to clean up and fix any necessary issues
+- will hold a proper meeting next week to discuss any outstanding issues and talk about final report/video
