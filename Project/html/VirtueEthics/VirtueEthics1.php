@@ -14,11 +14,12 @@ no functionality yet-->
             .traditionsCircle {
                 height: 100px;
                 width: 100px;
-                background-color: rgb(165, 160, 160);
+                background-color: rgb(190, 160, 160);
                 border-radius: 50%;
                 display: flex;
                 flex-wrap: wrap;
-                align-content: center;
+                align-items: center;
+                justify-content: center;
                 color: white;
                 position: relative;
                 top: 90px;
@@ -31,7 +32,8 @@ no functionality yet-->
                 border-radius: 50%;
                 display: flex;
                 flex-wrap: wrap;
-                align-content: center;
+                align-items: center;
+                justify-content: center;
                 color: white;
                 position: relative;
                 left: 200px;
@@ -44,7 +46,8 @@ no functionality yet-->
                 border-radius: 50%;
                 display: flex;
                 flex-wrap: wrap;
-                align-content: center;
+                align-items: center;
+                justify-content: center;
                 color: white;
                 position: relative;
                 left: 450px;
@@ -57,7 +60,8 @@ no functionality yet-->
                 border-radius: 50%;
                 display: flex;
                 flex-wrap: wrap;
-                align-content: center;
+                align-items: center;
+                justify-content: center;
                 color: white;
                 position: relative;
                 left: 20px;
@@ -66,11 +70,12 @@ no functionality yet-->
             .attachmentsCircle {
                 height: 100px;
                 width: 100px;
-                background-color: rgb(0, 255, 0);
+                background-color: rgb(44, 170, 54);
                 border-radius: 50%;
                 display: flex;
                 flex-wrap: wrap;
-                align-content: center;
+                align-items: center;
+                justify-content: center;
                 color: white;
                 position: relative;
                 left: 450px;
@@ -83,7 +88,8 @@ no functionality yet-->
                 border-radius: 50%;
                 display: flex;
                 flex-wrap: wrap;
-                align-content: center;
+                align-items: center;
+                justify-content: center;
                 color: white;
                 position: relative;
                 left: 250px;
@@ -96,7 +102,8 @@ no functionality yet-->
                 border-radius: 50%;
                 display: flex;
                 flex-wrap: wrap;
-                align-content: center;
+                align-items: center;
+                justify-content: center;
                 color: white;
                 position: relative;
                 left: 250px;

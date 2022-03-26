@@ -13,11 +13,12 @@ functionality not added yet-->
             .traditionsCircle {
                 height: 100px;
                 width: 100px;
-                background-color: rgb(165, 160, 160);
+                background: rgb(206, 220, 222, 100);
                 border-radius: 50%;
                 display: flex;
                 flex-wrap: wrap;
-                align-content: center;
+                align-items: center;
+                justify-content: center;
                 color: white;
                 position: relative;
                 top: 300px;
@@ -26,11 +27,12 @@ functionality not added yet-->
             .expectationsCircle {
                 height: 100px;
                 width: 100px;
-                background-color: rgb(0, 100, 0);
+                background: rgb(23, 128, 37, 100);
                 border-radius: 50%;
                 display: flex;
                 flex-wrap: wrap;
-                align-content: center;
+                align-items: center;
+                justify-content: center;
                 color: white;
                 position: relative;
                 left: 350px;
@@ -39,11 +41,12 @@ functionality not added yet-->
             .desiresCircle {
                 height: 100px;
                 width: 100px;
-                background-color: rgb(218, 38, 38);
+                background: rgb(217, 63, 55, 100);
                 border-radius: 50%;
                 display: flex;
                 flex-wrap: wrap;
-                align-content: center;
+                align-items: center;
+                justify-content: center;
                 color: white;
                 position: relative;
                 left: 400px;
@@ -52,11 +55,12 @@ functionality not added yet-->
             .conventionsCircle {
                 height: 100px;
                 width: 100px;
-                background-color: rgb(39, 39, 219);
+                background: rgb(31, 204, 226, 100);
                 border-radius: 50%;
                 display: flex;
                 flex-wrap: wrap;
-                align-content: center;
+                align-items: center;
+                justify-content: center;
                 color: white;
                 position: relative;
                 left: 100px;
@@ -65,11 +69,12 @@ functionality not added yet-->
             .attachmentsCircle {
                 height: 100px;
                 width: 100px;
-                background-color: rgb(27, 151, 27);
+                background: rgb(63, 193, 60, 100);
                 border-radius: 50%;
                 display: flex;
                 flex-wrap: wrap;
-                align-content: center;
+                align-items: center;
+                justify-content: center;
                 color: white;
                 position: relative;
                 top: 90px;
@@ -78,11 +83,12 @@ functionality not added yet-->
             .impulsesCircle {
                 height: 100px;
                 width: 100px;
-                background-color: rgb(218, 158, 47);
+                background: rgb(222, 175, 51, 100);
                 border-radius: 50%;
                 display: flex;
                 flex-wrap: wrap;
-                align-content: center;
+                align-items: center;
+                justify-content: center;
                 color: white;
                 position: relative;
                 top: -190px;
@@ -91,11 +97,12 @@ functionality not added yet-->
             .yourSoulCircle {
                 height: 200px;
                 width: 200px;
-                background-color: rgb(255, 255, 0);
+                background: rgb(223, 255, 56, 100);
                 border-radius: 50%;
                 display: flex;
                 flex-wrap: wrap;
-                align-content: center;
+                align-items: center;
+                justify-content: center;
                 color: white;
                 position: relative;
                 top: -350px;
