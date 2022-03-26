@@ -203,7 +203,7 @@
                         <div class = "box" id = "dilemma-box">
 
                             <h3>What is your motivation?</h3>
-                            <input type="checkbox" name = "ops1[]" id="op1"value="Serves your interests">
+                            <input type="checkbox"   id="op1"value="Serves your interests">
                             <label for="op1"> Serves your interests</label><br>
                             <input type="checkbox" name = "ops1[]" id="op2"value="Serves the interests of someone else you want to impress">
                             <label for="op2"> Serves the interests of someone else you want to impress</label><br>

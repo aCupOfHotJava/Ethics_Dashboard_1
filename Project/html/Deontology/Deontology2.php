@@ -2,6 +2,74 @@
 <?php
     session_start();
     print_r($_SESSION);
+    if (!isset($_SESSION["uid"])){
+        header("Location: ../html/login.php");
+    }
+
+    function determineState() {
+
+        $uid = $_SESSION["uid"];
+        $checkbox1 = 0;
+        $isEmpty = true;
+
+        try{
+            $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
+            $user = "rwalker_villafranca";
+            $pass = "gapsd5W2";
+            $pdo = new PDO($connString, $user, $pass);
+            $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $uid = $_SESSION["uid"];
+            $sql = "SELECT checkbox1 FROM deontology2 WHERE uid = '" .$uid ."';";
+            $result = $pdo -> query($sql);
+            while($row = $result -> fetch()) {
+                $isEmpty = false;
+                $checkbox1 = 0;
+
+            }   
+
+            if(isset($_POST['submit_option1'])) {
+                if(isset($_POST['ops1'])) {
+                    $checks = $_POST['ops1'];
+                }
+                else {
+                    $checks = "";
+                }
+                $checks_string = "";
+                for($i = 0; $i < sizeof($checks); $i ++) {
+                    if($i == 0) {
+                        $checks_string = $checks_string .$checks[$i];
+                    }
+                    else {
+                        $checks_string = $checks_string .", " .$checks[$i];
+                    }
+                }
+
+                if($isEmpty) {
+                    $stmt = $pdo -> prepare("INSERT INTO deontology2(uid, checkbox1) VALUES
+                            (:uid, :checkbox1);");
+                    $stmt -> bindParam(":uid", $uid);
+                    $stmt -> bindParam(":checkbox1", $checks_string);
+                    $stmt -> execute();
+
+                }
+                else {
+
+                    $stmt = $pdo -> prepare("UPDATE deontology2 SET  checkbox1 = :checkbox1 
+                            WHERE uid = :uid;");
+                    $stmt -> bindParam(":checkbox1", $checks_string);
+                    $stmt -> bindParam(":uid", $uid);
+                    $stmt -> execute();
+                }
+            }
+ 
+        }
+        
+        catch(PDOException $e) {
+            die($e -> getMessage());
+        }
+    }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +91,10 @@
                         consider the reasons supporting each option.</p>
                 </div>
 
-                <form method = "POST" action = "../../server/utilitarianismOptions.php" id = "utilitarianism-options-form">
+                <form method = "POST">
+                <?php
+                                    determineState();
+                                ?>
                     <div class = "options">
                         <div class = "box" id = "dilemma-box">
                             <h3> HYPOTHETICAL IMPERATIVES </h3>
@@ -38,23 +109,23 @@
 
                         <div class = "box" id = "dilemma-box">
                             <h3>You selected the following reasons to support OPTION 1:</h3>
-                            <input type="checkbox" id="op1"value="Serves your interests">
+                            <input type="checkbox" name = "ops1[]" id="op1"value="Serves your interests">
                             <label for="op1"> Serves your interests</label><br>
-                            <input type="checkbox" id="op2"value="Serves the interests of someone else you want to impress">
+                            <input type="checkbox" name = "ops1[]" id="op2"value="Serves the interests of someone else you want to impress">
                             <label for="op2"> Serves the interests of someone else you want to impress</label><br>
-                            <input type="checkbox" id="op3"value="It will look good">
+                            <input type="checkbox" name = "ops1[]" id="op3"value="It will look good">
                             <label for="op3"> It will look good</label><br>
-                            <input type="checkbox" id="op4" value="It will pay off in the long run">
+                            <input type="checkbox" name = "ops1[]" id="op4" value="It will pay off in the long run">
                             <label for="op4"> It will pay off in the long run</label><br>
-                            <input type="checkbox" id="op5" value="Everybody wins">
+                            <input type="checkbox" name = "ops1[]" id="op5" value="Everybody wins">
                             <label for="op5"> Everybody wins</label><br>
-                            <input type="checkbox" id="op6"value="It costs very little">
+                            <input type="checkbox" name = "ops1[]" id="op6"value="It costs very little">
                             <label for="op6"> It costs very little</label><br>
-                            <input type="checkbox" id="op7" value="Revenge">
+                            <input type="checkbox" name = "ops1[]" id="op7" value="Revenge">
                             <label for="op7"> Revenge</label><br>
-                            <input type="checkbox" id="op8" value=" Other">
+                            <input type="checkbox" name = "ops1[]" id="op8" value=" Other">
                             <label for="op8"> Other</label><br>
-                            <input type="checkbox" id="op9" value="Its the right thing to do">
+                            <input type="checkbox" name = "ops1[]" id="op9" value="Its the right thing to do">
                             <label for="op9"> Its the right thing to do</label><br>   
                             <p>
                                 These motivations are consistent with hypothetical reasoning 
@@ -63,7 +134,7 @@
                             <br>
                             </div>
 
-                        <input type = "submit" class="button" value = "Submit">
+                            <input type = "submit" class="button" value = "Submit" name ="submit_option1">
                     </div>
                 </form>
             </div>
@@ -76,7 +147,7 @@
                 <a class = "box has-background-grey has-text-white" id = "utilitarianism" href = "../Utilitarianism/utilitarianism.php">
                     UTILITARIANISM
                 </a>
-                <a class = "box has-background-white has-text-black id = "deontology" href = "../Deontology/Deontology1.php">
+                <a class = "box has-background-white has-text-black" id = "deontology" href = "../Deontology/Deontology1.php">
                     DEONTOLOGY
                 </a>
                 <a class = "box has-background-grey has-text-white" id = "virtue-ethics" href = "../VirtueEthics/VirtueEthics1.php">

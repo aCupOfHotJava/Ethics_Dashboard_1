@@ -3,7 +3,7 @@ $(document).ready(function(){
         if($(this).prop("checked") == true){
             console.log("Checkbox is tested.");
             $("form").submit(function(){
-                alert("Submitted");
+                alert("test");
                 document.location.href = "";
             })
         }

@@ -31,8 +31,8 @@
                                     <input type="radio" id="no1" name="choice1" value="yes">
                                     <label for="no1">No</label><br> 
                             <textarea class = "textarea required" name="option1-2" id = "option1-2" placeholder = "Honesty is right in all circumstances, times and all places."></textarea>
-                            <p>*if the moral law cannot be expressed as a universal law of 
-                                moral action is fails the universalizability test.</p>
+                            <p>*If the moral law is not a universal law of moral action—it
+                                fails the universalizability test.</p>
                         </div>
 
 
@@ -44,8 +44,8 @@
                                     <input type="radio" id="no2" name="choice2" value="yes">
                                     <label for="no2">No</label><br> 
                             <textarea class = "textarea required" name="option1-2" id = "option1-2" placeholder = "There might be circumstances where being honest would do more harm than good."></textarea>
-                            <p>*If you could not live in a world where everyone (including 
-                                you) followed this law, it fails the consistency test.</p>
+                            <p>*If universal adherence to this law would be self-defeating—
+                                it fails the consistency test..</p>
                         </div>
 
                         <input type = "submit" class="button" value = "Submit">
@@ -75,7 +75,7 @@
                 </div>
                 </div>
                 </div>
-                <div class= "box"> <!-- has-background-grey-lighter"> -->
+                <div class= "box">
                     <h1>OPTION 2</h1>
                     <div class='box has-background-grey-lighter'>
             <h2>Moral Law 1: Cheating is Wrong</h2>
