@@ -183,22 +183,22 @@
                         $sql = "SELECT ethicalIssuesandOptionsScore, stakeholderScore, virtueEthicsScore, deontologyScore,careEthicsScore,utilitarianismScore FROM myProgress WHERE uid = " .$uid;
                         $result = $pdo -> query($sql);
                         while($row = $result -> fetch()) {
-                            echo "ethicalIssuesandOptionsScore: ";
+                            echo "Ethical Issues and Options Score: ";
                             echo $row[0];
                             echo "<br>";
-                            echo "stakeholderScore: ";
+                            echo "Stakeholder Score: ";
                             echo $row[1];
                             echo "<br>";
-                            echo "virtueEthicsScore: ";
+                            echo "Virtue Ethics Score: ";
                             echo $row[2];
                             echo "<br>";
-                            echo "deontologyScore: ";
+                            echo "Deontology Score: ";
                             echo $row[3];
                             echo "<br>";
-                            echo "careEthicsScore: ";
+                            echo "Care Ethics Score: ";
                             echo $row[4];
                             echo "<br>";
-                            echo "utilitarianismScore: ";
+                            echo "Utilitarianism Score: ";
                             echo $row[5];
                         }
                     }
