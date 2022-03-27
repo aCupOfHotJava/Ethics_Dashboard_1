@@ -76,7 +76,7 @@
             </div>
         </div>
     </div>
-                <div class= "box"> <!-- has-background-grey-lighter"> -->
+                <div class= "box">
                     <h1>OPTION 2</h1>
                     <div class='box has-background-grey-lighter'>
             <h2>Moral Law 1: Cheating is Wrong</h2>

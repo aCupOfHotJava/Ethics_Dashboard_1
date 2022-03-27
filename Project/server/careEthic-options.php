@@ -119,12 +119,11 @@
                 echo "<text name='average2' class='average2' value='' readonly></text>";
 
             }
+            }
         }
-
-                echo "Answer Submitted";
-                   }
+          
        
-               }
+               
 
         catch(PDOException $e) {
             die($e -> getMessage());
