@@ -48,7 +48,7 @@
                 <label id="Low" class="has-text-left">Low</label>
                 <label id=High class="has-text-right">High</label>
             </nav>
-            <input type="range" min="1" max="10" value="5" class="slider s1 name="sliderCompetence1_1">
+            <input type="range" min="1" max="10" value="5" class="slider s1" name="sliderCompetence1_1">
             <span class="range-value">5</span>        
 
             <p>Responsiveness</p>
