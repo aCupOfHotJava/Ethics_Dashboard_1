@@ -10,6 +10,7 @@ no functionality added yet-->
     }
 
     //taking the student input option from the ethical issues table in db and setting them as the options in the virtue ethics options
+    /*
         function setOption() {
             try {
                 $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
@@ -24,13 +25,14 @@ no functionality added yet-->
                 $result1 = $pdo -> query($sql1);
 
                 $isInTable = False;
+                $count = 0;
                 while ($row = $result1 -> fetch()){
                     $isInTable = True;
+                    $count++;
 
-                    $option1 = $row['option1'];
-                    $option2 = $row['option2'];
-                    $option3 = $row['option3'];
-                }
+                    $option = $row['studentOption'];
+                    
+                
                     echo '<div>
                         <h2>OPTION 1 - '.$option1.'</h2>
                         <br>
@@ -53,12 +55,13 @@ no functionality added yet-->
                             <label>Rashness</label><input type="range" min="1" max="10" value="'.$option3_1.'" name="option3_1" id="s1-1"><label>Courage</label><input type="range" min="1" max="10" value="'.$option3_2.'" name="option3_2" id="s1-1"><label>Cowardice</label>
                         </div>
                         </div>';
+                }
             }
             catch (PDOException $e) {
                 die($e -> getMessage());
             }
         }
-
+*/
 
         function setAnswers(){
             try{
@@ -74,8 +77,20 @@ no functionality added yet-->
                 $result1 = $pdo -> query($sql1);
 
                 $isInTable = False;
+                $optionArray = array();
+                $count = 0;
+
+                $option1_1 = 5;
+                $option1_2 = 5;
+                $option2_1 = 5;
+                $option2_2 = 5;
+                $option3_1 = 5;
+                $option3_2 = 5;   
+
                 while ($row = $result1 -> fetch()){
                     $isInTable = True;
+                    array_push($optionArray, $row['options']);
+                    $count++;
 
                     $option1_1 = $row['option1_1'];
                     $option1_2 = $row['option1_2'];
@@ -83,56 +98,35 @@ no functionality added yet-->
                     $option2_2 = $row['option2_2'];
                     $option3_1 = $row['option3_1'];
                     $option3_2 = $row['option3_2'];
+                }
 
+                if ($isInTable){
                     echo '<div>
-                        <h2>OPTION 1 - I can put loyalty to the company...</h2>
+                        <h2>OPTION 1 - '.$optionArray[0].'.</h2>
                         <br>
                         <div class="box">
                             <h2> VICE (EXCESS) - VIRTUE (MEAN) - VICE (DEFICIENCY) </h2>
                             <label>Blind Devotion</label><input type="range" min="1" max="10" value="'.$option1_1.'" name="option1_1" id="s1-1"><label>Loyalty</label><input type="range" min="1" max="10" value="'.$option1_2.'" name="option1_2" id="s1-1"><label>Disloyalty</label>
                         </div>
 
-                        <h2>OPTION 2 - I can betray the company, go to the press ...</h2>
+                        <h2>OPTION 2 - '.$optionArray[1].'</h2>
                         <br>
                         <div class="box">
                             <h2> VICE (EXCESS) - VIRTUE (MEAN) - VICE (DEFICIENCY) </h2>
                             <label>Over-Sharing</label><input type="range" min="1" max="10" value="'.$option2_1.'" name="option2_1" id="s1-1"><label>Honesty</label><input type="range" min="1" max="10" value="'.$option2_2.'" name="option2_2" id="s1-1"><label>Dishonesty</label>
                         </div>
 
-                        <h2>OPTION 3 - I can stand up to my superiors, say no and organize ...</h2>
+                        <h2>OPTION 3 - '.$optionArray[2].'</h2>
                         <br>
                         <div class="box">
                             <h2> VICE (EXCESS) - VIRTUE (MEAN) - VICE (DEFICIENCY) </h2>
                             <label>Rashness</label><input type="range" min="1" max="10" value="'.$option3_1.'" name="option3_1" id="s1-1"><label>Courage</label><input type="range" min="1" max="10" value="'.$option3_2.'" name="option3_2" id="s1-1"><label>Cowardice</label>
                         </div>
                         </div>';
-
                 }
 
                 if (!$isInTable){
-                    echo '<div>
-                            <h2>OPTION 1 - I can put loyalty to the company...</h2>
-                            <br>
-                            <div class="box">
-                                <h2> VICE (EXCESS) - VIRTUE (MEAN) - VICE (DEFICIENCY) </h2>
-                                <label>Blind Devotion</label><input type="range" min="1" max="10" value="5" name="option1_1" id="s1-1"><label>Loyalty</label><input type="range" min="1" max="10" value="5" name="option1_2" id="s1-1"><label>Disloyalty</label>
-                            </div>
-
-                            <h2>OPTION 2 - I can betray the company, go to the press ...</h2>
-                            <br>
-                            <div class="box">
-                                <h2> VICE (EXCESS) - VIRTUE (MEAN) - VICE (DEFICIENCY) </h2>
-                                <label>Over-Sharing</label><input type="range" min="1" max="10" value="5" name="option2_1" id="s1-1"><label>Honesty</label><input type="range" min="1" max="10" value="5" name="option2_2" id="s1-1"><label>Dishonesty</label>
-                            </div>
-
-                            <h2>OPTION 3 - I can stand up to my superiors, say no and organize ...</h2>
-                            <br>
-                            <div class="box">
-                                <h2> VICE (EXCESS) - VIRTUE (MEAN) - VICE (DEFICIENCY) </h2>
-                                <label>Rashness</label><input type="range" min="1" max="10" value="5" name="option3_1" id="s1-1"><label>Courage</label><input type="range" min="1" max="10" value="5" name="option3_2" id="s1-1"><label>Cowardice</label>
-                            </div>
-                        </div>
-                        <br>';
+                    echo '<p>There are no options to consider. Go to Ethical Issues to add options</p>';
                 }
                 
                 if (isset($_POST['options'])){
@@ -190,7 +184,9 @@ no functionality added yet-->
                     $blindDevotion = ($row['option1_1'] + $row['option1_2']) / 2;
                     $oversharing = ($row['option2_1'] + $row['option2_2']) / 2;
                     $courage = ($row['option3_1'] + $row['option3_2']) / 2;
+                }
 
+                if ($isInTable){
                     echo '<div>
                             <div class="box">
                                 <h2> O 3: COURAGE </h2>
@@ -212,6 +208,7 @@ no functionality added yet-->
                             </div>
                         </div>';
                 }
+                
 
                 if (!$isInTable){
                     echo '<div>
@@ -242,7 +239,7 @@ no functionality added yet-->
                     $updateStatement = "UPDATE `virtueEthics` SET `courageAvg` = '".$courage."', `oversharingAvg` = '".$oversharing."', `blindDevotionAvg` = '".$blindDevotion."' WHERE `uid` = '".$uid."'";
                     $pdo -> query($updateStatement);
 
-                    header("Refresh:0");
+                    //header("Refresh:0");
                 }
             }                
             catch(PDOException $e){
@@ -272,7 +269,7 @@ no functionality added yet-->
                     <div class = "box has-background-grey-lighter">
                         <form method="POST">
                                 <?php
-                                    setOption();
+                                    //setOption();
                                     setAnswers();
                                 ?>
                             <button class = "button" name="options">Submit</button>
