@@ -55,13 +55,13 @@
                 // If there is no record for the dilemma, insert a new record under that uid
                 if($isEmpty) {
                     $sql = "INSERT INTO careEthics VALUES ('" .$uid ."', '" .$sliderAttentiveness ."','" .$sliderCompetence ."','" .$sliderResponsiveness ."', '" .$sliderAttentiveness1_2 ."','" .$sliderCompetence1_2 ."','" .$sliderResponsiveness1_2 ."');";
-                    echo $sql;
+                    //echo $sql;
                     $pdo -> query($sql);
                 }
                 // If there is a record, find it and update it instead.
                 else {
                     $sql = "UPDATE careEthics SET sliderAttentiveness = '" .$sliderAttentiveness ."',sliderCompetence = '" .$sliderCompetence ."',sliderResponsiveness = '" .$sliderResponsiveness ."' ,sliderAttentiveness1_2 = '" .$sliderAttentiveness1_2 ."',sliderCompetence1_2 = '" .$sliderCompetence1_2 ."',sliderResponsiveness1_2 = '" .$sliderResponsiveness1_2 ."' WHERE uid = " .$uid .";";
-                    echo $sql;
+                    //echo $sql;
                     $pdo -> query($sql);
 
                 $sliderAttentiveness2 = $_POST['sliderAttentiveness1_2'];
@@ -119,11 +119,11 @@
                 echo "<text name='average2' class='average2' value='' readonly></text>";
 
             }
+            }
         }
 
-                   
        
-               }
+               
 
         catch(PDOException $e) {
             die($e -> getMessage());
