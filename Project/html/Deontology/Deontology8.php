@@ -1,6 +1,74 @@
 <?php
     session_start();
     print_r($_SESSION);
+
+
+    function determineState() {
+
+        $uid = $_SESSION["uid"];
+        global $yesOrNo1;
+        $yesOrNo1 = 0;
+        $option1 = 0;
+        $yesOrNo2 = 0;
+        $option2 = 0;
+        $isEmpty = true;
+
+        try{
+            $connString = "mysql:host=lowe-walker.org;dbname=rwalker_Ethics_Dashboard_1";
+            $user = "rwalker_villafranca";
+            $pass = "gapsd5W2";
+            $pdo = new PDO($connString, $user, $pass);
+            $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $uid = $_SESSION["uid"];
+            $sql = "SELECT yesOrNo1 ,option1, yesOrNo2 ,option2  FROM deontology8 WHERE uid = '" .$uid ."';";
+            $result = $pdo -> query($sql);
+            while($row = $result -> fetch()) {
+                $isEmpty = false;
+                $yesOrNo1 = 0;
+                $option1 = 0;
+                $yesOrNo2 = 0;
+                $option2 = 0;
+            }   
+
+            if(isset($_POST['submit_option1'])) {
+                $yesOrNo1 = $_POST['yesOrNo1'];
+                $option1 = $_POST['option1'];
+                $yesOrNo2 = $_POST['yesOrNo2'];
+                $option2 = $_POST['option2'];
+
+                if($isEmpty) {
+
+                    $stmt = $pdo -> prepare("INSERT INTO deontology8(uid,yesOrNo1, option1,yesOrNo2,option2) VALUES ('" .$uid ."', '" .$yesOrNo1 ."','" .$option1 ."','" .$yesOrNo2 ."', '" .$option2 ."');");
+
+                    $stmt -> bindParam("uid", $uid);
+                    $stmt -> bindParam("yesOrNo1", $yesOrNo1);
+                    $stmt -> bindParam("option1", $option1);
+                    $stmt -> bindParam("yesOrNo2", $yesOrNo2);
+                    $stmt -> bindParam("option2", $option2);
+                    $stmt -> execute();
+
+                }
+                else {
+                    $stmt = $pdo -> prepare("UPDATE deontology8 SET yesOrNo1 = '" .$yesOrNo1 ."',option1 = '" .$option1 ."',yesOrNo2 = '" .$yesOrNo2 ."' ,option2 = '" .$option2 ."' WHERE uid = " .$uid .";");
+
+                    $stmt -> bindParam("yesOrNo1", $yesOrNo1);
+                    $stmt -> bindParam("option1", $option1);
+                    $stmt -> bindParam("yesOrNo2", $yesOrNo2);
+                    $stmt -> bindParam("option2", $option2);
+                    $stmt -> bindParam("uid", $uid);
+                    $stmt -> execute();
+                }
+            
+            }
+
+        }
+        
+        catch(PDOException $e) {
+            die($e -> getMessage());
+        }
+    }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,16 +89,19 @@
                 </div>
 
                 <form method = "POST" action = "" id = "">
+                <?php
+                                    determineState();
+                                ?>
                     <div class = "options">
                         <div class = "box" id = "dilemma-box">
                             <h3>Moral Law 3:  Honesty is Right</h3><br>
                                 <p>TEST IT’S UNIVERSALIZABILITY:  Can you restate the law 
                                     as a universal law of moral action?  </p>
-                                    <input type="radio" id="yes1" name="choice1" value="yes">
+                                    <input type="radio" id="yes1" name="yesOrNo1" value="yes">
                                     <label for="yes1">Yes</label>
-                                    <input type="radio" id="no1" name="choice1" value="yes">
+                                    <input type="radio" id="no1" name="yesOrNo1" value="no">
                                     <label for="no1">No</label><br> 
-                            <textarea class = "textarea required" name="option1-2" id = "option1-2" placeholder = "Honesty is right in all circumstances, times and all places."></textarea>
+                            <textarea class = "textarea required" name="option1" id = "option1-2" placeholder = "Honesty is right in all circumstances, times and all places."></textarea>
                             <p>*If the moral law is not a universal law of moral action—it
                                 fails the universalizability test.</p>
                         </div>
@@ -39,16 +110,16 @@
                         <div class = "box" id = "dilemma-box">
                                 <p>TEST ITS CONSISTENCY:  Could you live in a world where 
                                     everyone followed this law?</p>
-                                    <input type="radio" id="yes2" name="choice2" value="yes">
+                                    <input type="radio" id="yes2" name="yesOrNo2" value="yes">
                                     <label for="yes2">Yes</label>
-                                    <input type="radio" id="no2" name="choice2" value="yes">
+                                    <input type="radio" id="no2" name="yesOrNo2" value="no">
                                     <label for="no2">No</label><br> 
-                            <textarea class = "textarea required" name="option1-2" id = "option1-2" placeholder = "There might be circumstances where being honest would do more harm than good."></textarea>
+                            <textarea class = "textarea required" name="option2" id = "option1-2" placeholder = "There might be circumstances where being honest would do more harm than good."></textarea>
                             <p>*If universal adherence to this law would be self-defeating—
                                 it fails the consistency test..</p>
                         </div>
 
-                        <input type = "submit" class="button" value = "Submit">
+                        <input type = "submit" class="button" value = "Submit" name ="submit_option1">
                     </div>
                 </form>
             </div>

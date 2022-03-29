@@ -226,7 +226,7 @@
                         </div>
                    
 
-                    <input type = "submit" class="button" value = "Submit" name ="submit_option1">
+                    <input type = "submit" class="button" value = "Submit" name ="submit_option1" id="submit_option1">
                     </form>
 
                     </div>        
@@ -323,6 +323,6 @@
     </div>
     <script src = "../../scripts/jquery-3.6.0.js"></script>
     <script src = "../../scripts/user-event.js"></script>
-    <script src = "../../scripts/deontology.js"></script>
+    <script src = "../../scripts/deontology.js?ver=0.4"></script>
     </body>
 </html>

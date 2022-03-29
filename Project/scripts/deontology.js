@@ -1,12 +1,23 @@
-$(document).ready(function(){
-    if ($('input[id="op9-2"]').is(':checked')) {
-        if($(this).prop("checked") == true){
-            console.log("Checkbox is tested.");
-            $("form").submit(function(){
-                alert("test");
-                document.location.href = "";
-            })
-        }
+//doesnt work as intended need help figuring out how to redirect properly
+$(document).ready(function() {
 
-    };
+    $("#op9").click(function() {
+        if($(this).prop('checked')){
+            window.location.href="../Deontology/Deontology4.php"
+                        }
+                    
+    });      
+
+});
+
+$(document).ready(function() {
+
+
+    $("#op9-2").click(function() {
+        if($(this).prop('checked')){
+            window.location.href="../Deontology/Deontology4.php"
+                        }
+                    
+    });      
+        
 });
