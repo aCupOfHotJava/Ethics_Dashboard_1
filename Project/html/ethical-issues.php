@@ -47,6 +47,11 @@
                 $stmt -> bindParam(":uid", $uid);
                 $stmt -> bindParam(":option", $option);
                 $stmt -> execute();
+
+                $stmt = $pdo -> prepare("INSERT INTO virtueEthics (`uid`, `options`) VALUES (:uid, :options)");
+                $stmt -> bindParam(":uid", $uid);
+                $stmt -> bindParam(":options", $option);
+                $stmt -> execute();
                 header("Location: #");
             }
             echo "<textarea class = 'textarea' name = 'option-text' placeholder = 'Enter your option here.'></textarea>";

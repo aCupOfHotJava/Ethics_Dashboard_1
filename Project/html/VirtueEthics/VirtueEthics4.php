@@ -33,6 +33,9 @@ functionality not added yet-->
                 $blindDevotion = $row['blindDevotionAvg'];
                 $oversharing = $row['oversharingAvg'];
                 $courage = $row['courageAvg'];
+            }
+
+            if ($isInTable){
 
                 echo '<div>
                         <div class="box">
@@ -111,7 +114,9 @@ functionality not added yet-->
                 $integrity = $row['integrityAvg'];
                 $prestige = $row['prestigeAvg'];
                 $greed = $row['greedAvg'];
+            }
 
+            if ($isInTable){
                 echo '<div>
                         <div class="box">
                             <h2> SI 2: INTEGRITY </h2>
