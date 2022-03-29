@@ -121,8 +121,7 @@
             }
         }
 
-                echo "Answer Submitted";
-                   }
+                   
        
                }
 
