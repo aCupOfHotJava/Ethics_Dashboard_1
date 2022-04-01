@@ -35,6 +35,8 @@
         }
     
     ?>
+ 
+
         <div class="columns">
         <div class="column is-two-fifths">
             <div class=" box has-background-grey-lighter">
@@ -209,9 +211,50 @@
               
                 </a>
             </div>
-            <a href="Project/html/MyProgress.txt" download>
-            <h3>Download Report</h3>
-          </a>
+            <form method='post' action='download.php'>
+       
+            <?php 
+                try {
+                    $sql = "SELECT * FROM myProgress WHERE uid = " .$uid;
+                    $result = $pdo -> query($sql);
+                    $user_arr = array();
+                     while($row = $result -> fetch()) {
+                     $comment1=$row['ethicalIssuesandOptionsText'];
+                     $score1=$row['ethicalIssuesandOptionsScore'];
+
+                     $comment2=$row['stakeholderText'];
+                     $score2=$row['stakeholderScore'];
+
+                     $comment3=$row['virtueEthicsText'];
+                     $score3=$row['virtueEthicsScore'];
+
+                     $comment4=$row['deontologyText'];
+                     $score4=$row['deontologyScore'];
+
+                     $comment5=$row['careEthicsText'];
+                     $score5=$row['careEthicsScore'];
+
+                     $comment6=$row['utilitarianismText'];
+                     $score6=$row['utilitarianismScore'];
+
+
+                     $user_arr[] = array($comment1,$score1,$comment2,$score2,$comment3,$score3,$comment4,$score4,$comment5,$score5,$comment6,$score6);
+
+                         }
+                            }
+            catch(SQLException $e) {
+              die($e -> getMessage());
+                                }
+   ?>
+      <?php 
+    $serialize_user_arr = serialize($user_arr);
+   ?>
+        <input type='submit' value='Download Report' name='export_data'>
+  <textarea name='export_data' style='display: none;'><?php echo $serialize_user_arr; ?></textarea>
+          
+ 
+       
+            </form>
         </div>
         </div>
 
