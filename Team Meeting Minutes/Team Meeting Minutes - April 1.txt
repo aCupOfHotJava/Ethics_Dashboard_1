@@ -1,0 +1,32 @@
+TEAM MEETING
+Date: April 1, 2022
+
+Attendees:
+Brandon Kreig
+Monica Rampaul
+Sophia Joseph
+Alvin Villafranca
+
+Progress:
+- no formal meeting held as the site is completed and the client's students are going to be testing it this week 
+
+Tasks for this week:
+Brandon: 
+- set up the site to be available to host for the client's students
+- implement any small changes from student's feedback (maybe, if there is time)
+- start working on final report
+
+Monica: 
+- implement any small changes from student's feedback (maybe, if there is time)
+- start working on final report
+
+Sophia: 
+- implement any small changes from student's feedback (maybe, if there is time)
+- start working on final report
+
+Alvin: 
+- implement any small changes from student's feedback (maybe, if there is time)
+- start working on final report
+
+Aside notes/ideas:
+- need to start thinking about and working on the final report / video
