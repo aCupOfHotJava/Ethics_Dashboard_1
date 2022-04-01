@@ -1,4 +1,4 @@
-
+<!--NEEDS SOME ADDED STYLING-->
 <?php
     session_start();
     print_r($_SESSION);
