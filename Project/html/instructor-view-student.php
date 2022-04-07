@@ -80,17 +80,20 @@
             <div class = "box has-background-lighter">
                 <?php
                     try {
-                        $sql = "SELECT option1, option1Ex, option2, option2Ex FROM utilitarianism WHERE uid = " .$uid;
+                        $sql = "SELECT `option`, explanation FROM utilitarianism WHERE uid = " .$uid;
                         $result = $pdo -> query($sql);
+                        $count = 0;
                         while($row = $result -> fetch()) {
-                            echo "Student Option 1";
+                            $count++;
+                            echo "Student Option ".$count."";
                             echo "<div class = 'box'>";
-                            echo $row[0];
+                            echo $row['option'];
                             echo "</div>";
-                            echo "Student Explanation 1";
+                            echo "Student Explanation ".$count."";
                             echo "<div class = 'box'>";
-                            echo $row[1];
+                            echo $row['explanation'];
                             echo "</div>";
+                            /*
                             echo "Student Option 2";
                             echo "<div class = 'box'>";
                             echo $row[2];
@@ -98,7 +101,7 @@
                             echo "Student Explanation 2";
                             echo "<div class = 'box'>";
                             echo $row[3];
-                            echo "</div>";
+                            echo "</div>";*/
                         }
                     }
                     catch(SQLException $e) {
